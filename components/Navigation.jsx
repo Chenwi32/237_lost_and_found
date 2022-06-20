@@ -3,12 +3,12 @@ import styles from './styles/Navigation.module.css'
 
 const Navigation = () => {
     return (
-        <div className={styles.navbar}>
+        <div className={`${styles.navbar} flex`}>
             <img src="/237logo.png" alt="logo"
-                width={150}
-                height={70} />
+                width={130}
+                height={55} />
             
-            <div className={styles.menu}>
+            <div className={`flex`}>
                 <Link href="/">
                     <a className={styles.menu_links}>Contact Us</a>
                 </Link>

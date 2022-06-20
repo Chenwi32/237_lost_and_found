@@ -1,0 +1,22 @@
+.home{
+  padding: 1em;
+}
+
+.document_links{
+  padding: 1em;
+}
+
+.link_container{
+  list-style-type: none;
+  margin: 1em 0;
+  
+}
+
+.link{
+  padding: .5em;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid #696969;
+  color: #696969;
+}
+

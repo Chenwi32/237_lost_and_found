@@ -1,16 +1,15 @@
 .navbar {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: .5em 0;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
 }
 
 .menu_links {
   padding: 1rem;
   margin-right: .5rem;
+  font-size: 1rem;
+  transition: .5s;
+}
+
+.menu_links:hover {
+  color: var(--principal_color);
 }

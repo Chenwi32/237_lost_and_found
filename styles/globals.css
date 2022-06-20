@@ -1,9 +1,16 @@
+:root{
+  --principal_color: #20B707;
+  --secondary_color: #F31E1E;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+    font-size: .8rem;
 }
 
 a {
@@ -15,6 +22,8 @@ a {
   box-sizing: border-box;
 }
 
+
+
 .container{
   max-width: 1000px;
   min-height: 100vh;
@@ -22,5 +31,24 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0 1em;
 }
 
+.main_content{
+  flex: .8;
+}
+
+
+/* Utilities */
+
+.flex{
+  display: flex;
+  align-items: center;
+}
+
+
+.flex_col{
+  display: flex;
+  flex-direction: column;
+
+}
