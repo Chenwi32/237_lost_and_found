@@ -7,9 +7,7 @@
   padding: 1rem;
   margin-right: .5rem;
   font-size: 1rem;
-  transition: .5s;
+  color: var(--links);
 }
 
-.menu_links:hover {
-  color: var(--principal_color);
-}
+

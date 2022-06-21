@@ -6,6 +6,7 @@ const HomePage = () => {
   return (
     <>
       <Head>
+        
         <title>237 Lost & found</title>
       </Head>
 
@@ -15,27 +16,37 @@ const HomePage = () => {
         <ul className={`${styles.document_links} flex_col`}>
           <li className={styles.link_container}>
             <Link href="/nationalId">
-              <a className={styles.link}>National ID Card</a>
+              <a className={styles.link}>
+                <span> National ID Card</span> <span className={styles.arrow}>&#8594;</span>
+              </a>
             </Link>
           </li>
           <li className={styles.link_container}>
             <Link href="/passports">
-              <a className={styles.link}>Passport</a>
+              <a className={styles.link}>
+                <span>Passport</span> <span className={styles.arrow}>&#8594;</span>
+              </a>
             </Link>
           </li>
           <li className={styles.link_container}>
             <Link href="/drivingLicence">
-              <a className={styles.link}>Driving Licence <span></span></a>
+              <a className={styles.link}>
+                <span>Driving Licence</span> <span className={styles.arrow}>&#8594;</span>
+              </a>
             </Link>
           </li>
           <li className={styles.link_container}>
             <Link href="/certificates">
-              <a className={styles.link}>Certificate</a>
+              <a className={styles.link}>
+                <span>Certificate</span> <span className={styles.arrow}>&#8594;</span>
+              </a>
             </Link>
           </li>
           <li className={styles.link_container}>
             <Link href="/otherDocuments">
-              <a className={styles.link}>Other Documents <span></span>  </a>
+              <a className={styles.link}>
+                <span>Other Documents</span> <span className={styles.arrow}>&#8594;</span>
+              </a>
             </Link>
           </li>
         </ul>

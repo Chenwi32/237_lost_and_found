@@ -4,6 +4,7 @@
 
 .document_links{
   padding: 1em;
+  width: 50%;
 }
 
 .link_container{
@@ -13,10 +14,34 @@
 }
 
 .link{
-  padding: .5em;
+  padding: .5em 1em;
   font-size: 1rem;
   font-weight: 600;
-  border: 1px solid #696969;
-  color: #696969;
+  color: var(--links);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: dotted .3px;
+  border-left: solid 10px var(--secondary);
+}
+
+.link:hover .arrow{
+  animation: horizontal_anim .7s infinite .4s ease-in-out;
+}
+
+.arrow{
+  font-size: 2em;
+}
+
+@keyframes horizontal_anim {
+  0%{
+    transform: translateX(5px);
+  }
+  50%{
+    transform: translateX(10px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
 }
 
