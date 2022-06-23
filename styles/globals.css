@@ -57,7 +57,8 @@ hr{
   font-family: 'Roboto', sans-serif;
   border-bottom: 1px solid var(--primary);
   padding-bottom: .5em;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+  text-align: center;
 }
 
 .btn{
@@ -93,10 +94,11 @@ hr{
   width: 70%;
   outline: none;
   margin: auto;
+  border: 2px solid var(--primary);
 }
 
 .main_input:focus{
-    border: 2px solid var(--primary);
+    border: 2px solid;
 }
 
 .flex_col{

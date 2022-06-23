@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from './styles/generalComStyles.module.css'
 
-const Controls = ({ dataInput, setDataInput }) => {
+const Controls = ({dataSearch}) => {
   return (
     <div className={`${styles.controls} flex`}>
       <Link href="/">
@@ -10,10 +10,11 @@ const Controls = ({ dataInput, setDataInput }) => {
         </button>
       </Link>
 
-      <button className={`${styles.search} btn flex`}>
+      <button className={`${styles.search} btn flex`}
+        onClick={dataSearch}>
         <span>Search</span>
         <span>
-          <i class="fa fa-search" aria-hidden="true"></i>
+          <i className="fa fa-search" aria-hidden="true"></i>
         </span>
       </button>
     </div>

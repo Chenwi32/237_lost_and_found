@@ -1,7 +1,7 @@
 const ErrorRoute = () => {
     return (
         <div>
-            Sorry the page doesn't exist
+          <h1>Sorry the page doesn't exist &#x1F615;</h1>  
         </div>
     );
 }
