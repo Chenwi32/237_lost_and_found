@@ -18,11 +18,15 @@ a {
   color: inherit;
   text-decoration: none;
   transition: .4s;
-  font-family: ;
+  font-weight: 600;
 }
 
 a:hover {
-   color: var(--primary);
+   color: var(--secondary);
+}
+
+hr{
+  border: .5px dotted var(--primary);
 }
 
 * {
@@ -48,11 +52,52 @@ a:hover {
 
 /* Utilities */
 
+.title{
+  font-size: 1.4rem;
+  font-family: 'Roboto', sans-serif;
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: .5em;
+  margin-bottom: 1em;
+}
+
+.btn{
+  background-color: var(--primary);
+  color: #fff;
+  border: 1px inset;
+  border-radius: 5px;
+  padding: 1em;
+  font-weight: 600;
+  width: 150px;
+}
+
+.btn2{
+  background-color: inherit;
+  border: 1px inset var(--secondary);
+  border-radius: 5px;
+  padding: 1em;
+  color: var(--secondary);
+  font-weight: 600;
+  width: 150px;
+}
+
 .flex{
   display: flex;
   align-items: center;
 }
 
+.main_input{
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  padding: .5em;
+  width: 70%;
+  outline: none;
+  margin: auto;
+}
+
+.main_input:focus{
+    border: 2px solid var(--primary);
+}
 
 .flex_col{
   display: flex;
@@ -65,3 +110,4 @@ a:hover {
     font-size: 1rem;
   }
 }
+

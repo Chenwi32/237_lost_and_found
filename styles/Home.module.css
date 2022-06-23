@@ -22,16 +22,19 @@
   justify-content: space-between;
   align-items: center;
   border: dotted .3px;
-  border-left: solid 10px var(--secondary);
+  border-left: solid 10px var(--primary);
 }
 
-.link:hover .arrow{
+.link:hover .arrow_right{
   animation: horizontal_anim .7s infinite .4s ease-in-out;
 }
 
-.arrow{
+.arrow_right{
   font-size: 2em;
 }
+
+
+/*----- Animations -----*/
 
 @keyframes horizontal_anim {
   0%{

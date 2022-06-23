@@ -1,5 +1,14 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+const users = [
+  { id: 1, name: "John Smith" },
+  { id: 2, name: "Jane Doe" },
+];
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
-}
+export default (req, res) => {
+  const {
+    query: { id },
+  } = req;
+
+  res.json({
+    ...users.find((user) => user.id === parseInt(id)),
+  });
+};

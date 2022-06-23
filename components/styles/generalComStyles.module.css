@@ -1,0 +1,31 @@
+.controls{
+    margin-top: 5em;
+    justify-content: space-evenly;
+}
+
+.search{
+    justify-content: space-between;
+}
+
+.to_home:hover .arrow_right{
+  animation: left_horizontal_anim .7s infinite .4s ease-in-out;
+}
+
+
+.arrow_left{
+font-size: 2em;
+}
+
+/*----- Animations -----*/
+
+@keyframes left_horizontal_anim {
+  0%{
+    transform: translateX(-5px);
+  }
+  50%{
+    transform: translateX(-10px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+}
