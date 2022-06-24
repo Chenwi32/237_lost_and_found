@@ -1,7 +1,7 @@
 const DocNotFound = () => {
     return (
       <div>
-        <h1>Sorry We dont have your Id card</h1>
+        <h1>Sorry We don't have your Id card</h1>
       </div>
     );
 }

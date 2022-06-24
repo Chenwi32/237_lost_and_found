@@ -1,4 +1,7 @@
 import { useRouter } from "next/router";
+import DocNotFound from "./docNotFound";
+import Success from "./success";
+
 import React, { useState } from "react";
 import Controls from "../components/controls";
 
@@ -6,28 +9,38 @@ let IDs = [
   {
     idNum: "114957588",
     location: "Simbock",
+    contact: "651395832",
   },
   {
     idNum: "651395832",
     location: "Damas",
+    contact: "651395832",
   },
 ];
 
 export default () => {
-  const router = useRouter();
+  /* const router = useRouter(); */
 
   const [dataInput, setDataInput] = useState("");
 
   const idSearch = () => {
-    let found = IDs.find((id) => id.idNum === dataInput);
+    const found = IDs.find((id) => id.idNum === dataInput);
     if (dataInput === "" || dataInput === null) return;
-    else if (found) {
-      router.push("/success");
-      setDataInput("");
-    } else {
-      router.push("/docNotFound");
-      setDataInput("");
-    }
+
+    const showResults = () => {
+      if (found) {
+        setDataInput("");
+        return found;
+      } else {
+        console.log("soorry");
+      }
+
+      return <Success results={found} />;
+    };
+
+    return {
+      showResults: showResults,
+    };
   };
 
   return (
@@ -44,6 +57,8 @@ export default () => {
       />
 
       <Controls dataSearch={idSearch} />
+
+      {idSearch}
     </div>
   );
 };
