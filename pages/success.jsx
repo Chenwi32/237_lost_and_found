@@ -1,7 +1,10 @@
-const Success = ({ results }) => {
+const Success = ({results}) => {
+
+
+
   return (
     <div>
-      <h1>Great news!!! we found your ID card {results}</h1>
+      <h1>Great news!!! we found your ID card {results.idnum}</h1>
     </div>
   );
 };

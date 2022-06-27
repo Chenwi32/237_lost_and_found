@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import DocNotFound from "./docNotFound";
 import Success from "./success";
 
@@ -19,29 +18,24 @@ let IDs = [
 ];
 
 export default () => {
-  /* const router = useRouter(); */
 
   const [dataInput, setDataInput] = useState("");
 
+  const [found, setFound] = useState({ idNum: 'Id num is empty'})  ;
+
   const idSearch = () => {
-    const found = IDs.find((id) => id.idNum === dataInput);
+
     if (dataInput === "" || dataInput === null) return;
+  setFound(found = IDs.find((id) => id.idNum === dataInput))
 
-    const showResults = () => {
-      if (found) {
-        setDataInput("");
-        return found;
-      } else {
-        console.log("soorry");
-      }
-
-      return <Success results={found} />;
-    };
-
-    return {
-      showResults: showResults,
-    };
+    if (found) {
+      
+    console.log(found)
+    }
+    
   };
+
+console.log(found);
 
   return (
     <div className="flex_col" id="results">
@@ -57,8 +51,10 @@ export default () => {
       />
 
       <Controls dataSearch={idSearch} />
-
-      {idSearch}
+      {
+        found === true ? <h1>{found.idNum }</h1> : <DocNotFound />
+      }
+      
     </div>
   );
 };
