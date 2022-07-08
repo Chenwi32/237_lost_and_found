@@ -1,12 +1,12 @@
 import DocNotFound from "./docNotFound";
 import Success from "./success";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Controls from "../components/controls";
 
 let IDs = [
   {
-    idNum: "114957588",
+    idNum: '114957588',
     location: "Simbock",
     contact: "651395832",
   },
@@ -18,24 +18,18 @@ let IDs = [
 ];
 
 export default () => {
-
   const [dataInput, setDataInput] = useState("");
-
-  const [found, setFound] = useState({ idNum: 'Id num is empty'})  ;
+  let [found, setfound] = useState([]);
 
   const idSearch = () => {
+    const successfulsearch = IDs.find((id) => id.idNum === dataInput);
 
     if (dataInput === "" || dataInput === null) return;
-  setFound(found = IDs.find((id) => id.idNum === dataInput))
 
-    if (found) {
-      
-    console.log(found)
+    if (successfulsearch) {
+      setfound([successfulsearch]);
     }
-    
   };
-
-console.log(found);
 
   return (
     <div className="flex_col" id="results">
@@ -51,10 +45,10 @@ console.log(found);
       />
 
       <Controls dataSearch={idSearch} />
-      {
-        found === true ? <h1>{found.idNum }</h1> : <DocNotFound />
-      }
-      
+
+      {found.length === 0 ? 
+        <DocNotFound />
+      : found.length !== 0 ? <Success results={found} />: <h3>There was a mixup somewhere</h3>}
     </div>
   );
 };
