@@ -1,0 +1,16 @@
+.success_container{
+    margin-top: 2em;
+}
+.success_header{
+    font-size: 2rem;
+}
+
+.doc_infomation{
+    font-size: 1.3rem;
+}
+
+
+.success_container p{
+    font-size: 1.3em;
+    font-weight: 600;
+}

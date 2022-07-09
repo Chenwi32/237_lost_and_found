@@ -1,5 +1,4 @@
-import DocNotFound from "./docNotFound";
-import Success from "./success";
+import Success from "../components/success";
 
 import React, { useEffect, useState } from "react";
 import Controls from "../components/controls";
@@ -17,9 +16,13 @@ let IDs = [
   },
 ];
 
+
+
 export default () => {
   const [dataInput, setDataInput] = useState("");
   let [found, setfound] = useState([]);
+const [message, setmessage] = useState('Your results will be displayed here')
+
 
   const idSearch = () => {
     const successfulsearch = IDs.find((id) => id.idNum === dataInput);
@@ -28,6 +31,10 @@ export default () => {
 
     if (successfulsearch) {
       setfound([successfulsearch]);
+      setDataInput('')
+    } else {
+      setmessage("Sorry We don't have your Id card");
+      setDataInput('')
     }
   };
 
@@ -47,7 +54,7 @@ export default () => {
       <Controls dataSearch={idSearch} />
 
       {found.length === 0 ? 
-        <DocNotFound />
+        <h2>{message }</h2>
       : found.length !== 0 ? <Success results={found} />: <h3>There was a mixup somewhere</h3>}
     </div>
   );
