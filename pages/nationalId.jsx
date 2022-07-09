@@ -5,11 +5,13 @@ import Controls from "../components/controls";
 
 let IDs = [
   {
+    id: 1,
     idNum: '114957588',
     location: "Simbock",
     contact: "651395832",
   },
   {
+    id: 2,
     idNum: "651395832",
     location: "Damas",
     contact: "651395832",
@@ -18,7 +20,7 @@ let IDs = [
 
 
 
-export default () => {
+const NationalId = () => {
   const [dataInput, setDataInput] = useState("");
   let [found, setfound] = useState([]);
 const [message, setmessage] = useState('Your results will be displayed here')
@@ -59,3 +61,7 @@ const [message, setmessage] = useState('Your results will be displayed here')
     </div>
   );
 };
+
+
+
+export default NationalId

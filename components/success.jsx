@@ -10,7 +10,7 @@ const Success = ({ results }) => {
 
       {results.map((result) => {
         return (
-          <div className={styles.message_container}>
+          <div key={result.id} className={styles.message_container}>
             <h1>
               Here is your document identification detail: <br />
               <span className={styles.doc_infomation}>{result.idNum}</span>
