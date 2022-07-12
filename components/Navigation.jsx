@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
     <div className={`${styles.navbar} flex`}>
       <Link href='/'>
-        <Image src="/237logo.png" alt="logo" width={130} height={55} />
+        <Image src="/images/237logo.png" alt="logo" width={130} height={55} />
       </Link>
 
       <div className={`flex`}>

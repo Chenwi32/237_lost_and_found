@@ -16,6 +16,12 @@ let IDs = [
     location: "Damas",
     contact: "651395832",
   },
+  {
+    id: 3,
+    idNum: "101840409",
+    location: "Yaounde Mendong-Centre",
+    contact: "674051999",
+  },
 ];
 
 
