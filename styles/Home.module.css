@@ -50,3 +50,9 @@
   }
 }
 
+@media (max-width: 600px) {
+  
+.document_links{
+  width: fit-content;
+}
+}
