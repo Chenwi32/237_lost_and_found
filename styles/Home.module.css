@@ -35,6 +35,25 @@
   font-size: 2em;
 }
 
+.breadcrumbs{
+  border: none;
+  border-bottom: 1px solid;
+  background-color: inherit;
+padding-bottom: .5em;
+font-weight: 600;
+width: fit-content;
+}
+
+.type_of_user{
+  width: 100%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.breadcrumbs:focus{
+  border: none;
+  border-bottom: 1px solid var(--primary);
+}
 
 /*----- Animations -----*/
 
