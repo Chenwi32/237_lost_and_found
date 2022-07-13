@@ -26,6 +26,10 @@ a:hover {
    color: var(--secondary);
 }
 
+p{
+  font-weight: 600;
+}
+
 button{
  cursor: pointer;
 }

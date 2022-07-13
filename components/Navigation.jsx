@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles/Navigation.module.css";
 
@@ -6,13 +5,9 @@ const Navigation = () => {
   return (
     <div className={`${styles.navbar} flex`}>
       <Link href="/">
-       {/*  <Image
-          src="../images/logo.png"
-          alt="logo"
-          width={130}
-          height={55}
-        /> */}
-        logo
+        
+          <a>237L&F</a>
+      
       </Link>
 
       <div className={`flex`}>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "../styles/contact.module.css";
 
 const Contact = () => {
@@ -15,13 +14,6 @@ const Contact = () => {
           target="blank"
           className={`${styles.contact_link} flex_col`}
         >
-          {/* <Image
-            src="/images/WhatsApp_icon.png"
-            alt="logo"
-            width={100}
-            height={100}
-          /> */}
-
           <span className={styles.link_text}>Whatsapp</span>
         </a>
         <a
@@ -29,21 +21,12 @@ const Contact = () => {
           target="blank"
           className={`${styles.contact_link} flex_col`}
         >
-          {/* <Image
-            src="/images/facebook.png"
-            alt="logo"
-            width={100}
-            height={100}
-          /> */}
-
           <span className={styles.link_text}>Facebook</span>
         </a>
         <a
           href="tell:+237651395832"
           className={`${styles.contact_link} flex_col`}
         >
-          {/* <Image src="/images/call.jpeg" alt="logo" width={100} height={100} /> */}
-
           <span className={styles.link_text}>Call</span>
         </a>
       </div>
