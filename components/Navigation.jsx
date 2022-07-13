@@ -5,8 +5,14 @@ import styles from "./styles/Navigation.module.css";
 const Navigation = () => {
   return (
     <div className={`${styles.navbar} flex`}>
-      <Link href='/'>
-        <Image src="/images/237logo.png" alt="logo" width={130} height={55} />
+      <Link href="/">
+       {/*  <Image
+          src="../images/logo.png"
+          alt="logo"
+          width={130}
+          height={55}
+        /> */}
+        logo
       </Link>
 
       <div className={`flex`}>

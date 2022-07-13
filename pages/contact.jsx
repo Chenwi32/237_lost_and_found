@@ -15,12 +15,12 @@ const Contact = () => {
           target="blank"
           className={`${styles.contact_link} flex_col`}
         >
-          <Image
+          {/* <Image
             src="/images/WhatsApp_icon.png"
             alt="logo"
             width={100}
             height={100}
-          />
+          /> */}
 
           <span className={styles.link_text}>Whatsapp</span>
         </a>
@@ -29,12 +29,12 @@ const Contact = () => {
           target="blank"
           className={`${styles.contact_link} flex_col`}
         >
-          <Image
+          {/* <Image
             src="/images/facebook.png"
             alt="logo"
             width={100}
             height={100}
-          />
+          /> */}
 
           <span className={styles.link_text}>Facebook</span>
         </a>
@@ -42,7 +42,7 @@ const Contact = () => {
           href="tell:+237651395832"
           className={`${styles.contact_link} flex_col`}
         >
-          <Image src="/images/call.jpeg" alt="logo" width={100} height={100} />
+          {/* <Image src="/images/call.jpeg" alt="logo" width={100} height={100} /> */}
 
           <span className={styles.link_text}>Call</span>
         </a>
