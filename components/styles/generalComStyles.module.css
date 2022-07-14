@@ -1,6 +1,7 @@
 .controls{
-    margin-top: 5em;
-    justify-content: space-evenly;
+    margin-top: var(--vertical_margins);
+    justify-content: space-between;
+    width: 100%;
 }
 
 .search{
@@ -28,4 +29,8 @@ font-size: 2em;
   100%{
     transform: translateX(0px);
   }
+}
+
+@media (min-width: 600px) {
+ 
 }

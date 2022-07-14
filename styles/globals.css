@@ -2,6 +2,7 @@
   --primary: #00ff4c;
   --secondary: #ff0000;
   --links: #6f7570;
+  --vertical_margins: 2em;
 }
 
 html,
@@ -71,8 +72,7 @@ hr {
   font-family: "Roboto", sans-serif;
   border-bottom: 1px solid var(--primary);
   padding-bottom: 0.5em;
-  margin-bottom: 2em;
-  text-align: center;
+  margin-bottom: 1.5em;
 }
 
 .btn {
@@ -80,19 +80,20 @@ hr {
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 1em;
+  padding: 1em ;
+  
   font-weight: 600;
-  width: 150px;
+  width: 140px;
 }
 
 .btn2 {
   background-color: inherit;
   border: 1px inset var(--secondary);
   border-radius: 5px;
-  padding: 1em;
+  padding: 1em .5em;
   color: var(--secondary);
   font-weight: 600;
-  width: 150px;
+  width: 140px;
 }
 
 .flex {
@@ -134,7 +135,7 @@ hr {
 }
 
 .results_display {
-  margin-top: 1.5em;
+  margin-top: var(--vertical_margins);
 }
 
 @media (min-width: 800px) {
@@ -146,11 +147,8 @@ hr {
 @media (min-width: 600px) {
   .main_input {
     font-size: 1.3rem;
-    font-weight: 600;
-    font-family: "Roboto", sans-serif;
     padding: 0.5em;
     width: 70%;
-    outline: none;
     margin: auto;
   }
 }
