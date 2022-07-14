@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div className={styles.contact}>
       <h2>
-        You can reach us through any of these platforms that is convinient for
+        You can reach us through any of these platforms that is convenient for
         you
       </h2>
 

@@ -38,14 +38,30 @@ const HomePage = () => {
           features that are available now.
           <span className="nb">
             <Link href={`/nationalId`}>The National ID Card</Link> search
-            feature is available now{' '}
+            feature is available now{" "}
           </span>
-           and the others will be incrementally added. 
+          and the others will be incrementally added.
           <br />
           Since this platform is still very new, we haven't gotten too many lost
           documents with us yet, so chances are that you might not be able to
           find your document here, but nevertheless, just come back from time to
           time to check.
+        </p>
+        <p>
+          You might feel like Yelling at us now for bringing something that is
+          not fully functional to you, but please before you go to that end,
+          please hear us out.
+          <br />
+          The reason why we are doing this is that we want to know your reaction
+          to the project, because in the end, it is about what people need not
+          what we think is best, so please send us your thoughts on the project
+          and it will help us see how we can best design the project to address
+          the need, because without a question, this issue of lost document is a
+          problem that needs to be addressed. <br />
+          Leave us a message through any of the platform convenient for{" "}
+          <Link href={`/contact`}>
+            <a>here &#8594;</a>
+          </Link>
         </p>
 
         <hr />
