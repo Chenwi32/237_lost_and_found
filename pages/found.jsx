@@ -3,7 +3,10 @@ import styles from "../styles/Home.module.css";
 
 const Found = () => {
   return (
-    <div>
+      <div>
+          
+   
+
       <h1 className="title">Select the type of document you have with you below.</h1>
 
       <ul className={`${styles.document_links} flex_col`}>

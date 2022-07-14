@@ -61,9 +61,13 @@ const [message, setmessage] = useState('Your results will be displayed here')
 
       <Controls dataSearch={idSearch} />
 
-      {found.length === 0 ? 
+      <div className="results_display">
+        {found.length === 0 ? 
         <h2>{message }</h2>
       : found.length !== 0 ? <Success results={found} />: <h3>There was a mixup somewhere</h3>}
+      </div>
+
+      
     </div>
   );
 };
