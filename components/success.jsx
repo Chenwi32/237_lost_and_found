@@ -5,7 +5,7 @@ const Success = ({ results }) => {
   return (
     <div className={styles.success_container}>
       <h1 className={styles.success_header}>
-        Great news!!! we found your document.
+        Great news!!! We found your document!!!
       </h1>
 
       {results.map((result) => {

@@ -1,5 +1,5 @@
 .controls{
-    margin-top: var(--vertical_margins);
+    margin: var(--vertical_margins);
     justify-content: space-between;
     width: 100%;
 }

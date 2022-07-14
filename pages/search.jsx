@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 
 const Search = () => {
   return (
-    <div>
+    <div className="secondary-container docs-menu flex_col">
       <h1 className="title">Select the type of document you have lost.</h1>
 
       <ul className={`${styles.document_links} flex_col`}>

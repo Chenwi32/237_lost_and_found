@@ -2,7 +2,8 @@
   --primary: #00ff4c;
   --secondary: #ff0000;
   --links: #6f7570;
-  --vertical_margins: 2em;
+  --vertical_margins: 2em 0;
+  --horizontal_margins: 0 2em;
 }
 
 html,
@@ -14,7 +15,6 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
   transition: 0.4s;
   font-weight: 600;
@@ -73,17 +73,21 @@ hr {
   border-bottom: 1px solid var(--primary);
   padding-bottom: 0.5em;
   margin-bottom: 1.5em;
+  width: fit-content;
 }
 
 .btn {
   background-color: var(--primary);
-  color: #fff;
+ 
   border: none;
   border-radius: 5px;
   padding: 1em ;
-  
+  cursor: pointer;
   font-weight: 600;
   width: 140px;
+   color: #fff !important;
+   display: flex;
+   justify-content: center;
 }
 
 .btn2 {
@@ -94,6 +98,13 @@ hr {
   color: var(--secondary);
   font-weight: 600;
   width: 140px;
+  
+}
+
+.nb{
+  font-weight: 800;
+  font-family: serif;
+  color: var(--primary);
 }
 
 .flex {
@@ -122,9 +133,11 @@ hr {
 
 .results_display,
 .announcement {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.589);
-  padding: 0.01rem 0.8em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.575);
+  padding: 0.01rem 1.5em;
   border-radius: 5px;
+  border: 1px solid var(--secondary);
+  margin: var(--vertical_margins);
 }
 
 
@@ -135,7 +148,12 @@ hr {
 }
 
 .results_display {
-  margin-top: var(--vertical_margins);
+  
+    border: 1px solid var(--primary);
+}
+
+.docs-menu{
+  align-items: center;
 }
 
 @media (min-width: 800px) {

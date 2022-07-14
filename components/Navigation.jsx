@@ -12,7 +12,7 @@ const Navigation = () => {
 
       <div className={`flex`}>
         <Link href="/contact">
-          <a className={styles.menu_links}>Contact Us</a>
+          <span className='btn'>Contact Us</span>
         </Link>
         <Link href="#">
           <a className={styles.menu_links}>&#x2753;</a>
