@@ -4,15 +4,7 @@ import styles from "../styles/Home.module.css";
 const HomePage = () => {
   return (
     <>
-      <div className={`${styles.type_of_user} flex`}>
-        <Link href="/found">
-          <button className={styles.breadcrumbs}>Found a document</button>
-        </Link>
-
-        <Link href="/search">
-          <button className={styles.breadcrumbs}>Lost a document</button>
-        </Link>
-      </div>
+      
       <div className={`${styles.home} flex_col`}>
         <h1>Welcome to 237 Lost and Found</h1>
         <h3>We are here to help you find your lost document.</h3>

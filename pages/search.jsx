@@ -10,7 +10,7 @@ const Search = () => {
         <li className={styles.link_container}>
           <Link href="/nationalId">
             <a className={styles.link}>
-              <span> National ID Card</span>{" "}
+              <span> National ID Card</span>
               <span className={styles.arrow_right}>&#8594;</span>
             </a>
           </Link>
@@ -18,7 +18,7 @@ const Search = () => {
         <li className={styles.link_container}>
           <Link href="/passports">
             <a className={styles.link}>
-              <span>Passport</span>{" "}
+              <span>Passport</span>
               <span className={styles.arrow_right}>&#8594;</span>
             </a>
           </Link>
@@ -26,7 +26,7 @@ const Search = () => {
         <li className={styles.link_container}>
           <Link href="/drivingLicence">
             <a className={styles.link}>
-              <span>Driving Licence</span>{" "}
+              <span>Driving Licence</span>
               <span className={styles.arrow_right}>&#8594;</span>
             </a>
           </Link>
@@ -34,7 +34,7 @@ const Search = () => {
         <li className={styles.link_container}>
           <Link href="/certificates">
             <a className={styles.link}>
-              <span>Certificate</span>{" "}
+              <span>Certificate</span>
               <span className={styles.arrow_right}>&#8594;</span>
             </a>
           </Link>
@@ -42,7 +42,7 @@ const Search = () => {
         <li className={styles.link_container}>
           <Link href="/otherDocuments">
             <a className={styles.link}>
-              <span>Other Documents</span>{" "}
+              <span>Other Documents</span>
               <span className={styles.arrow_right}>&#8594;</span>
             </a>
           </Link>
