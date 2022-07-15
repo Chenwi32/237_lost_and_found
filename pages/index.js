@@ -39,12 +39,12 @@ const HomePage = () => {
           <Link href={`/nationalId`}>
             <span className="nb">The National ID Card</span>
           </Link>{" "}
-          search feature is available now and the others will be incrementally
-          added.
+          search feature is available now and the others will be
+          added subsequently.
           <br />
           Since this platform is still very new, we haven't gotten too many lost
           documents with us yet, so chances are that you might not be able to
-          find your document here, but nevertheless, just come back from time to
+          find your document here; nevertheless, just come back from time to
           time to check.
         </p>
         <p>
@@ -54,11 +54,11 @@ const HomePage = () => {
           <br />
           The reason why we are doing this is that we want to know your reaction
           to the project, because in the end, it is about what people need not
-          what we think is best, so please send us your thoughts on the project
+          what we think is best. So please send us your thoughts on the project
           and it will help us see how we can best design the project to address
           the need, because without a question, this issue of lost document is a
           problem that needs to be addressed. <br />
-          Leave us a message through any of the platform convenient for{" "}
+          Leave us a message through any of the following platforms convenient for you{" "}
           <Link href={`/contact`}>
             <a>here &#8594;</a>
           </Link>
