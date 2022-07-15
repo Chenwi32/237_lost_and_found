@@ -5,14 +5,12 @@ const Navigation = () => {
   return (
     <div className={`${styles.navbar} flex`}>
       <Link href="/">
-        
-          <a>237L&F</a>
-      
+        <a>237L&F</a>
       </Link>
 
       <div className={`flex`}>
         <Link href="/contact">
-          <span className='btn'>Contact Us</span>
+          <span className={`${styles.navbar_btn} `}>Contact Us</span>
         </Link>
         <Link href="#">
           <a className={styles.menu_links}>&#x2753;</a>

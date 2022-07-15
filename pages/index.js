@@ -36,11 +36,11 @@ const HomePage = () => {
           features in this section are functional. <br />
           While waiting for the full version, you can take advantage of the
           features that are available now.
-          <span className="nb">
-            <Link href={`/nationalId`}>The National ID Card</Link> search
-            feature is available now{" "}
-          </span>
-          and the others will be incrementally added.
+          <Link href={`/nationalId`}>
+            <span className="nb">The National ID Card</span>
+          </Link>{" "}
+          search feature is available now and the others will be incrementally
+          added.
           <br />
           Since this platform is still very new, we haven't gotten too many lost
           documents with us yet, so chances are that you might not be able to

@@ -9,4 +9,17 @@
   font-size: 1rem;
 }
 
-
+.navbar_btn{
+  background-color: var(--primary);
+ 
+  border: none;
+  border-radius: 5px;
+  padding: .5em .7em;
+  cursor: pointer;
+  font-weight: 600;
+  width: fit-content;
+  font-family: sans-serif;
+   color: #fff ;
+   display: flex;
+   justify-content: center;
+}
