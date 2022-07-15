@@ -12,7 +12,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: .8rem;
+    font-size: .85rem;
 }
 
 a {
@@ -28,7 +28,7 @@ a:hover {
 }
 
 p {
-  font-weight: 600;
+  font-weight: 800;
   line-height: 1.5;
   word-spacing: 0.1em;
   letter-spacing: 0.1em;
@@ -36,10 +36,15 @@ p {
 
 button {
   cursor: pointer;
+  border: none;
+  background-color: inherit;
+  font-weight: 600;
+  outline: none;
 }
 
 hr {
-  border: 0.5px dotted var(--primary);
+  border: 0.5px dotted var(--secondary);
+  margin: var(--vertical_margins);
 }
 
 * {
@@ -116,9 +121,10 @@ hr {
   font-size: 1rem;
   font-weight: 600;
   font-family: "Roboto", sans-serif;
-  padding: 0.3em;
+  padding: 0.5em;
   width: 90%;
   outline: none;
+  border: 1px solid var(--links);
   border-radius: 5px;
 }
 

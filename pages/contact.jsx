@@ -2,12 +2,12 @@ import styles from "../styles/contact.module.css";
 
 const Contact = () => {
   return (
-    <div className={styles.contact}>
+    <div className={`${styles.contact} secondary-container`}>
+    
       <h2>
         You can reach us through any of these platforms that is convenient for
         you
       </h2>
-
       <div>
         <a
           href="https://wa.me/+237651395832"
@@ -30,6 +30,7 @@ const Contact = () => {
           <span className={styles.link_text}>Call</span>
         </a>
       </div>
+      <hr />
     </div>
   );
 };

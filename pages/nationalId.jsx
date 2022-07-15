@@ -47,7 +47,7 @@ const [message, setmessage] = useState('Your results will be displayed here')
   };
 
   return (
-    <div className="" id="results">
+    <div className="secondary_container" id="results">
       <h1 className="title">Type your ID card number.</h1>
       <input
         type="text"

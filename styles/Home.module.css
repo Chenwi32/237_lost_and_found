@@ -48,6 +48,7 @@
   padding-bottom: 0.5em;
   font-weight: 600;
   width: fit-content;
+  outline: none;
 }
 
 .breadcrumbs:hover,
