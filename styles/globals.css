@@ -12,14 +12,14 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: .85rem;
+    font-size: .9rem;
 }
 
 a {
   text-decoration: none;
   transition: 0.4s;
   font-weight: 600;
-  color: var(--links);
+  color: var(--primary);
   font-size: 1rem;
 }
 
