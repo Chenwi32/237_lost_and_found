@@ -4,10 +4,12 @@ import Navigation from "./Navigation";
 
 const Layout = ({ children }) => {
   return (
-    <div className="container">
+    <div >
       <Navigation />
-      <BreadCrumbs/>
-      <main className="main_content">{children}</main>
+      <BreadCrumbs />
+      <main className="main_content">{children}
+      
+      </main>
       <Footer />
     </div>
   );

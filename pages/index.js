@@ -64,7 +64,7 @@ const HomePage = () => {
           </Link>
         </p>
 
-        <hr />
+        
       </div>
     </>
   );

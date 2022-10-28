@@ -59,7 +59,7 @@ const [message, setmessage] = useState('Your results will be displayed here')
         placeholder="ID card number"
       />
 
-      <Controls dataSearch={idSearch} />
+      <Controls dataHandler={idSearch} buttonText='search'/>
 
       <div className="results_display">
         {found.length === 0 ? 

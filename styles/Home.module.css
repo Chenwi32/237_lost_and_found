@@ -5,7 +5,7 @@
 
 .document_links {
   padding: 1em;
-  width: 50%;
+  width: 90%;
   margin: auto;
 }
 
@@ -39,12 +39,16 @@
   margin: auto;
   justify-content: space-between;
   margin-bottom: 1em;
+  background-color: var(--secondary);
+  
+  padding: 1em;
 }
 
 .breadcrumbs {
   border: none;
-  border-bottom: 1px solid var(--secondary);
+  border-bottom: 1px solid #fff;
   background-color: inherit;
+  color: #fff;
   padding-bottom: 0.5em;
   font-weight: 600;
   width: fit-content;
@@ -72,12 +76,13 @@
 }
 
 @media (max-width: 600px) {
-  .document_links {
-    width: fit-content;
-  }
+  
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
+  .document_links {
+    width: 50%;
+  }
   .type_of_user {
     width: fit-content;
   }

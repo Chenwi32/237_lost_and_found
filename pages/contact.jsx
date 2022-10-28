@@ -30,7 +30,6 @@ const Contact = () => {
           <span className={styles.link_text}>Call</span>
         </a>
       </div>
-      <hr />
     </div>
   );
 };

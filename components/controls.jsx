@@ -1,7 +1,8 @@
 import Link from "next/link";
 import styles from './styles/generalComStyles.module.css'
 
-const Controls = ({dataSearch}) => {
+const Controls = ({ dataHandler, buttonText}) => {
+  
   return (
     <div className={`${styles.controls} flex`}>
       <Link href="/">
@@ -10,12 +11,9 @@ const Controls = ({dataSearch}) => {
         </button>
       </Link>
 
-      <button className={`${styles.search} btn flex`}
-        onClick={dataSearch}>
-        <span>Search</span>
-        <span>
-          <i className="fa fa-search" aria-hidden="true"></i>
-        </span>
+      <button className={` btn `}
+        onClick={dataHandler}>
+        {buttonText}
       </button>
     </div>
   );
