@@ -1,6 +1,11 @@
 .navbar {
-  justify-content: space-between;
+  
   padding: .5em 0;
+}
+
+.navbar_container{
+  width: 100%;
+  justify-content: space-between;
 }
 
 .menu_links {

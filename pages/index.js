@@ -5,7 +5,7 @@ import styles from "../styles/Home.module.css";
 const HomePage = () => {
   return (
     <>
-      <div className={`${styles.home}`}>
+      <div className={`${styles.home} container`}>
         <h1>Welcome to 237 Lost and Found</h1>
         <h3>We are here to help you find your lost document.</h3>
 

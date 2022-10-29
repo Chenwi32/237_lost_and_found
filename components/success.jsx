@@ -3,8 +3,10 @@ import styles from "./styles/success.module.css";
 
 const Success = ({ results }) => {
   return (
-    <div className={styles.success_container}>
-      <h1 className={styles.success_header}>
+    <div className={styles.success}>
+      <div className={`${styles.success_container} container`}>
+        
+         <h1 className={styles.success_header}>
         Great news!!! We found your document!!!
       </h1>
 
@@ -30,6 +32,9 @@ const Success = ({ results }) => {
           </div>
         );
       })}
+    </div>
+
+     
     </div>
   );
 };

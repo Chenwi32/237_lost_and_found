@@ -18,7 +18,7 @@ const NationalIdCollection = () => {
   };
 
   return (
-    <div className="secondary-container">
+    <div className=" container">
       <Announcement message="Please note that this feature is not functionl yet" />
       <div className=" ">
         <p>Type the ID card number here:</p>
