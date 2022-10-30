@@ -1,12 +1,16 @@
 import Success from "../components/success";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Controls from "../components/controls";
+
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 let IDs = [
   {
     id: 1,
-    idNum: '114957588',
+    idNum: "114957588",
     location: "Simbock",
     contact: "651395832",
   },
@@ -26,11 +30,28 @@ let IDs = [
 
 
 
+
 const NationalId = () => {
+
+const docRef = doc(db, "foundDocs", "idcards");
+
+const getdata = (async () => await getDoc(docRef))();
+
+useEffect(() => {
+  if (!getdata.exists) {
+    getdata.then((doc) => {
+      console.log(doc.data())
+    })
+  } else {
+    console.log("There is nothing in our database");
+  }
+});
+
+
+
   const [dataInput, setDataInput] = useState("");
   let [found, setfound] = useState([]);
-const [message, setmessage] = useState('Your results will be displayed here')
-
+  const [message, setmessage] = useState("Your results will be displayed here");
 
   const idSearch = () => {
     const successfulsearch = IDs.find((id) => id.idNum === dataInput);
@@ -39,10 +60,10 @@ const [message, setmessage] = useState('Your results will be displayed here')
 
     if (successfulsearch) {
       setfound([successfulsearch]);
-      setDataInput('')
+      setDataInput("");
     } else {
       setmessage("Sorry We don't have your Id card");
-      setDataInput('')
+      setDataInput("");
     }
   };
 
@@ -59,19 +80,19 @@ const [message, setmessage] = useState('Your results will be displayed here')
         placeholder="ID card number"
       />
 
-      <Controls dataHandler={idSearch} buttonText='search'/>
+      <Controls dataHandler={idSearch} buttonText="search" />
 
       <div className="results_display">
-        {found.length === 0 ? 
-        <h2>{message }</h2>
-      : found.length !== 0 ? <Success results={found} />: <h3>There was a mixup somewhere</h3>}
+        {found.length === 0 ? (
+          <h2>{message}</h2>
+        ) : found.length !== 0 ? (
+          <Success results={found} />
+        ) : (
+          <h3>There was a mixup somewhere</h3>
+        )}
       </div>
-
-      
     </div>
   );
 };
 
-
-
-export default NationalId
+export default NationalId;

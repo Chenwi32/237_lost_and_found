@@ -1,4 +1,4 @@
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, doc, getFirestore, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import Announcement from "../components/Announcement";
 import Controls from "../components/controls";
@@ -9,11 +9,17 @@ const NationalIdCollection = () => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
 
+  const foundId = {
+    idnum,
+    name,
+    contact,
+  }
+
+  const firestore = getFirestore()
+
   const sendData = async () => {
-    await setDoc(doc(db, "foundDocs", "idcards"), {
-      idnum,
-      name,
-      contact,
+    await setDoc(doc(db, "foundDocs", 'idcards'), {
+      foundId
     });
   };
 
