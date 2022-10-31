@@ -1,27 +1,34 @@
 import Link from "next/link";
 import styles from "./styles/Navigation.module.css";
 
-const Navigation = () => {
+import {  Image, Flex, Button,  HStack , chakra } from '@chakra-ui/react';
+
+import React from "react";
+export default function Header() {
   return (
-    <div className={`${styles.navbar} `}>
-      <div className={`${styles.navbar_container} container flex`}>
-        <div className="nav_left">
-          <Link href="/">
-          <a>237L&F</a>
+    <chakra.header id="header">
+      <Flex w="100%" px="6" py="5" align="center" justify="space-between">
+        <Link href="/">
+          <a>
+            <Image src="/images/logo.png" h="50px" />
+          </a>
         </Link>
-        </div>
-        
-        <div className={`flex`}>
+
+        <HStack as="nav" spacing="5">
           <Link href="/contact">
-            <span className={`${styles.navbar_btn} `}>Contact Us</span>
+            <Button variant="nav">
+              
+              <span className={`${styles.navbar_btn} `}>Contact Us</span>
+            </Button>
           </Link>
           <Link href="#">
-            <a className={styles.menu_links}>&#x2753;</a>
+            
+              <a className={styles.menu_links}>&#x2753;</a>
+            
           </Link>
-        </div>
-      </div>
-    </div>
+        </HStack>
+       
+      </Flex>
+    </chakra.header>
   );
-};
-
-export default Navigation;
+}
