@@ -9,18 +9,26 @@ const NationalIdCollection = () => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
 
-  const foundId = {
+ 
+
+
+  const sendData = async () => {
+    const timestamp = Date.now().toString();
+
+  const addedFIds = doc(db, `idcards/${timestamp}`);
+
+   const foundId = {
     idnum,
     name,
     contact,
   }
 
-  const firestore = getFirestore()
-
-  const sendData = async () => {
-    await setDoc(doc(db, "foundDocs", 'idcards'), {
-      foundId
-    });
+    try {
+       await setDoc(addedFIds, foundId);
+    } catch (error){
+      console.log(error)
+    }
+    
   };
 
   return (
@@ -34,6 +42,7 @@ const NationalIdCollection = () => {
             setIdnum(e.target.value);
           }}
           type="text"
+          placeholder="ID card Number"
           className={`main_input `}
         />
         <p>Type the name on the ID card here:</p>
@@ -43,6 +52,7 @@ const NationalIdCollection = () => {
             setName(e.target.value);
           }}
           type="text"
+          placeholder="Holder's Name"
           className={`main_input`}
         />
         <p>Type the contact information for the ID collection here:</p>
@@ -52,6 +62,7 @@ const NationalIdCollection = () => {
             setContact(e.target.value);
           }}
           type="text"
+          placeholder="Your Phone Number"
           className={`main_input`}
         />
       </div>

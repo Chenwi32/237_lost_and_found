@@ -4,8 +4,15 @@ import React, { useEffect, useState } from "react";
 import Controls from "../components/controls";
 
 import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
-import { async } from "@firebase/util";
+import {
+  collection,
+  QueryDocumentSnapshot,
+  DocumentData,
+  query,
+  where,
+  limit,
+  getDocs,
+} from "@firebase/firestore";
 
 let IDs = [
   {
@@ -32,23 +39,7 @@ let IDs = [
 
 
 const NationalId = () => {
-
-const docRef = doc(db, "foundDocs", "idcards");
-
-const getdata = (async () => await getDoc(docRef))();
-
-useEffect(() => {
-  if (!getdata.exists) {
-    getdata.then((doc) => {
-      console.log(doc.data())
-    })
-  } else {
-    console.log("There is nothing in our database");
-  }
-});
-
-
-
+  
   const [dataInput, setDataInput] = useState("");
   let [found, setfound] = useState([]);
   const [message, setmessage] = useState("Your results will be displayed here");
@@ -66,6 +57,47 @@ useEffect(() => {
       setDataInput("");
     }
   };
+
+const idcollection = collection(db, "idcards");
+
+  
+  const [foundIds, setfoundIds] = useState([]);
+
+  const getIds = async () => {
+    // Query all Id cards
+    const idQuery = query(idcollection)
+
+    // get id cards
+    const querySnapshot = await getDocs(idQuery)
+
+    // Map through the ids and add them to a new array
+    const results = []
+
+    querySnapshot.forEach(snapshot => {
+      results.push(snapshot.data())
+    })
+
+
+    // assign the new array to the foundIds
+    setfoundIds(results)
+
+    console.log(foundIds)
+
+  }
+
+
+
+  useEffect(() => {
+  // We now call the function to within the useEffect hook since it causes side effects
+    getIds()
+    
+
+
+}, [dataInput]);
+
+
+
+
 
   return (
     <div className="container" id="results">
