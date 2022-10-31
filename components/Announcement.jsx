@@ -1,6 +1,7 @@
-const Announcement = ({message}) => {
+
+const Announcement = ({ message }) => {
     return (
-        <div className="announcement">
+        <div className={'announcement'}>
             <p>{message }</p>
         </div>
     );

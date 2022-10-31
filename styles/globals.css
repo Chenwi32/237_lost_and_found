@@ -140,7 +140,7 @@ hr {
 .results_display,
 .announcement {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.575);
-  padding: 0.01rem 1.5em;
+  padding: 1rem;
   border-radius: 5px;
   border: 1px solid var(--secondary);
   margin: var(--vertical_margins);

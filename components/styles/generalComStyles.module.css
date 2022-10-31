@@ -17,6 +17,10 @@
 font-size: 2em;
 }
 
+.announcement{
+  padding: 1rem;
+}
+
 /*----- Animations -----*/
 
 @keyframes left_horizontal_anim {

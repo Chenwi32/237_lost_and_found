@@ -7,6 +7,7 @@ import { db } from "../firebase";
 const NationalIdCollection = () => {
   const [idnum, setIdnum] = useState("");
   const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
   const [contact, setContact] = useState("");
 
   const sendData = async () => {
@@ -17,6 +18,7 @@ const NationalIdCollection = () => {
     const foundId = {
       idnum,
       name,
+      location,
       contact,
     };
 
@@ -34,13 +36,15 @@ const NationalIdCollection = () => {
 
     setIdnum("");
     setName("");
+    setLocation("");
     setContact("");
+
   };
 
   return (
     <div className=" container">
       <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
-      <div className=" ">
+      <div className={''}>
         <p>Type the ID card number here:</p>
         <input
           value={idnum}
@@ -61,14 +65,26 @@ const NationalIdCollection = () => {
           placeholder="Holder's Name"
           className={`main_input`}
         />
-        <p>Type the contact information for the ID collection here:</p>
+
+        <p>Type your location here:</p>
+        <input
+          value={location}
+          onChange={(e) => {
+            setLocation(e.target.value);
+          }}
+          type="text"
+          placeholder="Your Location"
+          className={`main_input`}
+        />
+
+        <p>Type your contact information for the ID collection here:</p>
         <input
           value={contact}
           onChange={(e) => {
             setContact(e.target.value);
           }}
           type="text"
-          placeholder="Your Phone Number"
+          placeholder="Your Contact information"
           className={`main_input`}
         />
       </div>
