@@ -33,7 +33,7 @@ const NationalIdCollection = () => {
 
   return (
     <div className=" container">
-      <Announcement message="Please note that this feature is not functionl yet" />
+      <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform can be able to add data to the platform." />
       <div className=" ">
         <p>Type the ID card number here:</p>
         <input

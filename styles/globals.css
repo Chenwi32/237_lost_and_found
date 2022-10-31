@@ -103,6 +103,10 @@ hr {
   
 }
 
+.share_link{
+  color: var(--primary);
+}
+
 .nb{
   font-weight: 800;
   color: var(--primary);

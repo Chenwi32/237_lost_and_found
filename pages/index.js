@@ -10,61 +10,47 @@ const HomePage = () => {
         <h3>We are here to help you find your lost document.</h3>
 
         <Announcement
-          message={`This platform is still under construction, so lots of it's features are
-          still not functional yet, but we promise you the best in future.`}
+          message={`This platform is still under construction, so you should expect some undesired behaviours, but we promise you the best in the days ahead`}
         />
 
         <h2 className="title">How the platform works</h2>
 
         <p>
-          On 237L&F there are just two things; either you found a lost document
-          or you are searching for a lost document, that's it. <br />
-          If you found a lost document, you should go to the{" "}
-          <Link href={`/found`}>Found a document</Link> section and follow the
-          steps to submit the details required to help the owner of the
-          document(s) to recover them.
-        </p>
-        <p>
-          <span className="nb">NB:</span> This feature is not functional as of
-          14<sup>th</sup> July 2022, when it will be fully functional, you won't
-          see this again.
+          On 237L&F there are just two things; either you found a lost ID card
+          or you are searching for a lost ID card, that's it. <br />
+          If you found a lost ID card, you should go to the{" "}
+          <Link href={`/found`}>Found an ID card</Link> section and fill out the
+          form to submit the details required to help the owner of the ID card
+          recover it.
         </p>
 
         <p>
-          If you lost a document, then you should go to the{" "}
-          <Link href={`/search`}>Lost a document</Link> section. Not all the
-          features in this section are functional. <br />
-          While waiting for the full version, you can take advantage of the
-          features that are available now.
-          <Link href={`/nationalId`}>
-            <span className="nb">The National ID Card</span>
-          </Link>{" "}
-          search feature is available now and the others will be
-          added subsequently.
-          <br />
+          If you lost an ID card, then you should go to the{" "}
+          <Link href={`/search`}>Lost an ID card</Link> section. <br />
           Since this platform is still very new, we haven't gotten too many lost
-          documents with us yet, so chances are that you might not be able to
-          find your document here; nevertheless, just come back from time to
-          time to check.
+          ID card with us yet, so chances are that you might not be able to find
+          your document here; nevertheless, just come back from time to time to
+          check, and then spread the word to get more people to know about the
+          platform, because the more people know about it, the higher the chance
+          that someone who finds your ID card might bring it here. <br />
+          To direct someone to the platform, just copy and share this link:
+         "<span className="share_link">
+https://lost-and-found-8ef8a.web.app/
+
+          </span>" with them for now, we are still working to make the sharing process easy. Thank you very much!!
         </p>
         <p>
-          You might feel like Yelling at us now for bringing something that is
-          not fully functional to you, but please before you go to that end,
-          please hear us out.
-          <br />
-          The reason why we are doing this is that we want to know your reaction
-          to the project, because in the end, it is about what people need not
-          what we think is best. So please send us your thoughts on the project
-          and it will help us see how we can best design the project to address
-          the need, because without a question, this issue of lost document is a
-          problem that needs to be addressed. <br />
-          Leave us a message through any of the following platforms convenient for you{" "}
+          Let's work together to address this lost ID cards problem!! <br />
+          Send us your thought on the project through any of the following platforms convenient
+          for you{" "}
           <Link href={`/contact`}>
             <a>here &#8594;</a>
           </Link>
         </p>
 
-        
+        <p>
+          We will extend our scope to include other documents such as driving licences, passports, certficates etc in future.
+        </p>
       </div>
     </>
   );
