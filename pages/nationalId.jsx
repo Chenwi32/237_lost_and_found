@@ -14,38 +14,43 @@ import {
   getDocs,
 } from "@firebase/firestore";
 
-let IDs = [
-  {
-    id: 1,
-    idNum: "114957588",
-    location: "Simbock",
-    contact: "651395832",
-  },
-  {
-    id: 2,
-    idNum: "651395832",
-    location: "Damas",
-    contact: "651395832",
-  },
-  {
-    id: 3,
-    idNum: "101840409",
-    location: "Yaounde Mendong-Centre",
-    contact: "674051999",
-  },
-];
-
-
-
 
 const NationalId = () => {
-  
   const [dataInput, setDataInput] = useState("");
   let [found, setfound] = useState([]);
   const [message, setmessage] = useState("Your results will be displayed here");
 
+  const idcollection = collection(db, "idcards");
+
+  const [foundIds, setfoundIds] = useState([]);
+
+  const getIds = async () => {
+    // Query all Id cards
+    const idQuery = query(idcollection);
+
+    // get id cards
+    const querySnapshot = await getDocs(idQuery);
+
+    // Map through the ids and add them to a new array
+    const results = [];
+
+    querySnapshot.forEach((snapshot) => {
+      results.push(snapshot.data());
+    });
+
+    // assign the new array to the foundIds
+    setfoundIds(results);
+
+    console.log(foundIds);
+  };
+
+  useEffect(() => {
+    // We now call the function to within the useEffect hook since it causes side effects
+    getIds();
+  }, [dataInput]);
+
   const idSearch = () => {
-    const successfulsearch = IDs.find((id) => id.idNum === dataInput);
+    const successfulsearch = foundIds.find((id) => id.idnum === dataInput);
 
     if (dataInput === "" || dataInput === null) return;
 
@@ -57,47 +62,6 @@ const NationalId = () => {
       setDataInput("");
     }
   };
-
-const idcollection = collection(db, "idcards");
-
-  
-  const [foundIds, setfoundIds] = useState([]);
-
-  const getIds = async () => {
-    // Query all Id cards
-    const idQuery = query(idcollection)
-
-    // get id cards
-    const querySnapshot = await getDocs(idQuery)
-
-    // Map through the ids and add them to a new array
-    const results = []
-
-    querySnapshot.forEach(snapshot => {
-      results.push(snapshot.data())
-    })
-
-
-    // assign the new array to the foundIds
-    setfoundIds(results)
-
-    console.log(foundIds)
-
-  }
-
-
-
-  useEffect(() => {
-  // We now call the function to within the useEffect hook since it causes side effects
-    getIds()
-    
-
-
-}, [dataInput]);
-
-
-
-
 
   return (
     <div className="container" id="results">

@@ -9,31 +9,37 @@ const NationalIdCollection = () => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
 
- 
-
-
   const sendData = async () => {
     const timestamp = Date.now().toString();
 
-  const addedFIds = doc(db, `idcards/${timestamp}`);
+    const addedFIds = doc(db, `idcards/${timestamp}`);
 
-   const foundId = {
-    idnum,
-    name,
-    contact,
-  }
+    const foundId = {
+      idnum,
+      name,
+      contact,
+    };
 
-    try {
-       await setDoc(addedFIds, foundId);
-    } catch (error){
-      console.log(error)
+    if (idnum !== '' && contact !== '') {
+      try {
+      await setDoc(addedFIds, foundId);
+    } catch (error) {
+      console.log(error);
     }
+    } else {
+      alert('Some field are still empty. Please make sure you fill in all the information required. Thank you.')
+    }
+
     
+
+    setIdnum("");
+    setName("");
+    setContact("");
   };
 
   return (
     <div className=" container">
-      <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform can be able to add data to the platform." />
+      <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
       <div className=" ">
         <p>Type the ID card number here:</p>
         <input
