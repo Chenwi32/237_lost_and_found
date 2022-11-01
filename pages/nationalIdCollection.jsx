@@ -1,16 +1,25 @@
 import { addDoc, doc, getFirestore, setDoc } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Announcement from "../components/Announcement";
 import Controls from "../components/controls";
 import { db } from "../firebase";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+import styles from '../styles/idcollection.module.css'
+
 
 const NationalIdCollection = () => {
   const [idnum, setIdnum] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [contact, setContact] = useState("");
+  const [btnText, setBtntext ] = useState('Send')
 
   const sendData = async () => {
+
+
+    
+
     const timestamp = Date.now().toString();
 
     const addedFIds = doc(db, `idcards/${timestamp}`);
@@ -23,8 +32,16 @@ const NationalIdCollection = () => {
     };
 
     if (idnum !== '' && contact !== '') {
+      setBtntext('Sending...')
       try {
-      await setDoc(addedFIds, foundId);
+        await setDoc(addedFIds, foundId).then(()=> {
+            setBtntext('Send')
+        });
+        toast("The information has been sent successfully. Thank you for the efforts", {
+          hideProgressBar: true,
+          autoClose: 6000,
+          type: "success",
+        });
     } catch (error) {
       console.log(error);
     }
@@ -40,11 +57,13 @@ const NationalIdCollection = () => {
     setContact("");
 
   };
+  
+  
 
   return (
     <div className=" container">
       <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
-      <div className={''}>
+      <div className={styles.idform_container}>
         <p>Type the ID card number here:</p>
         <input
           value={idnum}
@@ -88,7 +107,9 @@ const NationalIdCollection = () => {
           className={`main_input`}
         />
       </div>
-      <Controls dataHandler={sendData} buttonText="Send" />
+      <Controls dataHandler={sendData} buttonText={ btnText} />
+
+      <ToastContainer />
     </div>
   );
 };

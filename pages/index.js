@@ -33,25 +33,29 @@ const HomePage = () => {
           check, and then spread the word to get more people to know about the
           platform, because the more people know about it, the higher the chance
           that someone who finds your ID card might bring it here. <br />
-          To direct someone to the platform, just copy and share this link:
-         "<span className="share_link">
-https://lost-and-found-8ef8a.web.app/
-
-          </span>" with them for now, we are still working to make the sharing process easy. Thank you very much!!
+          To direct someone to the platform, just copy and share this link: "
+          <span className="share_link">
+            https://lost-and-found-8ef8a.web.app/
+          </span>
+          " with them for now, we are still working to make the sharing process
+          easy. Thank you very much!!
         </p>
         <p>
           Let's work together to address this lost ID cards problem!! <br />
-          Send us your thought on the project through any of the following platforms convenient
-          for you{" "}
+          Send us your thought on the project through any of the following
+          platforms convenient for you{" "}
           <Link href={`/contact`}>
             <a>here &#8594;</a>
           </Link>
         </p>
 
         <p>
-          We will extend our scope to include other documents such as driving licences, passports, certficates etc in future.
+          We will extend our scope to include other documents such as driving
+          licences, passports, certficates etc in future.
         </p>
       </div>
+
+      
     </>
   );
 };

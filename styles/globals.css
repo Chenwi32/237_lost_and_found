@@ -86,7 +86,7 @@ hr {
   padding: 1em ;
   cursor: pointer;
   font-weight: 600;
-  width: 140px;
+  min-width: 140px;
    color: #fff !important;
    display: flex;
    justify-content: center;
@@ -99,7 +99,7 @@ hr {
   padding: 1em .5em;
   color: var(--secondary);
   font-weight: 600;
-  width: 140px;
+  min-width: 140px;
   
 }
 
