@@ -14,11 +14,16 @@ const Success = ({ results }) => {
         return (
           <div key={result.id} className={styles.message_container}>
             <h1>
-              Here is your document identification detail: <br />
-              <span className={styles.doc_infomation}>{result.idNum}</span>
-            </h1>
+              Here is your document identification detail:
+            </h1> 
+              <span className={styles.doc_infomation}> ID number:</span> <br />
+              <span >{result.idnum}</span> <br />
+              
+            <span className={styles.doc_infomation}> Holder's name:</span> <br />
+              <span >{result.name}</span>
+            
             <p>It is available for collection at {result.location}.</p>
-            <p>You can call the following number: <br /> {result.contact} </p>
+            <p>You can contact the person who found your ID here: <br /> {result.contact} </p>
 
             <hr />
 
