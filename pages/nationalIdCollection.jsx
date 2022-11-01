@@ -6,6 +6,7 @@ import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import styles from '../styles/idcollection.module.css'
+import { Container } from "@chakra-ui/react";
 
 
 const NationalIdCollection = () => {
@@ -61,8 +62,9 @@ const NationalIdCollection = () => {
   
 
   return (
-    <div className=" container">
-      <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
+    
+      <Container maxW={1200}>
+        <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
       <div className={styles.idform_container}>
         <p>Type the ID card number here:</p>
         <input
@@ -110,7 +112,8 @@ const NationalIdCollection = () => {
       <Controls dataHandler={sendData} buttonText={ btnText} />
 
       <ToastContainer />
-    </div>
+      </Container>
+      
   );
 };
 

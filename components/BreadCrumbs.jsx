@@ -1,17 +1,31 @@
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Container,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 const BreadCrumbs = () => {
   return (
-    <div className={`${styles.type_of_user} flex`}>
-      <Link href="/nationalIdCollection">
-        <button className={styles.breadcrumbs}>Found an ID card</button>
-      </Link>
+    <Container>
+      <Breadcrumb mb={5}>
+        <BreadcrumbItem isCurrentPage>
+          <Link href="/nationalIdCollection">
+            <button className={styles.breadcrumbs}>Found an ID card</button>
+          </Link>
+        </BreadcrumbItem>
 
-      <Link href="/nationalId">
-        <button className={styles.breadcrumbs}>Lost an ID card</button>
-      </Link>
-    </div>
+        <BreadcrumbItem isCurrentPage>
+          <BreadcrumbLink>
+            <Link href="/nationalId">
+              <button className={styles.breadcrumbs}>Lost an ID card</button>
+            </Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
+    </Container>
   );
 };
 
