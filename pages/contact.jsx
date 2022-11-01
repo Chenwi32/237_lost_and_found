@@ -5,6 +5,7 @@ import styles from "../styles/contact.module.css";
 import { faFacebookF, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 const Contact = () => {
   return (
     <Container minH={"80vh"}>
@@ -21,10 +22,13 @@ const Contact = () => {
           >
             <IconButton
               colorScheme="teal"
-              aria-label="Call Segun"
               size="lg"
+              width="20"
+              height="20"
+              padding={5}
               icon={<FontAwesomeIcon icon={faWhatsapp} />}
             />
+
             <span className={styles.link_text}>Whatsapp</span>
           </a>
           <a
@@ -34,10 +38,13 @@ const Contact = () => {
           >
             <IconButton
               colorScheme="teal"
-              aria-label="Call Segun"
               size="lg"
+              width="20"
+              height="20"
+              padding={5}
               icon={<FontAwesomeIcon icon={faFacebookF} />}
             />
+
             <span className={styles.link_text}>Facebook</span>
           </a>
 
@@ -50,6 +57,10 @@ const Contact = () => {
               variant="outline"
               colorScheme="teal"
               aria-label="Send email"
+              size="lg"
+              width="20"
+              height="20"
+              padding={5}
               icon={<EmailIcon />}
             />
             <span className={styles.link_text}>chenwieugene.j@gmail.com</span>
@@ -63,6 +74,9 @@ const Contact = () => {
               colorScheme="teal"
               aria-label="Call Segun"
               size="lg"
+              width="20"
+              height="20"
+              padding={5}
               icon={<PhoneIcon />}
             />
             <span className={styles.link_text}>Call</span>

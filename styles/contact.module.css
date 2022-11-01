@@ -1,7 +1,10 @@
 .contact_link{
 align-items: center;
+font-size: 1.5rem;
 margin: 2em;
 }
+
+
 
 .link_text{
     margin-top: .5em;

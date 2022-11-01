@@ -1,30 +1,29 @@
 import Link from "next/link";
 import styles from "./styles/Navigation.module.css";
 
-import {  Image, Flex, Button,  HStack , chakra, Container } from '@chakra-ui/react';
+import {  Image, Flex, Button,  HStack , chakra, Container, Spacer } from '@chakra-ui/react';
 
 import React from "react";
 export default function Header() {
   return (
     <Container maxW="1200px">
       <chakra.header id="header">
-        <Flex w="100%" px="6" py="5" align="center" justify="space-between">
+        <Flex w="100%" py="1" align="center" justify="space-between">
           <Link href="/">
             <a>
               <Image src="/images/logo.png" h="50px" />
             </a>
           </Link>
+          <Spacer />
 
-          <HStack as="nav" spacing="5">
+          <Flex align={"center"}>
             <Link href="/contact">
-              <Button variant="nav">
-                <span className={`${styles.navbar_btn} `}>Contact Us</span>
-              </Button>
+              <Button bg="brand.100" color='brand.400' _hover='brand.500'>Contact Us</Button>
             </Link>
             <Link href="/help">
               <a className={styles.menu_links}>&#x2753;</a>
             </Link>
-          </HStack>
+          </Flex>
         </Flex>
       </chakra.header>
     </Container>

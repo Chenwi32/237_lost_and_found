@@ -1,9 +1,22 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  colors: {
+    brand: {
+      100: " #08ac10",
+      200: "#ff0000",
+      300: "#6f7570",
+      400: "#fff",
+      500: "#41e74a",
+    },
+  },
+});
 
 
-import { ChakraProvider } from "@chakra-ui/react";
+
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -15,7 +28,7 @@ function MyApp({ Component, pageProps }) {
         <title>237 Lost & found</title>
       </Head>
 
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
          <Layout>
           <Component {...pageProps} />
         </Layout>
