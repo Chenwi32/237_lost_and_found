@@ -1,5 +1,9 @@
-import { Container } from "@chakra-ui/react";
+import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
+import { Container, IconButton } from "@chakra-ui/react";
 import styles from "../styles/contact.module.css";
+
+import { faFacebookF, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Contact = () => {
   return (
@@ -15,6 +19,12 @@ const Contact = () => {
             target="blank"
             className={`${styles.contact_link} flex_col`}
           >
+            <IconButton
+              colorScheme="teal"
+              aria-label="Call Segun"
+              size="lg"
+              icon={<FontAwesomeIcon icon={faWhatsapp} />}
+            />
             <span className={styles.link_text}>Whatsapp</span>
           </a>
           <a
@@ -22,12 +32,39 @@ const Contact = () => {
             target="blank"
             className={`${styles.contact_link} flex_col`}
           >
+            <IconButton
+              colorScheme="teal"
+              aria-label="Call Segun"
+              size="lg"
+              icon={<FontAwesomeIcon icon={faFacebookF} />}
+            />
             <span className={styles.link_text}>Facebook</span>
           </a>
+
           <a
-            href="tell:+237651395832"
+            href="mailto:chenwieugene.j@gmail.com"
+            _target="_blank"
             className={`${styles.contact_link} flex_col`}
           >
+            <IconButton
+              variant="outline"
+              colorScheme="teal"
+              aria-label="Send email"
+              icon={<EmailIcon />}
+            />
+            <span className={styles.link_text}>chenwieugene.j@gmail.com</span>
+          </a>
+
+          <a
+            href="tel:+237651395832"
+            className={`${styles.contact_link} flex_col`}
+          >
+            <IconButton
+              colorScheme="teal"
+              aria-label="Call Segun"
+              size="lg"
+              icon={<PhoneIcon />}
+            />
             <span className={styles.link_text}>Call</span>
           </a>
         </div>
