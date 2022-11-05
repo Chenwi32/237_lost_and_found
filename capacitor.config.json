@@ -1,0 +1,11 @@
+{
+  "appId": "com.example.app",
+  "appName": "237_lost_and_found",
+  "webDir": "out",
+  "bundledWebRuntime": false,
+  "server":{
+    "url": "https://192.168.43.143:3000",
+
+    "cleartext": true
+  }
+}

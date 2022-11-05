@@ -14,6 +14,7 @@ import {
   getDocs,
 } from "@firebase/firestore";
 import { Container } from "@chakra-ui/react";
+import ShareFunc from "../components/capacitorShare";
 
 const NationalId = () => {
   const [dataInput, setDataInput] = useState("");
@@ -89,6 +90,7 @@ const NationalId = () => {
           )}
         </div>
       </div>
+      <ShareFunc />
     </Container>
   );
 };

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./styles/Navigation.module.css";
 
-import {  Image, Flex, Button,  HStack , chakra, Container, Spacer } from '@chakra-ui/react';
+import {  Image, Flex, Button, chakra, Container, Spacer } from '@chakra-ui/react';
 
 import React from "react";
 export default function Header() {
@@ -11,7 +11,7 @@ export default function Header() {
         <Flex w="100%" py="1" align="center" justify="space-between">
           <Link href="/">
             <a>
-              <Image src="/images/logo.png" h="50px" />
+              <Image alt="logo" src="/images/logo.png" h="50px" />
             </a>
           </Link>
           <Spacer />
