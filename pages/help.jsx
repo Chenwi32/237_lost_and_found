@@ -8,6 +8,7 @@ import {
   Container,
   Heading,
 } from "@chakra-ui/react";
+import Head from "next/head";
 
 const Help = () => {
   return (
