@@ -6,7 +6,7 @@ import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import styles from '../styles/idcollection.module.css'
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
 
@@ -16,6 +16,7 @@ const NationalIdCollection = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [contact, setContact] = useState("");
+  const [idimage, setIdimage] = useState();
   const [btnText, setBtntext ] = useState('Send')
 
   const sendData = async () => {
@@ -32,6 +33,7 @@ const NationalIdCollection = () => {
       name,
       location,
       contact,
+      idimage
     };
 
     if (idnum !== '' && contact !== '') {
@@ -58,6 +60,7 @@ const NationalIdCollection = () => {
     setName("");
     setLocation("");
     setContact("");
+    setIdimage()
 
   };
   
@@ -76,10 +79,10 @@ const NationalIdCollection = () => {
         </Head>
       }
 
-      <Container maxW={1200}>
+      <Container maxW={1200} mb={10}>
         <BreadCrumbs />
         <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
-        <div className={styles.idform_container}>
+        <Box mb={10} className={styles.idform_container}>
           <p>Type the ID card number here:</p>
           <input
             value={idnum}
@@ -122,7 +125,18 @@ const NationalIdCollection = () => {
             placeholder="Your Contact information"
             className={`main_input`}
           />
-        </div>
+
+          <p>Upload an image of the ID card here:</p>
+          <input
+            value={idimage}
+            onChange={(e) => {
+              setIdimage(e.target.value);
+            }}
+            type="file"
+            placeholder="Your Contact information"
+            className={`main_input`}
+          />
+        </Box>
         <Controls dataHandler={sendData} buttonText={btnText} />
 
         <ToastContainer />

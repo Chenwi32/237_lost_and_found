@@ -23,11 +23,11 @@ const HomePage = () => {
           We are here to help you find your lost document.
         </Heading>
 
+        <Actionmenu />
+
         <Announcement
           message={`This platform is still under construction, so you should expect some undesired behaviours, but we promise you the best in the days ahead`}
         />
-
-        <Actionmenu />
 
         <Heading fontSize={"1.5rem"} mt={10} mb={5}>
           How the platform works
