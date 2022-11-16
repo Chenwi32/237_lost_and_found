@@ -1,4 +1,5 @@
 import { Heading, Text } from "@chakra-ui/react";
+import Head from "next/head";
 import Link from "next/link";
 import Actionmenu from "../components/actionmenu";
 import Announcement from "../components/Announcement";
@@ -8,6 +9,14 @@ import styles from "../styles/Home.module.css";
 const HomePage = () => {
   return (
     <>
+      {
+        <Head>
+          <title>237L&F home page</title>
+          <meta name="description" content="237 Lost and Found home page" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      }
+
       <div className={`${styles.home} container`}>
         <Heading mt={10}>Welcome to 237 Lost and Found</Heading>
         <Heading fontSize={"1.5rem"} mt={10} mb={10}>

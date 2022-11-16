@@ -10,7 +10,7 @@ import styles from "../styles/Home.module.css";
 const BreadCrumbs = () => {
   return (
     <Container>
-      <Breadcrumb mb={5}>
+      <Breadcrumb mb={10}>
         <BreadcrumbItem isCurrentPage>
           <Link href="/nationalIdCollection">
             <button className={styles.breadcrumbs}>Found an ID card</button>

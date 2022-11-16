@@ -14,8 +14,9 @@ import {
   getDocs,
 } from "@firebase/firestore";
 import { Container } from "@chakra-ui/react";
-import ShareFunc from "../components/capacitorShare";
+
 import BreadCrumbs from "../components/BreadCrumbs";
+import Head from "next/head";
 
 const NationalId = () => {
   const [dataInput, setDataInput] = useState("");
@@ -66,34 +67,43 @@ const NationalId = () => {
   };
 
   return (
-    <Container maxW={1200} minH={"80vh"}>
-      <BreadCrumbs />
-      <div id="results">
-        <h1 className="title">Type your ID card number.</h1>
-        <input
-          type="text"
-          className="main_input"
-          value={dataInput}
-          onChange={(e) => {
-            setDataInput(e.target.value);
-          }}
-          placeholder="ID card number"
-        />
+    <>
+      {
+        <Head>
+          <title>237L&F ID search page</title>
+          <meta name="description" content="237 Lost and Foud lost ID card search page" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      }
 
-        <Controls dataHandler={idSearch} buttonText="search" />
+      <Container maxW={1200} minH={"80vh"}>
+        <BreadCrumbs />
+        <div id="results">
+          <h1 className="title">Type your ID card number.</h1>
+          <input
+            type="text"
+            className="main_input"
+            value={dataInput}
+            onChange={(e) => {
+              setDataInput(e.target.value);
+            }}
+            placeholder="ID card number"
+          />
 
-        <div className="results_display">
-          {found.length === 0 ? (
-            <h2>{message}</h2>
-          ) : found.length !== 0 ? (
-            <Success results={found} />
-          ) : (
-            <h3>There was a mixup somewhere</h3>
-          )}
+          <Controls dataHandler={idSearch} buttonText="search" />
+
+          <div className="results_display">
+            {found.length === 0 ? (
+              <h2>{message}</h2>
+            ) : found.length !== 0 ? (
+              <Success results={found} />
+            ) : (
+              <h3>There was a mixup somewhere</h3>
+            )}
+          </div>
         </div>
-      </div>
-      <ShareFunc />
-    </Container>
+      </Container>
+    </>
   );
 };
 

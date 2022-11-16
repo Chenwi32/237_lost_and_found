@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import styles from '../styles/idcollection.module.css'
 import { Container } from "@chakra-ui/react";
 import BreadCrumbs from "../components/BreadCrumbs";
+import Head from "next/head";
 
 
 const NationalIdCollection = () => {
@@ -63,59 +64,70 @@ const NationalIdCollection = () => {
   
 
   return (
-    
-    <Container maxW={1200}>
-      <BreadCrumbs/>
+    <>
+      {
+        <Head>
+          <title>237L&F ID collection page</title>
+          <meta
+            name="description"
+            content="237 Lost and Foud | found ID card collection page"
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      }
+
+      <Container maxW={1200}>
+        <BreadCrumbs />
         <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
-      <div className={styles.idform_container}>
-        <p>Type the ID card number here:</p>
-        <input
-          value={idnum}
-          onChange={(e) => {
-            setIdnum(e.target.value);
-          }}
-          type="text"
-          placeholder="ID card Number"
-          className={`main_input `}
-        />
-        <p>Type the name on the ID card here:</p>
-        <input
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          type="text"
-          placeholder="Holder's Name"
-          className={`main_input`}
-        />
+        <div className={styles.idform_container}>
+          <p>Type the ID card number here:</p>
+          <input
+            value={idnum}
+            onChange={(e) => {
+              setIdnum(e.target.value);
+            }}
+            type="text"
+            placeholder="ID card Number"
+            className={`main_input `}
+          />
+          <p>Type the name on the ID card here:</p>
+          <input
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            type="text"
+            placeholder="Holder's Name"
+            className={`main_input`}
+          />
 
-        <p>Type your location here:</p>
-        <input
-          value={location}
-          onChange={(e) => {
-            setLocation(e.target.value);
-          }}
-          type="text"
-          placeholder="Your Location"
-          className={`main_input`}
-        />
+          <p>Type your location here:</p>
+          <input
+            value={location}
+            onChange={(e) => {
+              setLocation(e.target.value);
+            }}
+            type="text"
+            placeholder="Your Location"
+            className={`main_input`}
+          />
 
-        <p>Type your contact information for the ID collection here:</p>
-        <input
-          value={contact}
-          onChange={(e) => {
-            setContact(e.target.value);
-          }}
-          type="text"
-          placeholder="Your Contact information"
-          className={`main_input`}
-        />
-      </div>
-      <Controls dataHandler={sendData} buttonText={ btnText} />
+          <p>Type your contact information for the ID collection here:</p>
+          <input
+            value={contact}
+            onChange={(e) => {
+              setContact(e.target.value);
+            }}
+            type="text"
+            placeholder="Your Contact information"
+            className={`main_input`}
+          />
+        </div>
+        <Controls dataHandler={sendData} buttonText={btnText} />
 
-      <ToastContainer />
+        <ToastContainer />
       </Container>
-      
+    </>
   );
 };
 
