@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import styles from '../styles/idcollection.module.css'
 import { Container } from "@chakra-ui/react";
+import BreadCrumbs from "../components/BreadCrumbs";
 
 
 const NationalIdCollection = () => {
@@ -63,7 +64,8 @@ const NationalIdCollection = () => {
 
   return (
     
-      <Container maxW={1200}>
+    <Container maxW={1200}>
+      <BreadCrumbs/>
         <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
       <div className={styles.idform_container}>
         <p>Type the ID card number here:</p>

@@ -26,9 +26,9 @@ const Help = () => {
               </AccordionButton>
             </h2>
             <AccordionPanel>
-              We don't have have a mobile application yet, but we are already
+              We don't have a mobile application yet, but we are already
               working on it. It will soon be made available on mobile app
-              stores. In the mean time, please just keep making use of the web
+              stores. In the mean time, please just keep making use of this web
               version and sharing the link to get more people to know about the
               platform. We are sorry for the inconvenience.
             </AccordionPanel>

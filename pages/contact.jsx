@@ -1,5 +1,5 @@
 import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
-import { Container, IconButton } from "@chakra-ui/react";
+import { Container, Heading, IconButton } from "@chakra-ui/react";
 import styles from "../styles/contact.module.css";
 
 import { faFacebookF, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
@@ -10,10 +10,10 @@ const Contact = () => {
   return (
     <Container minH={"80vh"}>
       <div className={`${styles.contact}`}>
-        <h2>
+        <Heading>
           You can reach us through any of these platforms that is convenient for
-          you
-        </h2>
+          you.
+        </Heading>
         <div>
           <a
             href="https://wa.me/+237651395832"

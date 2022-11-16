@@ -1,13 +1,12 @@
 import Link from "next/link";
-import styles from './styles/generalComStyles.module.css'
 
 const Controls = ({ dataHandler, buttonText}) => {
   
   return (
-    <div className={`${styles.controls} flex`}>
+    <div className={` flex`}>
       <Link href="/">
-        <button className={`${styles.to_home} btn2 flex`}>
-          <span className={styles.arrow_right}>&#8592;</span> <span>Back to home</span>
+        <button className={` btn2 flex`}>
+          <span >&#8592;</span> <span>Back to home</span>
         </button>
       </Link>
 

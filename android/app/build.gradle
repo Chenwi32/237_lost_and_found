@@ -1,4 +1,11 @@
-apply plugin: 'com.android.application'
+apply plugin: {
+  id 'com.android.application'
+
+  // Add the Google services Gradle plugin
+  id 'com.google.gms.google-services'
+
+  ...
+}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -21,6 +28,41 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+buildscript {
+  repositories {
+    // Make sure that you have the following two repositories
+    google()  // Google's Maven repository
+
+    mavenCentral()  // Maven Central repository
+
+  }
+  dependencies {
+    // Import the Firebase BoM
+  implementation platform('com.google.firebase:firebase-bom:31.0.2')
+
+// TODO: Add the dependencies for Firebase products you want to use
+  // When using the BoM, don't specify versions in Firebase dependencies
+  implementation 'com.google.firebase:firebase-analytics'
+
+
+    ...
+    // Add the dependency for the Google services Gradle plugin
+    classpath 'com.google.gms:google-services:4.3.13'
+
+  }
+}
+
+allprojects {
+  ...
+  repositories {
+    // Make sure that you have the following two repositories
+    google()  // Google's Maven repository
+
+    mavenCentral()  // Maven Central repository
+
+  }
 }
 
 repositories {

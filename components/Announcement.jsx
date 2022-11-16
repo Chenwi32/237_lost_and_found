@@ -1,9 +1,10 @@
+import { Box, Text } from "@chakra-ui/react";
 
 const Announcement = ({ message }) => {
     return (
-        <div className={'announcement'}>
-            <p>{message }</p>
-        </div>
+      <Box mb={10} className={"announcement"}>
+        <Text >{message}</Text>
+      </Box>
     );
 }
 

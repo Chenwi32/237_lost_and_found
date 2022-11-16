@@ -15,6 +15,7 @@ import {
 } from "@firebase/firestore";
 import { Container } from "@chakra-ui/react";
 import ShareFunc from "../components/capacitorShare";
+import BreadCrumbs from "../components/BreadCrumbs";
 
 const NationalId = () => {
   const [dataInput, setDataInput] = useState("");
@@ -66,6 +67,7 @@ const NationalId = () => {
 
   return (
     <Container maxW={1200} minH={"80vh"}>
+      <BreadCrumbs />
       <div id="results">
         <h1 className="title">Type your ID card number.</h1>
         <input
