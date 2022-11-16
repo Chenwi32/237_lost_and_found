@@ -47,7 +47,7 @@ const Help = () => {
               <h2>
                 <AccordionButton>
                   <Box flex="1" textAlign="left">
-                    Is everybody that can save information on the platform?
+                    Can anybody save information on the platform?
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
