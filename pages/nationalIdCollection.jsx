@@ -5,11 +5,10 @@ import Controls from "../components/controls";
 import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
-import styles from '../styles/idcollection.module.css'
+import styles from "../styles/idcollection.module.css";
 import { Box, Container } from "@chakra-ui/react";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
-
 
 const NationalIdCollection = () => {
   const [idnum, setIdnum] = useState("");
@@ -17,13 +16,9 @@ const NationalIdCollection = () => {
   const [location, setLocation] = useState("");
   const [contact, setContact] = useState("");
   const [idimage, setIdimage] = useState();
-  const [btnText, setBtntext ] = useState('Send')
+  const [btnText, setBtntext] = useState("Send");
 
   const sendData = async () => {
-
-
-    
-
     const timestamp = Date.now().toString();
 
     const addedFIds = doc(db, `idcards/${timestamp}`);
@@ -33,38 +28,38 @@ const NationalIdCollection = () => {
       name,
       location,
       contact,
-      idimage
+      idimage,
     };
 
-    if (idnum !== '' && contact !== '') {
-      setBtntext('Sending...')
+    if (idnum !== "" && contact !== "" && location !== "" && idimage !== "") {
+      setBtntext("Sending...");
       try {
-        await setDoc(addedFIds, foundId).then(()=> {
-            setBtntext('Send')
+        await setDoc(addedFIds, foundId).then(() => {
+          setBtntext("Send");
         });
-        toast("The information has been sent successfully. Thank you for the efforts", {
-          hideProgressBar: true,
-          autoClose: 6000,
-          type: "success",
-        });
-    } catch (error) {
-      console.log(error);
-    }
+        toast(
+          "The information has been sent successfully. Thank you for the efforts",
+          {
+            hideProgressBar: true,
+            autoClose: 6000,
+            type: "success",
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
     } else {
-      alert('Some field are still empty. Please make sure you fill in all the information required. Thank you.')
+      alert(
+        "Some field are still empty. Please make sure you fill in all the information required. Thank you."
+      );
     }
-
-    
 
     setIdnum("");
     setName("");
     setLocation("");
     setContact("");
-    setIdimage()
-
+    setIdimage("");
   };
-  
-  
 
   return (
     <>
@@ -134,7 +129,6 @@ const NationalIdCollection = () => {
             }}
             type="file"
             placeholder="Your Contact information"
-            className={`main_input`}
           />
         </Box>
         <Controls dataHandler={sendData} buttonText={btnText} />

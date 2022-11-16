@@ -1,10 +1,13 @@
+import { Container, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 
 const Controls = ({ dataHandler, buttonText}) => {
   
   return (
-    <div className={` flex`}>
-      <Link href="/">
+    <Container mb={10}>
+
+      <Flex gap={40}>
+        <Link href="/">
         <button className={` btn2 flex`}>
           <span >&#8592;</span> <span>Back to home</span>
         </button>
@@ -14,7 +17,9 @@ const Controls = ({ dataHandler, buttonText}) => {
         onClick={dataHandler}>
         {buttonText}
       </button>
-    </div>
+      </Flex>
+      
+    </Container>
   );
 };
 

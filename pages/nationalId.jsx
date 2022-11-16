@@ -13,7 +13,7 @@ import {
   limit,
   getDocs,
 } from "@firebase/firestore";
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 
 import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
@@ -76,10 +76,11 @@ const NationalId = () => {
         </Head>
       }
 
-      <Container maxW={1200} minH={"80vh"}>
+      <Container maxW={1200} minH={"80vh"} mb={10}>
         <BreadCrumbs />
-        <div id="results">
-          <h1 className="title">Type your ID card number.</h1>
+
+        <Box mb={10}>
+<h1 className="title">Type your ID card number.</h1>
           <input
             type="text"
             className="main_input"
@@ -90,9 +91,9 @@ const NationalId = () => {
             placeholder="ID card number"
           />
 
-          <Controls dataHandler={idSearch} buttonText="search" />
+          </Box>
 
-          <div className="results_display">
+          <Box mb={10} className="results_display">
             {found.length === 0 ? (
               <h2>{message}</h2>
             ) : found.length !== 0 ? (
@@ -100,8 +101,10 @@ const NationalId = () => {
             ) : (
               <h3>There was a mixup somewhere</h3>
             )}
-          </div>
-        </div>
+          </Box>
+<Controls dataHandler={idSearch} buttonText="search" />
+        
+          
       </Container>
     </>
   );

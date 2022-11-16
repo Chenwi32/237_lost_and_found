@@ -21,7 +21,7 @@ const Help = () => {
         </Head>
       }
 
-      <Container maxW="1200px" minH={"70vh"}>
+      <Container maxW="1200px" minH={"80vh"}>
         <Box>
           <Heading>FAQ</Heading>
 
