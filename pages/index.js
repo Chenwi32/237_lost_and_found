@@ -2,6 +2,7 @@ import { Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import Actionmenu from "../components/actionmenu";
 import Announcement from "../components/Announcement";
+import AvilableDocs from "../components/avilableDocs";
 import styles from "../styles/Home.module.css";
 
 const HomePage = () => {
@@ -9,18 +10,19 @@ const HomePage = () => {
     <>
       <div className={`${styles.home} container`}>
         <Heading mt={10}>Welcome to 237 Lost and Found</Heading>
-        <Heading fontSize={'1.5rem'} mt={10} mb={10}>We are here to help you find your lost document.</Heading>
-
-
-
+        <Heading fontSize={"1.5rem"} mt={10} mb={10}>
+          We are here to help you find your lost document.
+        </Heading>
 
         <Announcement
           message={`This platform is still under construction, so you should expect some undesired behaviours, but we promise you the best in the days ahead`}
         />
 
-        <Actionmenu/>
+        <Actionmenu />
 
-        <Heading fontSize={'1.5rem'} mt={10} mb={5}>How the platform works</Heading>
+        <Heading fontSize={"1.5rem"} mt={10} mb={5}>
+          How the platform works
+        </Heading>
 
         <Text>
           On 237L&F there are just two things; either you found a lost ID card
@@ -60,9 +62,9 @@ const HomePage = () => {
           We will extend our scope to include other documents such as driving
           licences, passports, certficates etc in future.
         </Text>
-      </div>
 
-      
+        <AvilableDocs />
+      </div>
     </>
   );
 };

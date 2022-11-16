@@ -1,10 +1,13 @@
-import { Box, Container, Flex, Heading } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, useMediaQuery } from "@chakra-ui/react";
 import Link from "next/link";
 
 const Actionmenu = () => {
+
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
+  const [isLargerThan400] = useMediaQuery("(min-width: 400px)");
   return (
-    <Container maxW={1200}>
-      <Flex mb={10} gap={10}>
+    <Container maxW={1200} p={0}>
+      <Flex p={0} mb={10}  gap={isLargerThan700 ? 10 : 5}>
         <Link href="/nationalIdCollection">
           <Box
             textAlign={"center"}
@@ -12,7 +15,7 @@ const Actionmenu = () => {
             borderRadius={"lg"}
             cursor="pointer"
             w={400}
-            p={10}
+            p={isLargerThan700? 10: isLargerThan400? 3 : 1}
             color="brand.200"
           >
             <Heading
@@ -21,7 +24,7 @@ const Actionmenu = () => {
             >
               &#x2B07;
             </Heading>
-            <Heading fontSize={"1.5rem"}>
+            <Heading fontSize={isLargerThan700 ? "1.5rem" : "1rem"}>
               Have you found a lost ID card?
             </Heading>
           </Box>
@@ -34,7 +37,7 @@ const Actionmenu = () => {
             borderRadius={"lg"}
             cursor="pointer"
             w={400}
-            p={10}
+            p={isLargerThan700 ? 10 : 3}
             color="brand.100"
           >
             <Heading
@@ -43,7 +46,9 @@ const Actionmenu = () => {
             >
               &#x2B07;
             </Heading>
-            <Heading fontSize={"1.5rem"}>You lost your ID card?</Heading>
+            <Heading fontSize={isLargerThan700 ? "1.5rem" : "1rem"}>
+              You lost your ID card?
+            </Heading>
           </Box>
         </Link>
       </Flex>

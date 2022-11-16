@@ -154,18 +154,8 @@ hr {
   align-items: center;
 }
 
-@media (min-width: 800px) {
-  body {
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 600px) {
-
-  html,
-body {
-    font-size: 1rem;
-}
+@media (max-width: 600px) {
+  
 
   .main_input {
     font-size: 1.3rem;
