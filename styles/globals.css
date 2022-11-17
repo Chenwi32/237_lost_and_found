@@ -82,6 +82,7 @@ hr {
   color: #fff !important;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .btn2 {
@@ -159,7 +160,7 @@ hr {
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 350px) {
   .btn2 {
   min-width: unset;
   width: fit-content;
@@ -167,7 +168,6 @@ hr {
 
 .btn {
   min-width: unset;
-  align-items: center;
 }
 
 .fileinput{
