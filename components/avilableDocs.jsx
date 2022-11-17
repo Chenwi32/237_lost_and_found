@@ -28,7 +28,6 @@ const AvilableDocs = () => {
 
     // assign the new array to the foundIds
     setfoundIds(results);
-
   };
 
   // Get the id cards when message changes onclick
@@ -42,35 +41,43 @@ const AvilableDocs = () => {
     <Container p={0} maxW={1200} mt={10}>
       <Heading mb={10}>Found Documents</Heading>
 
-      
-        {foundIds.map((id) => {
-          return (
-            <Box key={id.idnum}>
-              <Text mb={5}>
-                ID Number: <br />
-                <Text fontWeight={600} color={"brand.100"}>{id.idnum}</Text>
-              </Text>
-              <Text mb={5}>
-                Holder's Name: <br />
-                <Text fontWeight={600} color={"brand.100"}>{id.name}</Text>
-              </Text>
-              <Text mb={5}>
-                It was found in: <br />
-                <Text fontWeight={600} color={"brand.100"}>{id.location}</Text>
-              </Text>
+      {foundIds.map((id) => {
+        return (
+          <Box
+            key={id.idnum}
+            p={"1.5rem"}
+            mt={10}
+            boxShadow={"lg"}
+            border={"1px solid"}
+            borderRadius="lg"
 
-              <Button
-                mb={5}
-                bg={"brand.100"}
-                color={"brand.400"}
-                _hover="unset"
-              >
-                This is my ID card
-              </Button>
-            </Box>
-          );
-        })}
-    
+          >
+            <Text mb={5}>
+              ID Number: <br />
+              <Text fontWeight={600} color={"brand.100"}>
+                {id.idnum}
+              </Text>
+            </Text>
+            <Text mb={5}>
+              Holder's Name: <br />
+              <Text fontWeight={600} color={"brand.100"}>
+                {id.name}
+              </Text>
+            </Text>
+            <Text mb={5}>
+              It was found in: <br />
+              <Text fontWeight={600} color={"brand.100"}>
+                {id.location}
+              </Text>
+            </Text>
+
+            <Button mb={5} bg={"brand.100"} color={"brand.400"} _hover="unset"
+            boxShadow={'lg'}>
+              This is my ID card
+            </Button>
+          </Box>
+        );
+      })}
     </Container>
   );
 };
