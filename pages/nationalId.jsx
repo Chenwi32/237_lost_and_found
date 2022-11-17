@@ -44,7 +44,6 @@ const NationalId = () => {
     // assign the new array to the foundIds
     setfoundIds(results);
 
-    console.log(foundIds);
   };
 
   useEffect(() => {
@@ -82,7 +81,7 @@ const NationalId = () => {
         <Box mb={10}>
 <h1 className="title">Type your ID card number.</h1>
           <input
-            type="text"
+            type="number"
             className="main_input"
             value={dataInput}
             onChange={(e) => {

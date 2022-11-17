@@ -15,7 +15,7 @@ const NationalIdCollection = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [countryCode, setCountryCode] = useState("");
+  
   const [email, setEmail] = useState("");
   const [idimage, setIdimage] = useState();
   const [btnText, setBtntext] = useState("Send");
@@ -34,7 +34,7 @@ const NationalIdCollection = () => {
       idimage,
     };
 
-    if (idnum !== "" && contact !== "" && location !== "" && idimage !== "") {
+    if (idnum !== "" && phoneNumber !== "" && name !== "" && idimage !== "") {
       setBtntext("Sending...");
       try {
         await setDoc(addedFIds, foundId).then(() => {
@@ -81,6 +81,7 @@ const NationalIdCollection = () => {
       }
 
       <Container maxW={1200} mb={10}>
+        
         <BreadCrumbs />
         <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
 
@@ -88,14 +89,14 @@ const NationalIdCollection = () => {
 
         <Heading fontSize={'1rem'}>NB: <small>All the fields with the asterisk (*) are obligatory</small></Heading>
 
-        <Box mb={10} className={styles.idform_container}>
+        <Box mb={10} w='fit-content' className={styles.idform_container}>
           <p>* Type the ID card number here:</p>
           <input
             value={idnum}
             onChange={(e) => {
               setIdnum(e.target.value);
             }}
-            type="text"
+            type="number"
             placeholder="ID card Number"
             className={`main_input `}
             required
@@ -131,7 +132,7 @@ const NationalIdCollection = () => {
 
             <Flex mb={5}>
               <input
-                value={countryCode}
+             
                 onChange={(e) => {
                   setPhoneNumber(e.target.value);
                 }}
@@ -171,7 +172,7 @@ const NationalIdCollection = () => {
                 setEmail(e.target.value);
               }}
               type="email"
-              placeholder="Your Contact information"
+              placeholder="Email"
               className={`main_input`}
               name="email"
             />
@@ -184,7 +185,7 @@ const NationalIdCollection = () => {
               setIdimage(e.target.value);
             }}
             type="file"
-            placeholder="Your Contact information"
+        
             className="fileinput"
           />
         </Box>

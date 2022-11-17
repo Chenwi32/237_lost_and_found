@@ -21,22 +21,20 @@ const theme = extendTheme({
 function MyApp({ Component, pageProps }) {
   return (
     <>
-          <Head>
+      <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com"  />
-        
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <meta name="description" content="237 Lost and Found is a web application that helps people who have lost their national identity cards (ID cards) to recover them from people who have found them" />
+
         <title>237 Lost & found</title>
       </Head>
 
       <ChakraProvider theme={theme}>
-         <Layout>
+        <Layout>
           <Component {...pageProps} />
         </Layout>
       </ChakraProvider>
-       
     </>
-
-
   );
 }
 
