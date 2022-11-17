@@ -72,34 +72,33 @@ hr {
 
 .btn {
   background-color: var(--primary);
- 
+
   border: none;
   border-radius: 5px;
-  padding: 1em ;
+  padding: 1em;
   cursor: pointer;
   font-weight: 600;
   min-width: 140px;
-   color: #fff !important;
-   display: flex;
-   justify-content: center;
+  color: #fff !important;
+  display: flex;
+  justify-content: center;
 }
 
 .btn2 {
   background-color: inherit;
   border: 1px inset var(--secondary);
   border-radius: 5px;
-  padding: 1em .5em;
+  padding: 1em 0.5em;
   color: var(--secondary);
   font-weight: 600;
   min-width: 140px;
-  
 }
 
-.share_link{
+.share_link {
   color: var(--primary);
 }
 
-.nb{
+.nb {
   font-weight: 800;
   color: var(--primary);
 }
@@ -138,25 +137,27 @@ hr {
   margin: var(--vertical_margins);
 }
 
-
-.announcement p{
+.announcement p {
   line-height: unset;
   word-spacing: 0.1em;
   letter-spacing: 0.1em;
 }
 
 .results_display {
-  
-    border: 1px solid var(--primary);
+  border: 1px solid var(--primary);
 }
 
-.docs-menu{
+.docs-menu {
   align-items: center;
 }
 
-@media (max-width: 600px) {
-  
+.phonecode {
+  border: 1px solid;
+  width: 5rem;
+  padding: .5rem;
+}
 
+@media (max-width: 600px) {
   .main_input {
     font-size: 1.3rem;
     padding: 0.5em;
@@ -164,7 +165,6 @@ hr {
     margin: auto;
   }
 }
-
 
 /*----- Animations -----*/
 

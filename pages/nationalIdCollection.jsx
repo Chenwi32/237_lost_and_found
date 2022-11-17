@@ -6,7 +6,7 @@ import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import styles from "../styles/idcollection.module.css";
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Container, Flex, Text } from "@chakra-ui/react";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
 
@@ -14,7 +14,9 @@ const NationalIdCollection = () => {
   const [idnum, setIdnum] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [contact, setContact] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [countryCode, setCountryCode] = useState("");
+  const [email, setEmail] = useState("");
   const [idimage, setIdimage] = useState();
   const [btnText, setBtntext] = useState("Send");
 
@@ -27,7 +29,8 @@ const NationalIdCollection = () => {
       idnum,
       name,
       location,
-      contact,
+      phoneNumber,
+      email,
       idimage,
     };
 
@@ -57,7 +60,8 @@ const NationalIdCollection = () => {
     setIdnum("");
     setName("");
     setLocation("");
-    setContact("");
+    setPhoneNumber("");
+    setEmail("");
     setIdimage("");
   };
 
@@ -78,7 +82,7 @@ const NationalIdCollection = () => {
         <BreadCrumbs />
         <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
         <Box mb={10} className={styles.idform_container}>
-          <p>Type the ID card number here:</p>
+          <p>* Type the ID card number here:</p>
           <input
             value={idnum}
             onChange={(e) => {
@@ -87,8 +91,9 @@ const NationalIdCollection = () => {
             type="text"
             placeholder="ID card Number"
             className={`main_input `}
+            required
           />
-          <p>Type the name on the ID card here:</p>
+          <p>* Type the name on the ID card here:</p>
           <input
             value={name}
             onChange={(e) => {
@@ -97,6 +102,7 @@ const NationalIdCollection = () => {
             type="text"
             placeholder="Holder's Name"
             className={`main_input`}
+            required
           />
 
           <p>Type your location here:</p>
@@ -110,16 +116,59 @@ const NationalIdCollection = () => {
             className={`main_input`}
           />
 
-          <p>Type your contact information for the ID collection here:</p>
-          <input
-            value={contact}
-            onChange={(e) => {
-              setContact(e.target.value);
-            }}
-            type="text"
-            placeholder="Your Contact information"
-            className={`main_input`}
-          />
+          <Flex direction={"column"}>
+            <Text>
+              Type your contact information for the ID collection here:
+            </Text>
+            <label htmlFor="phoneNumber">* Phone number (whatsapp/call)</label>
+
+            <Flex mb={5}>
+              <input
+                value={countryCode}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
+                number
+                type="tel"
+                placeholder="code"
+                name="phoneNumber"
+                list="defaultTels"
+                className="phonecode"
+                required
+                
+              />
+
+              <datalist id="defaultTels">
+                <option value="+237">Cameroon</option>
+                <option value="+234">Nigeria</option>
+                <option value="+233">Ghana</option>
+              </datalist>
+
+              <input
+                value={phoneNumber}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
+                placeholder="Your phone number"
+                className={`main_input`}
+                name="phoneNumber"
+                pattern= "[0-9]"
+                required
+              />
+            </Flex>
+
+            <label htmlFor="email">Email (optional)</label>
+            <input
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              type="email"
+              placeholder="Your Contact information"
+              className={`main_input`}
+              name="email"
+            />
+          </Flex>
 
           <p>Upload an image of the ID card here:</p>
           <input
