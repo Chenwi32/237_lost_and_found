@@ -45,7 +45,7 @@ const AvilableDocs = () => {
       
         {foundIds.map((id) => {
           return (
-            <Box>
+            <Box key={id.idnum}>
               <Text mb={5}>
                 ID Number: <br />
                 <Text fontWeight={600} color={"brand.100"}>{id.idnum}</Text>
