@@ -51,11 +51,7 @@ const NationalIdCollection = () => {
       } catch (error) {
         console.log(error);
       }
-    } else {
-      alert(
-        "Some field are still empty. Please make sure you fill in all the information required. Thank you."
-      );
-    }
+
 
     setIdnum("");
     setName("");
@@ -63,6 +59,12 @@ const NationalIdCollection = () => {
     setPhoneNumber("");
     setEmail("");
     setIdimage("");
+    } else {
+      alert(
+        "Some field are still empty. Please make sure you fill in all the information required. Thank you."
+      );
+    }
+
   };
 
   return (
@@ -128,7 +130,7 @@ const NationalIdCollection = () => {
                 onChange={(e) => {
                   setPhoneNumber(e.target.value);
                 }}
-                number
+                
                 type="tel"
                 placeholder="code"
                 name="phoneNumber"
@@ -171,13 +173,14 @@ const NationalIdCollection = () => {
           </Flex>
 
           <p>Upload an image of the ID card here:</p>
-          <input
+        <input
             value={idimage}
             onChange={(e) => {
               setIdimage(e.target.value);
             }}
             type="file"
             placeholder="Your Contact information"
+            className="fileinput"
           />
         </Box>
         <Controls dataHandler={sendData} buttonText={btnText} />

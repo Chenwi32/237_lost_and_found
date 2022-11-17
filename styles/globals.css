@@ -157,13 +157,22 @@ hr {
   padding: .5rem;
 }
 
+
+
 @media (max-width: 600px) {
-  .main_input {
-    font-size: 1.3rem;
-    padding: 0.5em;
-    width: 70%;
-    margin: auto;
-  }
+  .btn2 {
+  min-width: unset;
+  width: fit-content;
+}
+
+.btn {
+  min-width: unset;
+  align-items: center;
+}
+
+.fileinput{
+  width: 100%;
+}
 }
 
 /*----- Animations -----*/
