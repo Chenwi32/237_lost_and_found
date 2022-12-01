@@ -39,7 +39,9 @@ const AvilableDocs = () => {
 
   return (
     <Container p={0} maxW={1200} mt={10}>
-      <Heading mb={10}>Found Documents</Heading>
+      <Heading fontSize={"1.5rem"} mt={10} mb={5}>
+        Found Documents
+      </Heading>
 
       {foundIds.map((id) => {
         return (
@@ -50,7 +52,6 @@ const AvilableDocs = () => {
             boxShadow={"lg"}
             border={"1px solid"}
             borderRadius="lg"
-
           >
             <Text mb={5}>
               ID Number: <br />
@@ -71,8 +72,13 @@ const AvilableDocs = () => {
               </Text>
             </Text>
 
-            <Button mb={5} bg={"brand.100"} color={"brand.400"} _hover="unset"
-            boxShadow={'lg'}>
+            <Button
+              mb={5}
+              bg={"brand.100"}
+              color={"brand.400"}
+              _hover="unset"
+              boxShadow={"lg"}
+            >
               This is my ID card
             </Button>
           </Box>

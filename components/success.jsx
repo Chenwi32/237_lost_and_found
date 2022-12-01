@@ -1,10 +1,11 @@
+import { Box } from "@chakra-ui/react";
 import Link from "next/link";
 import styles from "./styles/success.module.css";
 
 const Success = ({ results }) => {
   return (
-    <div className={styles.success}>
-      <div className={`${styles.success_container} container`}>
+    <Box  className={styles.success}>
+      <Box boxShadow={'lg'} className={`${styles.success_container} container`}>
         
          <h1 className={styles.success_header}>
         Great news!!! We found your document!!!
@@ -37,10 +38,10 @@ const Success = ({ results }) => {
           </div>
         );
       })}
-    </div>
+    </Box>
 
      
-    </div>
+    </Box>
   );
 };
 

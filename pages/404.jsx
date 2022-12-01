@@ -1,3 +1,4 @@
+import { Container, Heading } from "@chakra-ui/react";
 import Head from "next/head";
 
 const ErrorRoute = () => {
@@ -14,9 +15,9 @@ const ErrorRoute = () => {
         </Head>
       }
 
-      <div>
-        <h1>Sorry the page doesn't exist &#x1F615;</h1>
-      </div>
+      <Container minH={'75vh'}>
+        <Heading>Sorry the page doesn't exist &#x1F615;</Heading>
+      </Container>
     </>
   );
 };

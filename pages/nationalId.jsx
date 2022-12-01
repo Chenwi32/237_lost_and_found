@@ -92,7 +92,9 @@ const NationalId = () => {
 
           </Box>
 
-          <Box mb={10} className="results_display">
+        <Box mb={10}
+          boxShadow={'lg'}
+          className="results_display">
             {found.length === 0 ? (
               <h2>{message}</h2>
             ) : found.length !== 0 ? (

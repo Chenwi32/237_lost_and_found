@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="social">
             <i className='fa fa-facebok'></i>
           </div>
-          <p>Copy<sup>&#x00A9;</sup> right 2022 | 237L&F All Rights Reserved.</p> 
+          <p>&#x00A9; 2022 237 Lost and Found | All Rights Reserved.</p> 
         </div>
         <div className="right"></div>
       </Container>
