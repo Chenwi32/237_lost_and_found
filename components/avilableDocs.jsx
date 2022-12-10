@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
@@ -43,40 +43,43 @@ const AvilableDocs = () => {
         Found Documents
       </Heading>
 
-      {foundIds.map((id) => {
+      <SimpleGrid columns={2} gap={5} columnGap={5}>
+{foundIds.map((id) => {
         return (
           <Box
             key={id.idnum}
             p={"1.5rem"}
-            mt={10}
             boxShadow={"lg"}
             border={"1px solid"}
             borderRadius="lg"
           >
-            <Text mb={5}>
-              ID Number: <br />
+            <HStack mb={5}>
+              <Text>ID Number:</Text>
               <Text fontWeight={600} color={"brand.100"}>
                 {id.idnum}
               </Text>
-            </Text>
-            <Text mb={5}>
-              Holder's Name: <br />
+            </HStack>
+
+            <HStack mb={5}>
+              <Text>Holder's Name:</Text>
+
               <Text fontWeight={600} color={"brand.100"}>
                 {id.name}
               </Text>
-            </Text>
-            <Text mb={5}>
-              It was found in: <br />
+            </HStack>
+            <HStack mb={5}>
+              <Text>It was found in:</Text>
+
               <Text fontWeight={600} color={"brand.100"}>
                 {id.location}
               </Text>
-            </Text>
+            </HStack>
 
             <Button
               mb={5}
               bg={"brand.100"}
               color={"brand.400"}
-              _hover="unset"
+              _hover={{ bg: "brand.500" }}
               boxShadow={"lg"}
             >
               This is my ID card
@@ -84,6 +87,9 @@ const AvilableDocs = () => {
           </Box>
         );
       })}
+      </SimpleGrid>
+
+      
     </Container>
   );
 };

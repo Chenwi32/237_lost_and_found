@@ -80,7 +80,7 @@ const NationalIdCollection = () => {
         </Head>
       }
 
-      <Container maxW={1200} mb={10}>
+      <Container maxW={900} mb={10} mt={10}>
         
         <BreadCrumbs />
         <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
