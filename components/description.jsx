@@ -1,9 +1,9 @@
-import { Box, Button, Container, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, HStack, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 const Description = () => {
     return (
-      <Container maxW={900} mb={10}>
+      <Container maxW={900} mb={10} p={0}>
         <Heading fontSize={"1.5rem"} mt={10} mb={5}>
           How the platform works
         </Heading>
@@ -17,27 +17,32 @@ const Description = () => {
           of the ID card recover it.
         </Text>
 
-            <HStack
+            <Stack
                 margin={'auto'}
                 mt={10} mb={10} boxShadow="lg" p={5} align={"center"}
                 borderRadius='lg'
                 maxW={550}
-                gap={5}
+          gap={5}
+          direction='column'
             >
                 <Text>
-                  See available Documents &#x1F449;{" "}  
+                  See available Documents   
                 </Text>
           
           <Link href="/feeds">
             <Button
               bg="brand.100"
               color="brand.400"
-              _hover={{ bg: "brand.500" }}
+              _hover={{
+                color: 'brand.400',
+                bg: "brand.200"
+              }}
+              p={5}
             >
               Available Documents
             </Button>
           </Link>
-        </HStack>
+        </Stack>
 
         <Text>
           If you lost an ID card, then you should go to the{" "}

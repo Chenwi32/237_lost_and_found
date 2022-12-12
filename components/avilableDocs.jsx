@@ -1,4 +1,15 @@
-import { Box, Button, Container, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  HStack,
+  SimpleGrid,
+  SkeletonCircle,
+  SkeletonText,
+  Text,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
@@ -7,6 +18,8 @@ const AvilableDocs = () => {
   const [message, setmessage] = useState(
     "ID cards that we have with us will be displayed here."
   );
+
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
   const idcollection = collection(db, "idcards");
 
@@ -37,59 +50,84 @@ const AvilableDocs = () => {
     getIds();
   }, [message]);
 
+  const loading = foundIds.length === 0;
+
   return (
     <Container p={0} maxW={1200} mt={10}>
       <Heading fontSize={"1.5rem"} mt={10} mb={5}>
         Found Documents
       </Heading>
 
-      <SimpleGrid columns={2} gap={5} columnGap={5}>
-{foundIds.map((id) => {
-        return (
-          <Box
-            key={id.idnum}
-            p={"1.5rem"}
-            boxShadow={"lg"}
-            border={"1px solid"}
-            borderRadius="lg"
-          >
-            <HStack mb={5}>
-              <Text>ID Number:</Text>
-              <Text fontWeight={600} color={"brand.100"}>
-                {id.idnum}
-              </Text>
-            </HStack>
+      <SimpleGrid columns={isLargerThan700 ? 2 : 1} gap={5} columnGap={5}>
+        {loading ? (
 
-            <HStack mb={5}>
-              <Text>Holder's Name:</Text>
-
-              <Text fontWeight={600} color={"brand.100"}>
-                {id.name}
-              </Text>
-            </HStack>
-            <HStack mb={5}>
-              <Text>It was found in:</Text>
-
-              <Text fontWeight={600} color={"brand.100"}>
-                {id.location}
-              </Text>
-            </HStack>
-
-            <Button
-              mb={5}
-              bg={"brand.100"}
-              color={"brand.400"}
-              _hover={{ bg: "brand.500" }}
-              boxShadow={"lg"}
-            >
-              This is my ID card
-            </Button>
+          <>
+          
+           <Box padding="6" boxShadow="lg" bg="white">
+            <SkeletonCircle size="10" />
+            <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
+            </Box>
+            
+           <Box padding="6" boxShadow="lg" bg="white">
+            <SkeletonCircle size="10" />
+            <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
+            </Box>
+            
+           <Box padding="6" boxShadow="lg" bg="white">
+            <SkeletonCircle size="10" />
+            <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
           </Box>
-        );
-      })}
-      </SimpleGrid>
+          </>
+         
+        ) : (
+          foundIds.map((id) => {
+            return (
+              <Box
+                key={id.idnum}
+                p={"1.5rem"}
+                boxShadow={"lg"}
+                border={"1px solid"}
+                borderRadius="lg"
+              >
+                <HStack mb={5}>
+                  <Text>ID Number:</Text>
+                  <Text fontWeight={600} color={"brand.100"}>
+                    {id.idnum}
+                  </Text>
+                </HStack>
 
-      
+                <HStack mb={5}>
+                  <Text>Holder's Name:</Text>
+
+                  <Text fontWeight={600} color={"brand.100"}>
+                    {id.name}
+                  </Text>
+                </HStack>
+                <HStack mb={5}>
+                  <Text>It was found in:</Text>
+
+                  <Text fontWeight={600} color={"brand.100"}>
+                    {id.location}
+                  </Text>
+                </HStack>
+
+                <Button
+                  mb={5}
+                  bg={"brand.100"}
+                  color={"brand.400"}
+                  _hover={{
+                    bg: "brand.200",
+                    color: "brand.400",
+                  }}
+                  boxShadow={"lg"}
+                >
+                  This is my ID card
+                </Button>
+              </Box>
+            );
+          })
+        )}
+      </SimpleGrid>
     </Container>
   );
 };
