@@ -9,6 +9,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import Head from "next/head";
+import BreadCrumbs from "../components/BreadCrumbs";
 
 const Help = () => {
   return (
@@ -22,6 +23,9 @@ const Help = () => {
       }
 
       <Container maxW="1200px" minH={"80vh"}>
+
+        <BreadCrumbs/>
+
         <Box>
           <Heading>FAQ</Heading>
 

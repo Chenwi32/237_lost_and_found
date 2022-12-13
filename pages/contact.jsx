@@ -5,6 +5,7 @@ import styles from "../styles/contact.module.css";
 import { faFacebookF, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
+import BreadCrumbs from "../components/BreadCrumbs";
 
 
 const Contact = () => {
@@ -22,6 +23,9 @@ const Contact = () => {
         </Head>
       }
       <Container minH={"80vh"} align="center">
+
+        <BreadCrumbs/>
+
         <div className={`${styles.contact}`}>
           <Heading>
             You can reach us through any of these platforms that is convenient
