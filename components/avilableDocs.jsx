@@ -102,7 +102,7 @@ const AvilableDocs = () => {
                 />
 
                 <VStack alignItems='flex-start' justifyContent={'flex-start'} w="100%">
-                  <HStack mb={5}>
+                  <HStack >
                   <Text>ID Number:</Text>
                   <Text fontWeight={600} color={"brand.100"}>
                     {id.idnum}

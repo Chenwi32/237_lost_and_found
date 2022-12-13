@@ -6,7 +6,7 @@ import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import styles from "../styles/idcollection.module.css";
-import { Box, Button, Container, Flex, Heading, SkeletonCircle, Text } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Heading, SkeletonCircle, Text, useMediaQuery } from "@chakra-ui/react";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
 
@@ -16,6 +16,7 @@ import { useDropzone } from "react-dropzone";
 import storage from "../firebase";
 
 const NationalIdCollection = () => {
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
   const [idnum, setIdnum] = useState("");
   const [name, setName] = useState("");
@@ -224,8 +225,8 @@ const NationalIdCollection = () => {
                     alignItems={"center"}
                     justifyContent={"center"}
                     bg={"brand.500"}
-                    width={400}
-                    height={300}
+                    width={isLargerThan700 ? 400 : 250}
+                    height={isLargerThan700 ? 300 : 200}
                     flexDirection={"column"}
                   >
                     <UploadIcon /> <Text m={0}>Drag and drop</Text>{" "}
