@@ -21,7 +21,7 @@ const Contact = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
       }
-      <Container minH={"80vh"}>
+      <Container minH={"80vh"} align="center">
         <div className={`${styles.contact}`}>
           <Heading>
             You can reach us through any of these platforms that is convenient

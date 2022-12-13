@@ -2,13 +2,16 @@ import {
   Box,
   Button,
   Container,
+  Flex,
   Heading,
   HStack,
+  Image,
   SimpleGrid,
   SkeletonCircle,
   SkeletonText,
   Text,
   useMediaQuery,
+  VStack,
 } from "@chakra-ui/react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -62,6 +65,7 @@ const AvilableDocs = () => {
         {loading ? (
 
           <>
+            
           
            <Box padding="6" boxShadow="lg" bg="white">
             <SkeletonCircle size="10" />
@@ -82,14 +86,23 @@ const AvilableDocs = () => {
         ) : (
           foundIds.map((id) => {
             return (
-              <Box
+              <Flex
                 key={id.idnum}
-                p={"1.5rem"}
+                p={5}
                 boxShadow={"lg"}
                 border={"1px solid"}
                 borderRadius="lg"
+                flexDirection={'column'}
+                alignItems={'center'}
               >
-                <HStack mb={5}>
+                <Image src={id.idimage}
+                  w={"100%"}
+                  h={250}
+                  mb={5}
+                />
+
+                <VStack alignItems='flex-start' justifyContent={'flex-start'} w="100%">
+                  <HStack mb={5}>
                   <Text>ID Number:</Text>
                   <Text fontWeight={600} color={"brand.100"}>
                     {id.idnum}
@@ -123,7 +136,9 @@ const AvilableDocs = () => {
                 >
                   This is my ID card
                 </Button>
-              </Box>
+                </VStack>
+                
+              </Flex>
             );
           })
         )}

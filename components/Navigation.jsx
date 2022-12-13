@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <Container bg={'brand.400'} boxShadow={'md'} w={'100%'} maxW={'unset'}
-    padding={2}  >
+    padding={2}  mb={10}>
       <chakra.header maxW={1200} m={'auto'} id="header">
         <Flex w="100%" py="1" alignItems="center" justify="space-between">
           <Link href="/">

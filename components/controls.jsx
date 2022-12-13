@@ -1,4 +1,4 @@
-import { Container, Flex, useMediaQuery } from "@chakra-ui/react";
+import { Button, Container, Flex, useMediaQuery } from "@chakra-ui/react";
 import Link from "next/link";
 
 const Controls = ({ dataHandler, buttonText }) => {
@@ -7,16 +7,25 @@ const Controls = ({ dataHandler, buttonText }) => {
 
   return (
     <Container p={0} mb={10}>
-      <Flex gap={isLargerThan700 ? 40 : isLargerThan400? 5 : 3}>
+      <Flex gap={isLargerThan700 ? 40 : isLargerThan400 ? 5 : 3}>
         <Link href="/">
-          <button className={` btn2 flex`}>
+          <Button color={'brand.200'} border={'1px '} bg='unset' >
             <span>&#8592;</span> <span>Back to home</span>
-          </button>
+          </Button>
         </Link>
 
-        <button className={` btn `} onClick={dataHandler}>
+        <Button
+          bg="brand.100"
+          color="brand.400"
+          _hover={{
+            color: "brand.400",
+            bg: "brand.200",
+          }}
+          p={5}
+          onClick={dataHandler}
+        >
           {buttonText}
-        </button>
+        </Button>
       </Flex>
     </Container>
   );
