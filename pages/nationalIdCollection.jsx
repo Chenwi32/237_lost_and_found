@@ -249,8 +249,8 @@ const NationalIdCollection = () => {
                   <iframe
                     src={downloadUrl}
                     allowFullScreen
-                    width={500}
-                    height={400}
+                    width={isLargerThan700 ? 500 : 300}
+                   height={ isLargerThan700 ? 400 : 300}
                   ></iframe>
                 </Box>
               )}
