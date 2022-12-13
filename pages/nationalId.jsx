@@ -13,7 +13,7 @@ import {
   limit,
   getDocs,
 } from "@firebase/firestore";
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Container, Heading, Text, VStack } from "@chakra-ui/react";
 
 import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
@@ -43,7 +43,6 @@ const NationalId = () => {
 
     // assign the new array to the foundIds
     setfoundIds(results);
-
   };
 
   useEffect(() => {
@@ -70,7 +69,10 @@ const NationalId = () => {
       {
         <Head>
           <title>237L&F ID search page</title>
-          <meta name="description" content="237 Lost and Foud lost ID card search page" />
+          <meta
+            name="description"
+            content="237 Lost and Foud lost ID card search page"
+          />
           <link rel="icon" href="/favicon.ico" />
         </Head>
       }
@@ -78,8 +80,30 @@ const NationalId = () => {
       <Container maxW={1200} minH={"80vh"} mb={10}>
         <BreadCrumbs />
 
-        <Box mb={10}>
-<h1 className="title">Type your ID card number.</h1>
+        <VStack mb={10}>
+          <Heading fontSize={"1.5rem"} mb={5}>
+            Type your name and click on search.
+          </Heading>
+
+          <input
+            type="number"
+            className="main_input"
+            value={dataInput}
+            onChange={(e) => {
+              setDataInput(e.target.value);
+            }}
+            placeholder="Name as on ID card "
+          />
+        </VStack>
+
+        <VStack>
+          <Text fontSize={'1.2rem'}>
+            Or Make your search more easy if you can remember your ID card
+            number
+          </Text>
+          <Heading fontSize={"1.5rem"} textAlign="center" mb={5}>
+            Type your ID card number.
+          </Heading>
           <input
             type="number"
             className="main_input"
@@ -89,23 +113,28 @@ const NationalId = () => {
             }}
             placeholder="ID card number"
           />
+        </VStack>
 
-          </Box>
-
-        <Box mb={10}
-          boxShadow={'lg'}
-          className="results_display">
-            {found.length === 0 ? (
-              <h2>{message}</h2>
-            ) : found.length !== 0 ? (
-              <Success results={found} />
-            ) : (
-              <h3>There was a mixup somewhere</h3>
-            )}
-          </Box>
-<Controls dataHandler={idSearch} buttonText="search" />
-        
-          
+        <Container
+          mb={10}
+          mt={10}
+          maxW={900}
+          boxShadow={"lg"}
+          border={"1px solid #08ac10"}
+          p={5}
+          align={"center"}
+        >
+          {found.length === 0 ? (
+            <Box>
+              <Heading fontSize={"1.5rem"}>{message}</Heading>
+            </Box>
+          ) : found.length !== 0 ? (
+            <Success results={found} />
+          ) : (
+            <h3>There was a mixup somewhere</h3>
+          )}
+        </Container>
+        <Controls dataHandler={idSearch} buttonText="search" />
       </Container>
     </>
   );

@@ -3,14 +3,13 @@ import AvilableDocs from "../components/avilableDocs";
 import BreadCrumbs from "../components/BreadCrumbs";
 
 const Feeds = () => {
-    return (
-        <Container maxW={1200} minHeight={'90vh'}>
+  return (
+    <Container maxW={1200} minHeight={"90vh"}>
+      <BreadCrumbs />
 
-            <BreadCrumbs/>
-
-            <AvilableDocs/>
-        </Container>
-    );
-}
+      <AvilableDocs />
+    </Container>
+  );
+};
 
 export default Feeds;
