@@ -17,7 +17,7 @@ const Success = ({ results }) => {
 
       {results.map((result) => {
         return (
-          <VStack align={"left"}>
+          <VStack key={result.idnum} align={"left"}>
             <Heading mt={5} mb={5} fontSize={"1.5rem"}>
               Here is your document identification detail:
             </Heading>
