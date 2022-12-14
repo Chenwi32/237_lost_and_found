@@ -9,10 +9,10 @@ const Actionmenu = () => {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   const [isLargerThan400] = useMediaQuery("(min-width: 400px)");
   return (
-    <Container maxW={1200} p={0} mt={20}>
+    <Container maxW={1200} p={0} mt={10}>
       <Flex
         p={0}
-        mb={20}
+        mb={10}
         gap={isLargerThan700 ? 10 : 5}
         justifyContent={"center"}
       >
@@ -26,8 +26,8 @@ const Actionmenu = () => {
             borderRadius={"lg"}
             cursor="pointer"
             w={400}
-            p={isLargerThan700 ? 10 : 3}
-            bg={"brand.400"}
+            p={isLargerThan700 ? 5 : 3}
+            bg={"brand.700"}
             color="brand.200"
             border={"1px"}
           >
@@ -35,10 +35,7 @@ const Actionmenu = () => {
 
             <Icon
               color={"brand.300"}
-              _hover={{
-                animation: "horizontal_anim  0.7s infinite 0.4s ease-in-out",
-              }}
-            >
+              >
               <FontAwesomeIcon icon={faArrowRight} />
             </Icon>
           </Flex>
@@ -55,7 +52,7 @@ const Actionmenu = () => {
             borderRadius={"lg"}
             cursor="pointer"
             w={400}
-            p={isLargerThan700 ? 10 : 3}
+            p={isLargerThan700 ? 5 : 3}
             bg={"brand.100"}
             color="brand.400"
           >

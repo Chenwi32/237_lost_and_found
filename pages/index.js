@@ -5,8 +5,6 @@ import Actionmenu from "../components/actionmenu";
 import Announcement from "../components/Announcement";
 import AvilableDocs from "../components/avilableDocs";
 
-
-
 const HomePage = () => {
   return (
     <>
@@ -26,11 +24,11 @@ const HomePage = () => {
           We are here to help you find your lost document.
         </Heading>
 
-        <Actionmenu />
-
         <Announcement
           message={`This platform is still under construction, so you should expect some undesired behaviours, but we promise you the best in the days ahead`}
         />
+
+        <Actionmenu />
 
         <AvilableDocs />
 

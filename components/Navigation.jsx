@@ -9,7 +9,7 @@ export default function Header() {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
   return (
-    <Container bg={'brand.400'} boxShadow={'md'} w={'100%'} maxW={'unset'}
+    <Container bg={'brand.700'} boxShadow={'md'} w={'100%'} maxW={'unset'}
     padding={2}  mb={10}>
       <chakra.header maxW={1200} m={'auto'} id="header">
         <Flex w="100%" py="1" alignItems="center" justify="space-between">
@@ -25,7 +25,7 @@ export default function Header() {
               <Button
                 bg={"inherit"}
                 _hover={{
-                  bg: "brand.101",
+                  bg: "brand.200",
                   color: "brand.400",
                 }}
                 p={2}
@@ -52,7 +52,7 @@ export default function Header() {
               <Button
                 bg={"inherit"}
                 _hover={{
-                  bg: "brand.101",
+                  bg: "brand.200",
                   color: "brand.400",
                 }}
                 p={2}

@@ -5,8 +5,20 @@ import Controls from "../components/controls";
 import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
-import styles from "../styles/idcollection.module.css";
-import { Box, Button, Container, Flex, Heading, SkeletonCircle, Text, useMediaQuery } from "@chakra-ui/react";
+
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  SimpleGrid,
+  SkeletonCircle,
+  Text,
+  useMediaQuery,
+  VStack,
+} from "@chakra-ui/react";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
 
@@ -28,26 +40,24 @@ const NationalIdCollection = () => {
   const [btnText, setBtntext] = useState("Send");
 
   // Drag and drop functionality
-    const [spin, setSpin] = useState(false);
-    const [downloadUrl, setDownloadUrl] = useState("");
+  const [spin, setSpin] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState("");
 
-    const onDrop = useCallback((acceptedFiles) => {
-      setSpin(true);
-      const file = acceptedFiles[0];
-      const mountainsRef = ref(storage, "foundIds/" + file.name);
+  const onDrop = useCallback((acceptedFiles) => {
+    setSpin(true);
+    const file = acceptedFiles[0];
+    const mountainsRef = ref(storage, "foundIds/" + file.name);
 
-      uploadBytesResumable(mountainsRef, file).then((snapshot) => {
-        getDownloadURL(snapshot.ref).then((downloadURL) => {
-          setDownloadUrl(downloadURL);
-          setIdimage(downloadURL)
-          setSpin(false);
-        });
-        
+    uploadBytesResumable(mountainsRef, file).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((downloadURL) => {
+        setDownloadUrl(downloadURL);
+        setIdimage(downloadURL);
+        setSpin(false);
       });
-    }, []);
-    const { getRootProps, getInputProps } = useDropzone({ onDrop });
-////////////////////////////////
-
+    });
+  }, []);
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  ////////////////////////////////
 
   const sendData = async () => {
     const timestamp = Date.now().toString();
@@ -111,55 +121,87 @@ const NationalIdCollection = () => {
         <BreadCrumbs />
         <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
 
-        <Heading fontSize={"1.5rem"} mb={5}>
-          Fill in the imformation required to help the person recover his/her ID
-          card.
-        </Heading>
+        <Container maxW={900}>
+          <Heading fontSize={"1.5rem"} mb={5} textAlign={"center"}>
+            Fill in the imformation required to help the person recover his/her
+            ID card.
+          </Heading>
 
-        <Heading fontSize={"1rem"}>
-          NB: <small>All the fields with the asterisk (*) are obligatory</small>
-        </Heading>
+          <Text mb={5} textAlign={"center"}>
+            NB:{" "}
+            <small>All the fields with the asterisk (*) are obligatory</small>
+          </Text>
 
-        <Box mb={10} w="fit-content" className={styles.idform_container}>
-          <p>* Type the ID card number here:</p>
-          <input
-            value={idnum}
-            onChange={(e) => {
-              setIdnum(e.target.value);
-            }}
-            type="number"
-            placeholder="ID card Number"
-            className={`main_input `}
-            required
-          />
-          <p>* Type the name on the ID card here:</p>
-          <input
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            type="text"
-            placeholder="Holder's Name"
-            className={`main_input`}
-            required
-          />
-          <p>Type your location here:</p>
-          <input
-            value={location}
-            onChange={(e) => {
-              setLocation(e.target.value);
-            }}
-            type="text"
-            placeholder="Your Location"
-            className={`main_input`}
-          />
-          <Flex direction={"column"}>
-            <Text>
-              Type your contact information for the ID collection here:
+          <SimpleGrid columns={2} gap={3} mb={5}>
+            <Box>
+              <Text fontSize={"0.9rem"} mb={2}>
+                * ID card number :
+              </Text>
+              <input
+                value={idnum}
+                onChange={(e) => {
+                  setIdnum(e.target.value);
+                }}
+                type="number"
+                placeholder="ID card Number"
+                className={`main_input `}
+                required
+              />
+            </Box>
+
+            <Box>
+              <Text fontSize={"0.9rem"} mb={2}>
+                * Holder"s Name :
+              </Text>
+              <input
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                type="text"
+                placeholder="Holder's Name"
+                className={`main_input`}
+                required
+              />
+            </Box>
+
+            <Box>
+              <Text fontSize={"0.9rem"} mb={2}>
+                 Your location :
+              </Text>
+              <input
+                value={location}
+                onChange={(e) => {
+                  setLocation(e.target.value);
+                }}
+                type="text"
+                placeholder="Your Location"
+                className={`main_input `}
+                required
+              />
+            </Box>
+            <Box>
+              <Text fontSize={"0.9rem"} mb={2}>
+               Your email :
+              </Text>
+              <input
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                type="email"
+                placeholder="Your Email"
+                className={`main_input `}
+              />
+            </Box>
+          </SimpleGrid>
+
+          <Box>
+            <Text fontSize={"0.9rem"} mb={2}>
+              * Phone number (whatsapp/call)
             </Text>
-            <label htmlFor="phoneNumber">* Phone number (whatsapp/call)</label>
 
-            <Flex mb={5}>
+            <HStack mb={5}>
               <input
                 onChange={(e) => {
                   setPhoneNumber(e.target.value);
@@ -189,31 +231,24 @@ const NationalIdCollection = () => {
                 pattern="[0-9]"
                 required
               />
-            </Flex>
+            </HStack>
+          </Box>
 
-            <label htmlFor="email">Email (optional)</label>
-            <input
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              type="email"
-              placeholder="Email"
-              className={`main_input`}
-              name="email"
-            />
-          </Flex>
-          <p>Upload an image of the ID card here:</p>
-
+          <Text textAlign={'center'} fontSize={"0.9rem"} mb={2}>
+            Upload an image of the ID card here:
+          </Text>
 
           {/*  Drag and drop */}
-          
+
           <Flex
-            mt={5}
+            
+            w={"fit-content"}
             justifyContent={"space-between"}
             flexDirection={"column"}
             alignItems={"center"}
             {...getRootProps()}
+            m={'auto'}
+            mb={10}
           >
             <input {...getInputProps()} />
 
@@ -224,9 +259,9 @@ const NationalIdCollection = () => {
                     border="1px"
                     alignItems={"center"}
                     justifyContent={"center"}
-                    bg={"brand.500"}
-                    width={isLargerThan700 ? 400 : 250}
-                    height={isLargerThan700 ? 300 : 200}
+                    bg={"brand.101"}
+                    width={isLargerThan700 ? 400 : 300}
+                    height={isLargerThan700 ? 300 : 250}
                     flexDirection={"column"}
                   >
                     <UploadIcon /> <Text m={0}>Drag and drop</Text>{" "}
@@ -250,13 +285,14 @@ const NationalIdCollection = () => {
                     src={downloadUrl}
                     allowFullScreen
                     width={isLargerThan700 ? 500 : 300}
-                   height={ isLargerThan700 ? 400 : 300}
+                    height={isLargerThan700 ? 400 : 300}
                   ></iframe>
                 </Box>
               )}
             </Box>
           </Flex>
-        </Box>
+        </Container>
+
         <Controls dataHandler={sendData} buttonText={btnText} />
 
         <ToastContainer />
@@ -268,13 +304,13 @@ const NationalIdCollection = () => {
 export default NationalIdCollection;
 export const Spin = () => (
   <Box mt={4}>
-   <Button
-    isLoading
-    loadingText='Loading'
-    colorScheme='teal'
-    variant='outline'
-    spinnerPlacement='start'
-  ></Button>
+    <Button
+      isLoading
+      loadingText="Loading"
+      colorScheme="teal"
+      variant="outline"
+      spinnerPlacement="start"
+    ></Button>
   </Box>
 );
 export const UploadIcon = () => (

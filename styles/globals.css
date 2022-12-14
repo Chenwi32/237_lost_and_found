@@ -88,10 +88,9 @@ hr {
 }
 
 .main_input {
-  font-weight: 600;
   font-family: "Roboto", sans-serif;
   padding: 0.5em;
-  width: 80%;
+  width: 100%;
   outline: none;
   border: 1px solid var(--links);
   border-radius: 5px;
@@ -109,7 +108,7 @@ hr {
 
 .results_display,
 .announcement {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.575);
+  box-shadow: 0 0 10px  #00ebc825;
   padding: 1rem;
   border-radius: 5px;
   border: 1px solid var(--secondary);
@@ -134,6 +133,7 @@ hr {
   border: 1px solid;
   width: 5rem;
   padding: .5rem;
+  border-radius: 5px;
 }
 
 

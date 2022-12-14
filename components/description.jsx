@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Description = () => {
   return (
-    <Container maxW={900} mb={10} p={0}>
+    <Container maxW={900} mb={10} p={0} color={"brand.600"}>
       <Heading fontSize={"1.5rem"} mt={10} mb={5}>
         How the platform works
       </Heading>

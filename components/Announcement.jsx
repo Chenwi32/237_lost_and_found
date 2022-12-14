@@ -8,10 +8,10 @@ const Announcement = ({ message }) => {
       margin={"auto"}
       mb={10}
       p={5}
-      border={"1px solid #ff0000"}
-      borderRadius={'lg'}
+      border={"1px solid #ff5470"}
+      borderRadius={"lg"}
     >
-      <Text>{message}</Text>
+      <Text color={'brand.600'}>{message}</Text>
     </Box>
   );
 };
