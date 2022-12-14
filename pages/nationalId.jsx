@@ -13,7 +13,7 @@ import {
   limit,
   getDocs,
 } from "@firebase/firestore";
-import { Box, Container, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Container, Heading, Tab, TabList, TabPanel, TabPanels, Tabs, Text, VStack } from "@chakra-ui/react";
 
 import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
@@ -77,50 +77,57 @@ const NationalId = () => {
         </Head>
       }
 
-      <Container maxW={1200} minH={"80vh"} mb={10}>
+      <Container maxW={900} minH={"80vh"} mb={10}>
         <BreadCrumbs />
 
-        <VStack mb={10}>
-          <Heading fontSize={"1.5rem"} mb={5}>
-            Type your name and click on search.
-          </Heading>
+        <Tabs color={"brand.500"} variant="enclosed">
+          <TabList mb={5}>
+            <Tab>Search by Name</Tab>
+            <Tab>Search by ID number</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <VStack>
+                <Heading fontSize={"1.5rem"} mb={5}>
+                  Type your name and click on search.
+                </Heading>
 
-          <input
-            type="number"
-            className="main_input"
-            value={dataInput}
-            onChange={(e) => {
-              setDataInput(e.target.value);
-            }}
-            placeholder="Name as on ID card "
-          />
-        </VStack>
-
-        <VStack>
-          <Text fontSize={'1.2rem'}>
-            Or Make your search more easy if you can remember your ID card
-            number
-          </Text>
-          <Heading fontSize={"1.5rem"} textAlign="center" mb={5}>
-            Type your ID card number.
-          </Heading>
-          <input
-            type="number"
-            className="main_input"
-            value={dataInput}
-            onChange={(e) => {
-              setDataInput(e.target.value);
-            }}
-            placeholder="ID card number"
-          />
-        </VStack>
+                <input
+                  type="number"
+                  className="main_input"
+                  value={dataInput}
+                  onChange={(e) => {
+                    setDataInput(e.target.value);
+                  }}
+                  placeholder="Name as on ID card "
+                />
+              </VStack>
+            </TabPanel>
+            <TabPanel>
+              <VStack>
+                <Heading fontSize={"1.5rem"} textAlign="center" mb={5}>
+                  Type your ID card number.
+                </Heading>
+                <input
+                  type="number"
+                  className="main_input"
+                  value={dataInput}
+                  onChange={(e) => {
+                    setDataInput(e.target.value);
+                  }}
+                  placeholder="ID card number"
+                />
+              </VStack>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
 
         <Container
           mb={10}
-          mt={10}
+          mt={5}
           maxW={900}
           boxShadow={"lg"}
-          border={"1px solid #08ac10"}
+          border={"1px solid #00ebc7"}
           p={5}
           align={"center"}
         >
