@@ -7,7 +7,6 @@ import {
   Button,
   chakra,
   Container,
-  Spacer,
   useMediaQuery,
   Icon,
 } from "@chakra-ui/react";
@@ -34,9 +33,9 @@ export default function Header() {
               <Image alt="logo" src="/images/logo.png" h="50px" />
             </a>
           </Link>
-          <Spacer />
+          
 
-          <Flex alignItems={"center"} gap={isLargerThan700 ? 5 : 1}>
+          <Flex alignItems={"center"} gap={isLargerThan700 ? 2 : 1}>
             <Link href="/about">
               <Button
                 bg={"inherit"}
