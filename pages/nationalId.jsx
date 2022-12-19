@@ -19,6 +19,7 @@ import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
 
 const NationalId = () => {
+  const [nameInput, setnameInput] = useState("");
   const [dataInput, setDataInput] = useState("");
   let [found, setfound] = useState([]);
   const [message, setmessage] = useState("Your results will be displayed here");
@@ -48,9 +49,23 @@ const NationalId = () => {
   useEffect(() => {
     // We now call the function to within the useEffect hook since it causes side effects
     getIds();
-  }, [dataInput]);
+  }, [nameInput]);
 
-  const idSearch = () => {
+  const idSearchName = () => {
+    const successfulsearch = foundIds.find((id) => id.name == nameInput);
+
+    if (nameInput === "" || nameInput === null) return;
+
+    if (successfulsearch) {
+      setfound([successfulsearch]);
+      setDataInput("");
+    } else {
+      setmessage("Sorry We don't have your Id card");
+      setDataInput("");
+    }
+  };
+
+  const idSearchIdnum = () => {
     const successfulsearch = foundIds.find((id) => id.idnum === dataInput);
 
     if (dataInput === "" || dataInput === null) return;
@@ -81,31 +96,37 @@ const NationalId = () => {
         <BreadCrumbs />
 
         <Tabs color={"brand.500"} variant="enclosed">
-          <TabList color={'brand.400'} mb={5}>
+          <TabList color={"brand.400"} mb={5}>
             <Tab>Search by Name</Tab>
-            <Tab >Search by ID number</Tab>
+            <Tab>Search by ID number</Tab>
           </TabList>
           <TabPanels>
-            <TabPanel>
-              <VStack>
-                <Heading fontSize={"1.5rem"} color={'brand.400'} mb={5}>
+            <TabPanel >
+              <VStack mb={10}>
+                <Heading fontSize={"1.5rem"} color={"brand.400"} mb={5}>
                   Type your name and click on search.
                 </Heading>
 
                 <input
-                  type="number"
+                  type="text"
                   className="main_input"
-                  value={dataInput}
+                  value={nameInput}
                   onChange={(e) => {
-                    setDataInput(e.target.value);
+                    setnameInput(e.target.value);
                   }}
                   placeholder="Name as on ID card "
                 />
               </VStack>
+              <Controls dataHandler={idSearchName} buttonText="search" />
             </TabPanel>
             <TabPanel>
-              <VStack>
-                <Heading fontSize={"1.5rem"} textAlign="center" mb={5}>
+              <VStack mb={10}>
+                <Heading
+                  color={"brand.400"}
+                  fontSize={"1.5rem"}
+                  textAlign="center"
+                  mb={5}
+                >
                   Type your ID card number.
                 </Heading>
                 <input
@@ -118,6 +139,7 @@ const NationalId = () => {
                   placeholder="ID card number"
                 />
               </VStack>
+              <Controls dataHandler={idSearchIdnum} buttonText="search" />
             </TabPanel>
           </TabPanels>
         </Tabs>
@@ -132,8 +154,10 @@ const NationalId = () => {
           align={"center"}
         >
           {found.length === 0 ? (
-            <Box >
-              <Heading color={'brand.400'} fontSize={"1.5rem"}>{message}</Heading>
+            <Box>
+              <Heading color={"brand.400"} fontSize={"1.5rem"}>
+                {message}
+              </Heading>
             </Box>
           ) : found.length !== 0 ? (
             <Success results={found} />
@@ -141,7 +165,6 @@ const NationalId = () => {
             <h3>There was a mixup somewhere</h3>
           )}
         </Container>
-        <Controls dataHandler={idSearch} buttonText="search" />
       </Container>
     </>
   );
