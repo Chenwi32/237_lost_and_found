@@ -13,12 +13,12 @@ import styles from "./styles/success.module.css";
 const Success = ({ results }) => {
   return (
     <Container maxW={900}>
-      <Heading>Great news!!! We found your document!!!</Heading>
+      <Heading color={'brand.400'} >Great news!!! We found your document!!!</Heading>
 
       {results.map((result) => {
         return (
-          <VStack key={result.idnum} align={"left"}>
-            <Heading mt={5} mb={5} fontSize={"1.5rem"}>
+          <VStack color={'brand.500'} key={result.idnum} align={"left"}>
+            <Heading color={'brand.400'} mt={5} mb={5} fontSize={"1.5rem"}>
               Here is your document identification detail:
             </Heading>
 

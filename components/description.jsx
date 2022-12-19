@@ -11,8 +11,8 @@ import Link from "next/link";
 
 const Description = () => {
   return (
-    <Container maxW={900} mb={10} p={0} color={"brand.600"}>
-      <Heading fontSize={"1.5rem"} mt={10} mb={5}>
+    <Container maxW={900} mb={10} p={0} color={"brand.500"}>
+      <Heading color={'brand.400'} fontSize={"1.5rem"} mt={10} mb={5}>
         How the platform works
       </Heading>
 
@@ -37,14 +37,13 @@ const Description = () => {
         gap={5}
         direction="column"
       >
-        <Text>See available Documents.</Text>
+        <Text color={'brand.400'}>See available Documents.</Text>
 
         <Link href="/feeds">
           <Button
             bg="brand.100"
             color="brand.400"
             _hover={{
-              color: "brand.400",
               bg: "brand.200",
             }}
             p={5}
@@ -97,14 +96,13 @@ const Description = () => {
         gap={5}
         direction="column"
       >
-        <Text>Have you found an ID Card?</Text>
+        <Text color={'brand.400'}>Have you found an ID Card?</Text>
 
         <Link href="/nationalIdCollection">
           <Button
             bg="brand.100"
             color="brand.400"
             _hover={{
-              color: "brand.400",
               bg: "brand.200",
             }}
             p={5}

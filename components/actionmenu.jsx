@@ -23,6 +23,7 @@ const Actionmenu = () => {
             gap={5}
             textAlign={"center"}
             boxShadow={"lg"}
+            justifyContent={"center"}
             borderRadius={"lg"}
             cursor="pointer"
             w={400}
@@ -33,9 +34,7 @@ const Actionmenu = () => {
           >
             <Text>Have you found a lost ID card?</Text>
 
-            <Icon
-              color={"brand.300"}
-              >
+            <Icon color={"brand.300"}>
               <FontAwesomeIcon icon={faArrowRight} />
             </Icon>
           </Flex>

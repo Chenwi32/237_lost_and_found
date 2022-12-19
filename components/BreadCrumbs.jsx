@@ -9,7 +9,7 @@ import styles from "../styles/Home.module.css";
 
 const BreadCrumbs = () => {
   return (
-    <Container>
+    <Container color={'brand.400'}>
       <Breadcrumb mb={10}>
         <BreadcrumbItem isCurrentPage>
           <Link href="/nationalIdCollection">

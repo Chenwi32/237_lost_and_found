@@ -122,17 +122,17 @@ const NationalIdCollection = () => {
         <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
 
         <Container maxW={900}>
-          <Heading fontSize={"1.5rem"} mb={5} textAlign={"center"}>
+          <Heading color={'brand.400'} fontSize={"1.5rem"} mb={5} textAlign={"center"}>
             Fill in the imformation required to help the person recover his/her
             ID card.
           </Heading>
 
-          <Text mb={5} textAlign={"center"}>
+          <Text color={'brand.500'} mb={5} textAlign={"center"}>
             NB:{" "}
             <small>All the fields with the asterisk (*) are obligatory</small>
           </Text>
 
-          <SimpleGrid columns={2} gap={3} mb={5}>
+          <SimpleGrid color={'brand.500'} columns={2} gap={3} mb={5}>
             <Box>
               <Text fontSize={"0.9rem"} mb={2}>
                 * ID card number :

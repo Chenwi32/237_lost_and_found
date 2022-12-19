@@ -1,17 +1,33 @@
 import Link from "next/link";
 import styles from "./styles/Navigation.module.css";
 
-import {  Image, Flex, Button, chakra, Container, Spacer, useMediaQuery, } from '@chakra-ui/react';
+import {
+  Image,
+  Flex,
+  Button,
+  chakra,
+  Container,
+  Spacer,
+  useMediaQuery,
+  Icon,
+} from "@chakra-ui/react";
 
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 export default function Header() {
-
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
   return (
-    <Container bg={'brand.700'} boxShadow={'md'} w={'100%'} maxW={'unset'}
-    padding={2}  mb={10}>
-      <chakra.header maxW={1200} m={'auto'} id="header">
+    <Container
+      bg={"brand.700"}
+      boxShadow={"md"}
+      w={"100%"}
+      maxW={"unset"}
+      padding={2}
+      mb={10}
+    >
+      <chakra.header maxW={1200} m={"auto"} id="header">
         <Flex w="100%" py="1" alignItems="center" justify="space-between">
           <Link href="/">
             <a>
@@ -24,9 +40,9 @@ export default function Header() {
             <Link href="/about">
               <Button
                 bg={"inherit"}
+                color={"brand.400"}
                 _hover={{
                   bg: "brand.200",
-                  color: "brand.400",
                 }}
                 p={2}
               >
@@ -40,7 +56,6 @@ export default function Header() {
                 color="brand.400"
                 _hover={{
                   bg: "brand.200",
-                  color: "brand.400",
                 }}
                 p={2}
               >
@@ -51,13 +66,15 @@ export default function Header() {
             <Link href="/help">
               <Button
                 bg={"inherit"}
+                color="brand.400"
                 _hover={{
                   bg: "brand.200",
-                  color: "brand.400",
                 }}
                 p={2}
               >
-                &#x2753;
+                <Icon>
+                  <FontAwesomeIcon icon={faQuestion} />
+                </Icon>
               </Button>
             </Link>
           </Flex>

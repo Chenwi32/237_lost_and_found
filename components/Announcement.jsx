@@ -11,7 +11,7 @@ const Announcement = ({ message }) => {
       border={"1px solid #ff5470"}
       borderRadius={"lg"}
     >
-      <Text color={'brand.600'}>{message}</Text>
+      <Text color={'brand.500'}>{message}</Text>
     </Box>
   );
 };

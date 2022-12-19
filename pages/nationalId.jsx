@@ -81,14 +81,14 @@ const NationalId = () => {
         <BreadCrumbs />
 
         <Tabs color={"brand.500"} variant="enclosed">
-          <TabList mb={5}>
+          <TabList color={'brand.400'} mb={5}>
             <Tab>Search by Name</Tab>
-            <Tab>Search by ID number</Tab>
+            <Tab >Search by ID number</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
               <VStack>
-                <Heading fontSize={"1.5rem"} mb={5}>
+                <Heading fontSize={"1.5rem"} color={'brand.400'} mb={5}>
                   Type your name and click on search.
                 </Heading>
 
@@ -132,8 +132,8 @@ const NationalId = () => {
           align={"center"}
         >
           {found.length === 0 ? (
-            <Box>
-              <Heading fontSize={"1.5rem"}>{message}</Heading>
+            <Box >
+              <Heading color={'brand.400'} fontSize={"1.5rem"}>{message}</Heading>
             </Box>
           ) : found.length !== 0 ? (
             <Success results={found} />

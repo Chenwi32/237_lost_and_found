@@ -94,6 +94,7 @@ const AvilableDocs = () => {
                 borderRadius="lg"
                 flexDirection={'column'}
                 alignItems={'center'}
+                color={'brand.400'}
               >
                 <Image src={id.idimage}
                   w={"100%"}

@@ -18,7 +18,6 @@ const Controls = ({ dataHandler, buttonText }) => {
           bg="brand.100"
           color="brand.400"
           _hover={{
-            color: "brand.400",
             bg: "brand.200",
           }}
           p={5}
