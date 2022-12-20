@@ -22,9 +22,11 @@ const Contact = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
       }
-      <Container minH={"80vh"} align="center">
 
-        <BreadCrumbs/>
+
+      <Container maxW={900} minH={"80vh"} align="center">
+ <BreadCrumbs/>
+       
 
         <div className={`${styles.contact}`}>
           <Heading>

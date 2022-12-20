@@ -8,7 +8,6 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import styles from "./styles/success.module.css";
 
 const Success = ({ results }) => {
   return (

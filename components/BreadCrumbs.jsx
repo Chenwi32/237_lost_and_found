@@ -1,7 +1,7 @@
+import { ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   Container,
 } from "@chakra-ui/react";
 import Link from "next/link";
@@ -9,8 +9,11 @@ import styles from "../styles/Home.module.css";
 
 const BreadCrumbs = () => {
   return (
-    <Container color={'brand.400'}>
-      <Breadcrumb mb={10}>
+
+    
+      
+    <Container maxW={1200} p={0}  width={'100%'} color={"brand.400"}>
+      <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />} mb={10} >
         <BreadcrumbItem isCurrentPage>
           <Link href="/nationalIdCollection">
             <button className={styles.breadcrumbs}>Found an ID card</button>
@@ -18,14 +21,14 @@ const BreadCrumbs = () => {
         </BreadcrumbItem>
 
         <BreadcrumbItem isCurrentPage>
-          <BreadcrumbLink>
-            <Link href="/nationalId">
-              <button className={styles.breadcrumbs}>Lost an ID card</button>
-            </Link>
-          </BreadcrumbLink>
+          <Link href="/nationalId">
+            <button className={styles.breadcrumbs}>Lost an ID card</button>
+          </Link>
         </BreadcrumbItem>
       </Breadcrumb>
     </Container>
+  
+    
   );
 };
 

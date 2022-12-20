@@ -104,13 +104,17 @@ const NationalId = () => {
       <Container maxW={900} minH={"80vh"} mb={10}>
         <BreadCrumbs />
 
-        <Tabs color={"brand.500"} variant="enclosed">
-          <TabList color={"brand.400"} mb={5}>
-            <Tab>Search by Name</Tab>
-            <Tab>Search by ID number</Tab>
+        <Tabs isFitted color={"brand.500"} variant="enclosed">
+          <TabList m={'auto'} maxW={500} color={"brand.400"} mb={10}>
+            <Tab _selected={{ color: "brand.400", bg: "brand.100" }}>
+              Search by Name
+            </Tab>
+            <Tab _selected={{ color: "brand.400", bg: "brand.100" }}>
+              Search by ID number
+            </Tab>
           </TabList>
           <TabPanels>
-            <TabPanel >
+            <TabPanel>
               <VStack mb={10}>
                 <Heading fontSize={"1.5rem"} color={"brand.400"} mb={5}>
                   Type your name and click on search.
