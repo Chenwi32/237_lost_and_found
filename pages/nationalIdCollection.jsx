@@ -130,7 +130,10 @@ const NationalIdCollection = () => {
 
       <Container maxW={900} mb={10} mt={10}>
         <BreadCrumbs />
-        <Announcement message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform." />
+        <Announcement
+          message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform."
+          borderColor="1px solid #ff5470"
+        />
 
         <Container maxW={900}>
           <Heading
@@ -148,6 +151,10 @@ const NationalIdCollection = () => {
             <small>All the fields with the asterisk (*) are obligatory</small>
           </Text>
 
+          <Announcement
+            message="We value your privacy a lot, so we will not disclose your contact information to unauthorized people"
+            borderColor={"1px solid #00ebc7"}
+          />
           <SimpleGrid color={"brand.500"} columns={2} gap={3} mb={5}>
             <Box>
               <Text fontSize={"0.9rem"} mb={2}>
@@ -319,7 +326,7 @@ const NationalIdCollection = () => {
           <ModalContent>
             <ModalHeader>Check if everything is okay</ModalHeader>
             <ModalCloseButton
-              color={'brand.400'}
+              color={"brand.400"}
               _hover={{
                 bg: "brand.200",
               }}

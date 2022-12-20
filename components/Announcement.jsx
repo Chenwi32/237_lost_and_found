@@ -1,6 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
 
-const Announcement = ({ message }) => {
+const Announcement = ({ message, borderColor }) => {
   return (
     <Box
       boxShadow={"lg"}
@@ -8,7 +8,7 @@ const Announcement = ({ message }) => {
       margin={"auto"}
       mb={10}
       p={5}
-      border={"1px solid #ff5470"}
+      border={borderColor}
       borderRadius={"lg"}
     >
       <Text color={'brand.500'}>{message}</Text>

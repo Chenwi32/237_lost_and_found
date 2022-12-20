@@ -21,7 +21,7 @@ import Head from "next/head";
 const NationalId = () => {
   const [nameInput, setnameInput] = useState("");
   const [dataInput, setDataInput] = useState("");
-  let [found, setfound] = useState([]);
+  const [found, setfound] = useState([]);
   const [message, setmessage] = useState("Your results will be displayed here");
 
   const idcollection = collection(db, "idcards");
@@ -51,13 +51,20 @@ const NationalId = () => {
     getIds();
   }, [nameInput]);
 
+  /* ID search by ID name */
+
   const idSearchName = () => {
-    const successfulsearch = foundIds.find((id) => id.name == nameInput);
+    const successfulsearch = foundIds.filter((id) => id.name == nameInput);
 
     if (nameInput === "" || nameInput === null) return;
 
     if (successfulsearch) {
-      setfound([successfulsearch]);
+
+      
+      
+      setfound(successfulsearch);
+
+
       setDataInput("");
     } else {
       setmessage("Sorry We don't have your Id card");
@@ -65,6 +72,8 @@ const NationalId = () => {
     }
   };
 
+
+  /* ID search by by ID num */
   const idSearchIdnum = () => {
     const successfulsearch = foundIds.find((id) => id.idnum === dataInput);
 

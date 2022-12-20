@@ -13,18 +13,29 @@ import styles from "./styles/success.module.css";
 const Success = ({ results }) => {
   return (
     <Container maxW={900}>
-      <Heading color={'brand.400'} >Great news!!! We found your document!!!</Heading>
+      <Heading color={"brand.400"} mb={10}>
+        Great news!!! We found documents that match your name, please carefully
+        look through to identify yours!!!
+      </Heading>
 
       {results.map((result) => {
         return (
-          <VStack color={'brand.500'} textAlign={'left'} key={result.idnum} alignItems={'flex-start'}>
-            <Heading color={'brand.400'} mt={5} mb={5} fontSize={"1.5rem"}>
-              Here is your document identification detail:
+          <VStack
+            color={"brand.500"}
+            textAlign={"left"}
+            key={result.idnum}
+            alignItems={"flex-start"}
+            mb={50}
+p={5}
+            border="1px"
+          >
+            <Heading fontSize={"1.5rem"} mb={2}>
+              {result.name}
             </Heading>
 
             <Image src={result.idimage} />
 
-            <HStack>
+            <HStack mt={10}>
               <Text> ID number:</Text>
               <Text color={"brand.100"} fontWeight={600}>
                 {result.idnum}
@@ -40,15 +51,7 @@ const Success = ({ results }) => {
             </HStack>
 
             <HStack>
-              <p>It is available for collection at {result.location}.</p>
-            </HStack>
-
-            <HStack>
-              <Text>You can contact the person who found your ID here:</Text>
-
-              <Text color={"brand.100"} fontWeight={600}>
-                {result.phoneNumber}
-              </Text>
+              <p>It is available for collection in {result.location}.</p>
             </HStack>
 
             <Text>
