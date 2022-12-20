@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Success = ({ results }) => {
   return (
-    <Container maxW={900}>
+    <Container maxW={900} p={0}>
       <Heading color={"brand.400"} mb={10}>
         Great news!!! We found documents that match your name, please carefully
         look through to identify yours!!!

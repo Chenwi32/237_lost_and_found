@@ -13,12 +13,15 @@ import {
   limit,
   getDocs,
 } from "@firebase/firestore";
-import { Box, Container, Heading, Tab, TabList, TabPanel, TabPanels, Tabs, Text, VStack } from "@chakra-ui/react";
+import { Box, Container, Heading, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useMediaQuery, VStack } from "@chakra-ui/react";
 
 import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
 
 const NationalId = () => {
+
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
+
   const [nameInput, setnameInput] = useState("");
   const [dataInput, setDataInput] = useState("");
   const [found, setfound] = useState([]);
@@ -163,7 +166,7 @@ const NationalId = () => {
           maxW={900}
           boxShadow={"lg"}
           border={"1px solid #00ebc7"}
-          p={5}
+          p={isLargerThan700? 5 : '1rem 0.5rem'}
           align={"center"}
         >
           {found.length === 0 ? (
