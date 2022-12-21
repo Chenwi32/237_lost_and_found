@@ -56,7 +56,7 @@ const AvilableDocs = () => {
   const loading = foundIds.length === 0;
 
   return (
-    <Container p={0} maxW={1200} mt={10}>
+    <Container p={0} maxW={1200} mt={10} mb={10}>
       <Heading fontSize={"1.5rem"} mt={10} mb={5}>
         Found Documents
       </Heading>
@@ -94,7 +94,6 @@ const AvilableDocs = () => {
                 borderRadius="lg"
                 flexDirection={'column'}
                 alignItems={'center'}
-                color={'brand.400'}
               >
                 <Image src={id.idimage}
                   w={"100%"}
@@ -105,7 +104,7 @@ const AvilableDocs = () => {
                 <VStack alignItems='flex-start' justifyContent={'flex-start'} w="100%">
                   <HStack >
                   <Text>ID Number:</Text>
-                  <Text fontWeight={600} color={"brand.100"}>
+                  <Text fontWeight={600} color={"brand.400"}>
                     {id.idnum}
                   </Text>
                 </HStack>
@@ -113,14 +112,14 @@ const AvilableDocs = () => {
                 <HStack mb={5}>
                   <Text>Holder's Name:</Text>
 
-                  <Text fontWeight={600} color={"brand.100"}>
+                  <Text fontWeight={600} color={"brand.400"}>
                     {id.name}
                   </Text>
                 </HStack>
                 <HStack mb={5}>
                   <Text>It was found in:</Text>
 
-                  <Text fontWeight={600} color={"brand.100"}>
+                  <Text fontWeight={600} color={"brand.400"}>
                     {id.location}
                   </Text>
                 </HStack>

@@ -46,6 +46,12 @@ const NationalIdCollection = () => {
     onOpen: onOpen2,
   } = useDisclosure({ defaultIsOpen: true });
 
+  const {
+    isOpen: isVisible2,
+    onClose: onClose3,
+    onOpen: onOpen3,
+  } = useDisclosure({ defaultIsOpen: true });
+
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
   const [idnum, setIdnum] = useState("");
@@ -91,43 +97,48 @@ const NationalIdCollection = () => {
       idimage,
     };
 
-    if (idnum !== "" && phoneNumber !== "" && name !== "") {
-      setBtntext("Sending...");
-      try {
-        await setDoc(addedFIds, foundId).then(() => {
-          setBtntext("Send");
-        });
-        toast(
-          "The information has been sent successfully. Thank you for the efforts",
-          {
-            hideProgressBar: true,
-            autoClose: 6000,
-            type: "success",
-          }
-        );
-      } catch (error) {
-        console.log(error);
-      }
-
-      setIdnum("");
-      setName("");
-      setLocation("");
-      setPhoneNumber("");
-      setEmail("");
-      setIdimage("");
-    } else {
-      return (
-        <Alert status="error">
-          <AlertIcon />
-          Some field are still empty. Please make sure you fill in all the
-          information required. Thank you.
-        </Alert>
+    setBtntext("Sending...");
+    try {
+      await setDoc(addedFIds, foundId).then(() => {
+        setBtntext("Send");
+      });
+      toast(
+        "The information has been sent successfully. Thank you for the efforts",
+        {
+          hideProgressBar: true,
+          autoClose: 6000,
+          type: "success",
+        }
       );
+    } catch (error) {
+      console.log(error);
     }
+
+    setIdnum("");
+    setName("");
+    setLocation("");
+    setPhoneNumber("");
+    setEmail("");
+    setIdimage("");
   };
 
   /* Modal */
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleEmtyIn = () => {
+    if (idnum === "" && phoneNumber === "" && name === "") {
+      return toast(
+        "Some field are still empty. Please make sure you fill in all the nformation required. Thank you.",
+        {
+          hideProgressBar: true,
+          autoClose: 6000,
+          type: "error",
+        }
+      );
+    } else {
+      onOpen();
+    }
+  };
 
   return (
     <>
@@ -188,17 +199,36 @@ const NationalIdCollection = () => {
             ID card.
           </Heading>
 
-          <Alert status="info" mb={10}>
-            <AlertIcon />
-            <Text mb={5} >
-              NB:{" "}
-              <small>All the fields with the asterisk (*) are obligatory</small>
-              <Text>
-                We value your privacy a lot, so we will not disclose your
-                contact information to unauthorized people.
-              </Text>
-            </Text>
-          </Alert>
+          {isVisible2 ? (
+            <Alert status="info" mb={10}>
+              <AlertIcon />
+
+              <Box>
+                <AlertTitle>Attention!!</AlertTitle>
+                <AlertDescription>
+                  NB:{" "}
+                  <small>
+                    All the fields with the asterisk (*) are obligatory
+                  </small>{" "}
+                  <br />
+                  We value your privacy a lot, so we will not disclose your
+                  contact information to unauthorized people.
+                </AlertDescription>
+              </Box>
+              <CloseButton
+                alignSelf="flex-start"
+                position="relative"
+                right={-1}
+                top={-1}
+                onClick={onClose3}
+              />
+            </Alert>
+          ) : (
+            <></>
+              
+            
+          )}
+
           <SimpleGrid color={"brand.500"} columns={2} gap={3} mb={5}>
             <Box>
               <Text fontSize={"0.9rem"} mb={2}>
@@ -358,7 +388,7 @@ const NationalIdCollection = () => {
             </Box>
           </Flex>
         </Container>
-        <Controls dataHandler={onOpen} buttonText={btnText} />
+        <Controls dataHandler={handleEmtyIn} buttonText={btnText} />
         <ToastContainer />
         {/* Modal */}
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -375,35 +405,35 @@ const NationalIdCollection = () => {
               <VStack alignItems={"flex-start"}>
                 <HStack>
                   <Text>ID Number:</Text>
-                  <Text fontWeight={600} color={"brand.100"}>
+                  <Text fontWeight={600} color={"brand.400"}>
                     {idnum}
                   </Text>
                 </HStack>
 
                 <HStack>
                   <Text>Holder's name:</Text>
-                  <Text fontWeight={600} color={"brand.100"}>
+                  <Text fontWeight={600} color={"brand.400"}>
                     {name}
                   </Text>
                 </HStack>
 
                 <HStack>
                   <Text>Your Location:</Text>
-                  <Text fontWeight={600} color={"brand.100"}>
+                  <Text fontWeight={600} color={"brand.400"}>
                     {location}
                   </Text>
                 </HStack>
 
                 <HStack>
                   <Text>Your email:</Text>
-                  <Text fontWeight={600} color={"brand.100"}>
+                  <Text fontWeight={600} color={"brand.400"}>
                     {email}
                   </Text>
                 </HStack>
 
                 <HStack>
                   <Text>Phone number:</Text>
-                  <Text fontWeight={600} color={"brand.100"}>
+                  <Text fontWeight={600} color={"brand.400"}>
                     {phoneNumber}
                   </Text>
                 </HStack>
