@@ -70,7 +70,6 @@ export default function Header() {
 
             <Link href="/contact">
               <Button
-                transitionProperty={"background-color 1000ms linear"}
                 bg="brand.100"
                 color="brand.400"
                 _hover={{

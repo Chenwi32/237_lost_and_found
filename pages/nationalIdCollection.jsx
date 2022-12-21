@@ -1,14 +1,18 @@
 import { addDoc, doc, getFirestore, setDoc } from "firebase/firestore";
 import { useEffect, useCallback, useState } from "react";
-import Announcement from "../components/Announcement";
 import Controls from "../components/controls";
 import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
   Box,
   Button,
+  CloseButton,
   Container,
   Flex,
   Heading,
@@ -36,6 +40,12 @@ import { useDropzone } from "react-dropzone";
 import storage from "../firebase";
 
 const NationalIdCollection = () => {
+  const {
+    isOpen: isVisible,
+    onClose: onClose2,
+    onOpen: onOpen2,
+  } = useDisclosure({ defaultIsOpen: true });
+
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
   const [idnum, setIdnum] = useState("");
@@ -106,8 +116,12 @@ const NationalIdCollection = () => {
       setEmail("");
       setIdimage("");
     } else {
-      alert(
-        "Some field are still empty. Please make sure you fill in all the information required. Thank you."
+      return (
+        <Alert status="error">
+          <AlertIcon />
+          Some field are still empty. Please make sure you fill in all the
+          information required. Thank you.
+        </Alert>
       );
     }
   };
@@ -130,11 +144,39 @@ const NationalIdCollection = () => {
 
       <Container maxW={900} mb={10} mt={10}>
         <BreadCrumbs />
-        <Announcement
-          message="Everyone can now add data of id cards that they find here till December 31 2022, after that, only people who own an account on the platform will be able to add data to the platform."
-          borderColor="1px solid #ff5470"
-        />
 
+        {isVisible ? (
+          <Alert status="info" mb={10}>
+            <AlertIcon />
+            <Box>
+              <AlertTitle>Attention!!</AlertTitle>
+              <AlertDescription>
+                Everyone can now add data of id cards that they find here till
+                December 31 2022, after that, only people who own an account on
+                the platform will be able to add data to the platform.
+              </AlertDescription>
+            </Box>
+            <CloseButton
+              alignSelf="flex-start"
+              position="relative"
+              right={-1}
+              top={-1}
+              onClick={onClose2}
+            />
+          </Alert>
+        ) : (
+          <Button
+            mb={10}
+            bg="brand.100"
+            color="brand.400"
+            _hover={{
+              bg: "brand.200",
+            }}
+            onClick={onOpen2}
+          >
+            Show Alert
+          </Button>
+        )}
         <Container maxW={900}>
           <Heading
             color={"brand.400"}
@@ -146,15 +188,17 @@ const NationalIdCollection = () => {
             ID card.
           </Heading>
 
-          <Text color={"brand.500"} mb={5} textAlign={"center"}>
-            NB:{" "}
-            <small>All the fields with the asterisk (*) are obligatory</small>
-          </Text>
-
-          <Announcement
-            message="We value your privacy a lot, so we will not disclose your contact information to unauthorized people"
-            borderColor={"1px solid #00ebc7"}
-          />
+          <Alert status="info" mb={10}>
+            <AlertIcon />
+            <Text mb={5} >
+              NB:{" "}
+              <small>All the fields with the asterisk (*) are obligatory</small>
+              <Text>
+                We value your privacy a lot, so we will not disclose your
+                contact information to unauthorized people.
+              </Text>
+            </Text>
+          </Alert>
           <SimpleGrid color={"brand.500"} columns={2} gap={3} mb={5}>
             <Box>
               <Text fontSize={"0.9rem"} mb={2}>
@@ -314,13 +358,9 @@ const NationalIdCollection = () => {
             </Box>
           </Flex>
         </Container>
-
         <Controls dataHandler={onOpen} buttonText={btnText} />
-
         <ToastContainer />
-
         {/* Modal */}
-
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
