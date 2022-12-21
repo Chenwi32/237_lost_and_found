@@ -6,8 +6,8 @@ const Controls = ({ dataHandler, buttonText }) => {
   const [isLargerThan400] = useMediaQuery("(min-width: 400px)");
 
   return (
-    <Container p={0}  mb={10}>
-      <Flex w={"100%"} gap={isLargerThan700 ? 40 : isLargerThan400 ? 5 : 3} alignItems={'center'} justifyContent={'center'}>
+    <Container maxW={1200} p={0}  mb={10}>
+      <Flex w={"100%"} gap={isLargerThan700 ? 40 : isLargerThan400 ? 5 : 3} alignItems={'center'} justifyContent={'space-between'}>
         <Link href="/">
           <Button color={'brand.200'} border={'1px '} bg='unset' >
             <span>&#8592;</span> <span>Back to home</span>
