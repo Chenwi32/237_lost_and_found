@@ -1,25 +1,42 @@
-import { Container, Flex, HStack, Icon, Text } from "@chakra-ui/react";
+import {
+  Container,
+  Flex,
+  HStack,
+  Icon,
+  Text,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import {
   faFacebook,
   faInstagram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
 
 const Footer = () => {
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
+
   return (
     <Container p={"1rem 0"} maxW={"100%"} bg={"brand.500"} color={"brand.600"}>
-      <HStack maxW={1200} m={"auto"} justifyContent={"space-between"} w="100%">
-        {
-          <Flex alignItems={"center"} justifyContent="center">
-            <Text align={"center"}>
-              &#x00A9; 237 Lost and Found 2022 | All Rights Reserved.
-            </Text>
-          </Flex>
-        }
+      <HStack
+        flexDirection={isLargerThan700 ? "row" : "column-reverse"}
+        maxW={1200}
+        m={"auto"}
+        justifyContent={"space-between"}
+        w="100%"
+      >
+        <Flex
+          alignItems={"center"}
+          justifyContent="center"
+          mt={10}
+          color="brand.100"
+        >
+          <Text align={"center"}>
+            &#x00A9; 237 Lost and Found 2022 | All Rights Reserved.
+          </Text>
+        </Flex>
 
-        <HStack gap={5}>
+        <HStack gap={5} mb={10}>
           <a
             href="https://web.facebook.com/profile.php?id=100083184411993"
             target="_blank"

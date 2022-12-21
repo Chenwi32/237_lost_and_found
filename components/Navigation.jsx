@@ -17,7 +17,7 @@ import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Header() {
-  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
+ const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
   return (
     <Container
