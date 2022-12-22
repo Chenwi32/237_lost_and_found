@@ -1,19 +1,44 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, CloseButton, Text, useDisclosure } from "@chakra-ui/react";
 
-const Announcement = ({ message, borderColor }) => {
+const Announcement = ({ message, type }) => {
+
+   const {
+     isOpen: isVisible,
+     onClose: onClose,
+     onOpen: onOpen,
+   } = useDisclosure({ defaultIsOpen: true });
+
+
   return (
-    <Box
-      boxShadow={"lg"}
-      maxW={900}
-      margin={"auto"}
-      mb={10}
-      p={5}
-      border={borderColor}
-      borderRadius={"lg"}
-    >
-      <Text color={'brand.500'}>{message}</Text>
-    </Box>
-  );
+    
+    <>
+      {isVisible ? (
+        <Alert status={type} mb={10} w={'fit-content'}>
+          <AlertIcon />
+
+          <Box>
+            <AlertTitle>Attention!!</AlertTitle>
+          <AlertDescription>
+            {message}
+          </AlertDescription>
+          </Box>
+          
+          
+          <CloseButton
+            alignSelf="flex-start"
+            position="relative"
+            right={-1}
+            top={-1}
+            onClick={onClose}
+          />
+        </Alert>
+      ) : (
+        <></>
+      )}
+    </>
+  )
+  
+  
 };
 
 export default Announcement;

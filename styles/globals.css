@@ -69,20 +69,6 @@ hr {
 
 
 
-.share_link {
-  color: var(--primary);
-}
-
-.nb {
-  font-weight: 800;
-  color: var(--primary);
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-}
-
 .main_input {
   font-family: "Roboto", sans-serif;
   padding: 0.5em;

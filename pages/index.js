@@ -17,6 +17,20 @@ const HomePage = () => {
       }
 
       <Container maxW={1200}>
+        <HStack p={3} w={"100%"} justifyContent={"flex-end"} mb={10}>
+          <Link href="/signup">
+            <Button
+              bg={"brand.100"}
+              color={"brand.400"}
+              _hover={{
+                bg: "brand.200",
+                color: "brand.400",
+              }}
+            >
+              Sign Up
+            </Button>
+          </Link>
+        </HStack>
         <Heading textAlign={"center"} mt={10}>
           Welcome to 237 Lost and Found
         </Heading>
@@ -26,6 +40,7 @@ const HomePage = () => {
 
         <Announcement
           message={`This platform is still under construction, so you should expect some undesired behaviours, but we promise you the best in the days ahead`}
+          type={"warning"}
         />
 
         <Actionmenu />

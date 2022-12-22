@@ -38,18 +38,13 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 import { useDropzone } from "react-dropzone";
 import storage from "../firebase";
+import Announcement from "../components/Announcement";
 
 const NationalIdCollection = () => {
   const {
     isOpen: isVisible,
     onClose: onClose2,
     onOpen: onOpen2,
-  } = useDisclosure({ defaultIsOpen: true });
-
-  const {
-    isOpen: isVisible2,
-    onClose: onClose3,
-    onOpen: onOpen3,
   } = useDisclosure({ defaultIsOpen: true });
 
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
@@ -199,35 +194,9 @@ const NationalIdCollection = () => {
             ID card.
           </Heading>
 
-          {isVisible2 ? (
-            <Alert status="info" mb={10}>
-              <AlertIcon />
-
-              <Box>
-                <AlertTitle>Attention!!</AlertTitle>
-                <AlertDescription>
-                  NB:{" "}
-                  <small>
-                    All the fields with the asterisk (*) are obligatory
-                  </small>{" "}
-                  <br />
-                  We value your privacy a lot, so we will not disclose your
-                  contact information to unauthorized people.
-                </AlertDescription>
-              </Box>
-              <CloseButton
-                alignSelf="flex-start"
-                position="relative"
-                right={-1}
-                top={-1}
-                onClick={onClose3}
-              />
-            </Alert>
-          ) : (
-            <></>
-              
-            
-          )}
+          <Announcement
+            message={"NB: All the fields with the asterisk (*) are obligatory. We value your privacy a lot, so we will not disclose your contact information to unauthorized people."}
+          />
 
           <SimpleGrid color={"brand.500"} columns={2} gap={3} mb={5}>
             <Box>

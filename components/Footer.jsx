@@ -28,15 +28,14 @@ const Footer = () => {
         <Flex
           alignItems={"center"}
           justifyContent="center"
-          mt={10}
-          color="brand.100"
+          mt={isLargerThan700 ? 0 : 10}
         >
-          <Text align={"center"}>
+          <Text align={"center"} color={"brand.200"}>
             &#x00A9; 237 Lost and Found 2022 | All Rights Reserved.
           </Text>
         </Flex>
 
-        <HStack gap={5} mb={10}>
+        <HStack gap={5}>
           <a
             href="https://web.facebook.com/profile.php?id=100083184411993"
             target="_blank"
@@ -44,7 +43,7 @@ const Footer = () => {
           >
             <Icon
               fontSize={"1.5rem"}
-              transition="0.5s  ease-in-out"
+              transition="0.3s  ease-in-out"
               _hover={{
                 transform: "translateY(-0.3rem)",
               }}
@@ -55,7 +54,7 @@ const Footer = () => {
           <a href="" target="_blank" rel="noreferrer">
             <Icon
               fontSize={"1.5rem"}
-              transition="0.5s  ease-in-out"
+              transition="0.3s  ease-in-out"
               _hover={{
                 transform: "translateY(-0.3rem)",
               }}
@@ -67,7 +66,7 @@ const Footer = () => {
           <a href="" target="_blank" rel="noreferrer">
             <Icon
               fontSize={"1.5rem"}
-              transition="0.5s  ease-in-out"
+              transition="0.3s  ease-in-out"
               _hover={{
                 transform: "translateY(-0.3rem)",
               }}
