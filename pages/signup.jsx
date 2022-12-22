@@ -19,6 +19,7 @@ const Signup = () => {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   const [email, setEmail] = useState();
   const [password, setPassWord] = useState();
+  const [confirmPassword, setConfirmPassWord] = useState();
   const [isVisible, setVisible] = useState(false);
 
   createUserWithEmailAndPassword(auth, email, password)
@@ -36,7 +37,7 @@ const Signup = () => {
   return (
     <Container
       maxW={"unset"}
-      minH={"70vh"}
+      minH={"80vh"}
       w="100%"
       bg={"brand.400"}
       mb={10}
@@ -91,11 +92,50 @@ const Signup = () => {
                     if (isVisible) {
                       setVisible(false);
                     } else {
-                      setVisible(true)
+                      setVisible(true);
                     }
                   }}
                 >
-                  <FontAwesomeIcon icon={isVisible? faEyeSlash : faEye} />
+                  <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />
+                </Icon>
+              </Flex>
+            </Flex>
+          </VStack>
+
+          <VStack alignItems={"flex-start"}>
+            <Text color="brand.600"> Re-type Password:</Text>
+
+            <Flex gap={0} p={0} h="fit-content">
+              <input
+                type={isVisible ? "text" : "password"}
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassWord(e.target.value);
+                }}
+                placeholder="Password"
+                className={`main_input `}
+                required
+              />
+
+              <Flex
+                color="brand.400"
+                p={"0.2rem 0.5rem"}
+                alignItems={"center"}
+                ml={"-2rem"}
+                borderTopRightRadius={5}
+                borderBottomRightRadius={5}
+              >
+                <Icon
+                  fontSize={"1rem"}
+                  onClick={() => {
+                    if (isVisible) {
+                      setVisible(false);
+                    } else {
+                      setVisible(true);
+                    }
+                  }}
+                >
+                  <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />
                 </Icon>
               </Flex>
             </Flex>
