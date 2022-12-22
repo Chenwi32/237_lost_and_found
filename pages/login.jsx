@@ -133,53 +133,7 @@ const Signup = () => {
                 )}
               </VStack>
 
-              <VStack alignItems={"flex-start"}>
-                <Text color="brand.600"> Re-type Password:</Text>
-
-                <Flex gap={0} p={0} h="fit-content">
-                  <input
-                    {...register("confirmPassword", {
-                      required: "Verify your password",
-                    })}
-                    type={isVisible ? "text" : "password"}
-                    value={confirmPassword}
-                    onChange={(e) => {
-                      setConfirmPassWord(e.target.value);
-                    }}
-                    placeholder="Password"
-                    className={`main_input `}
-                    required
-                  />
-
-                  <Flex
-                    color="brand.400"
-                    p={"0.2rem 0.5rem"}
-                    alignItems={"center"}
-                    ml={"-2rem"}
-                    borderTopRightRadius={5}
-                    borderBottomRightRadius={5}
-                  >
-                    <Icon
-                      fontSize={"1rem"}
-                      onClick={() => {
-                        if (isVisible) {
-                          setVisible(false);
-                        } else {
-                          setVisible(true);
-                        }
-                      }}
-                    >
-                      <FontAwesomeIcon icon={isVisible ? faEye : faEyeSlash} />
-                    </Icon>
-                  </Flex>
-                </Flex>
-
-                {errors.confirmPassword && (
-                  <Text color={"brand.600"}>
-                    <small>{errors.confirmPassword.message}</small>
-                  </Text>
-                )}
-              </VStack>
+              
 
               <Button
                 bg="brand.100"
