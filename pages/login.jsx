@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
@@ -67,7 +68,7 @@ const router = useRouter();
         textAlign={"left"}
       >
         <Heading color={"brand.200"} fontSize={"1.5rem"} mb={5}>
-          Sign Up
+          Log In
         </Heading>
 
         <FormProvider {...methods}>
@@ -153,14 +154,20 @@ const router = useRouter();
                   bg: "brand.200",
                 }}
                 p={5}
+                mb={10}
                 type="submit"
                 w={"100%"}
               >
-                Create Account
+                Log In
               </Button>
             </VStack>
           </form>
         </FormProvider>
+
+        <Text mt={5}  color={'brand.600'}>
+          You don't yet have an account?
+          <Link href='/signup'><Text cursor={'pointer'} color={'brand.100'}>Create an account</Text></Link>
+        </Text>
       </Flex>
     </Container>
   );

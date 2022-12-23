@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
@@ -220,6 +221,15 @@ const Signup = () => {
             </VStack>
           </form>
         </FormProvider>
+
+        <Text mt={5} color={"brand.600"}>
+          You already have an account?
+          <Link href="/login">
+            <Text cursor={"pointer"} color={"brand.100"}>
+              Log In
+            </Text>
+          </Link>
+        </Text>
       </Flex>
     </Container>
   );
