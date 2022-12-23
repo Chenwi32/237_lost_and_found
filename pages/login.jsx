@@ -12,19 +12,23 @@ import {
 } from "@chakra-ui/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { auth } from "../firebase";
+import { useAuth } from "../components/authcontprov";
 
-const Signup = () => {
+const LogIn = () => {
+
+
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   const [email, setEmail] = useState();
   const [password, setPassWord] = useState();
-  const [confirmPassword, setConfirmPassWord] = useState();
   const [isVisible, setVisible] = useState(false);
 
   const methods = useForm({ mode: "onBlur" });
+
+const { logIn } = useAuth();
+const router = useRouter();
 
   const {
     register,
@@ -33,8 +37,15 @@ const Signup = () => {
   } = methods;
 
   const onSubmit = async (data) => {
-    console.log(data);
+    try {
+      await logIn(data.email, data.password);
+      router.push("/nationalIdCollection");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
+
+
 
   return (
     <Container
@@ -155,4 +166,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default LogIn;

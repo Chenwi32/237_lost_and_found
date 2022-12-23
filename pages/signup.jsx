@@ -12,10 +12,10 @@ import {
 } from "@chakra-ui/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { auth } from "../firebase";
+import { useAuth } from "../components/authcontprov";
 
 const Signup = () => {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
@@ -23,8 +23,16 @@ const Signup = () => {
   const [password, setPassWord] = useState();
   const [confirmPassword, setConfirmPassWord] = useState();
   const [isVisible, setVisible] = useState(false);
+  const [confirmMessage, setConfirmmessage] = useState("");
+
+  const isMatched = confirmPassword === password;
+
+
 
   const methods = useForm({ mode: "onBlur" });
+
+  const { signUp } = useAuth();
+  const router = useRouter();
 
   const {
     register,
@@ -33,7 +41,12 @@ const Signup = () => {
   } = methods;
 
   const onSubmit = async (data) => {
-    console.log(data);
+    try {
+      await signUp (data.email, data.password );
+      router.push("/nationalIdCollection");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -145,6 +158,9 @@ const Signup = () => {
                     value={confirmPassword}
                     onChange={(e) => {
                       setConfirmPassWord(e.target.value);
+                      if (confirmPassword !== password) {
+                        setConfirmmessage("Password does not match");
+                      }
                     }}
                     placeholder="Password"
                     className={`main_input `}
@@ -177,6 +193,14 @@ const Signup = () => {
                 {errors.confirmPassword && (
                   <Text color={"brand.600"}>
                     <small>{errors.confirmPassword.message}</small>
+                  </Text>
+                )}
+
+                {isMatched ? (
+                  <></>
+                ) : (
+                  <Text color={"brand.200"}>
+                    <small>{confirmMessage}</small>{" "}
                   </Text>
                 )}
               </VStack>

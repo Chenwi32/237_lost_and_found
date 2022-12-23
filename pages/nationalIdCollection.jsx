@@ -39,6 +39,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useDropzone } from "react-dropzone";
 import storage from "../firebase";
 import Announcement from "../components/Announcement";
+import ProtectedRoute from "../components/protectedroute";
 
 const NationalIdCollection = () => {
   const {
@@ -136,306 +137,310 @@ const NationalIdCollection = () => {
   };
 
   return (
-    <>
-      {
-        <Head>
-          <title>237L&F ID collection page</title>
-          <meta
-            name="description"
-            content="237 Lost and Foud | found ID card collection page"
-          />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-      }
-
-      <Container maxW={900} mb={10} mt={10}>
-        <BreadCrumbs />
-
-        {isVisible ? (
-          <Alert status="info" mb={10}>
-            <AlertIcon />
-            <Box>
-              <AlertTitle>Attention!!</AlertTitle>
-              <AlertDescription>
-                Everyone can now add data of id cards that they find here till
-                December 31 2022, after that, only people who own an account on
-                the platform will be able to add data to the platform.
-              </AlertDescription>
-            </Box>
-            <CloseButton
-              alignSelf="flex-start"
-              position="relative"
-              right={-1}
-              top={-1}
-              onClick={onClose2}
+    <ProtectedRoute>
+      <>
+        {
+          <Head>
+            <title>237L&F ID collection page</title>
+            <meta
+              name="description"
+              content="237 Lost and Foud | found ID card collection page"
             />
-          </Alert>
-        ) : (
-          <Button
-            mb={10}
-            bg="brand.100"
-            color="brand.400"
-            _hover={{
-              bg: "brand.200",
-            }}
-            onClick={onOpen2}
-          >
-            Show Alert
-          </Button>
-        )}
-        <Container maxW={900}>
-          <Heading
-            color={"brand.400"}
-            fontSize={"1.5rem"}
-            mb={5}
-            textAlign={"center"}
-          >
-            Fill in the imformation required to help the person recover his/her
-            ID card.
-          </Heading>
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+        }
 
-          <Announcement
-            message={"NB: All the fields with the asterisk (*) are obligatory. We value your privacy a lot, so we will not disclose your contact information to unauthorized people."}
-          />
+        <Container maxW={900} mb={10} mt={10}>
+          <BreadCrumbs />
 
-          <SimpleGrid color={"brand.500"} columns={2} gap={3} mb={5}>
+          {isVisible ? (
+            <Alert status="info" mb={10}>
+              <AlertIcon />
+              <Box>
+                <AlertTitle>Attention!!</AlertTitle>
+                <AlertDescription>
+                  Everyone can now add data of id cards that they find here till
+                  December 31 2022, after that, only people who own an account
+                  on the platform will be able to add data to the platform.
+                </AlertDescription>
+              </Box>
+              <CloseButton
+                alignSelf="flex-start"
+                position="relative"
+                right={-1}
+                top={-1}
+                onClick={onClose2}
+              />
+            </Alert>
+          ) : (
+            <Button
+              mb={10}
+              bg="brand.100"
+              color="brand.400"
+              _hover={{
+                bg: "brand.200",
+              }}
+              onClick={onOpen2}
+            >
+              Show Alert
+            </Button>
+          )}
+          <Container maxW={900}>
+            <Heading
+              color={"brand.400"}
+              fontSize={"1.5rem"}
+              mb={5}
+              textAlign={"center"}
+            >
+              Fill in the imformation required to help the person recover
+              his/her ID card.
+            </Heading>
+
+            <Announcement
+              message={
+                "NB: All the fields with the asterisk (*) are obligatory. We value your privacy a lot, so we will not disclose your contact information to unauthorized people."
+              }
+            />
+
+            <SimpleGrid color={"brand.500"} columns={2} gap={3} mb={5}>
+              <Box>
+                <Text fontSize={"0.9rem"} mb={2}>
+                  * ID card number :
+                </Text>
+                <input
+                  value={idnum}
+                  onChange={(e) => {
+                    setIdnum(e.target.value);
+                  }}
+                  type="number"
+                  placeholder="ID card Number"
+                  className={`main_input `}
+                  required
+                />
+              </Box>
+
+              <Box>
+                <Text fontSize={"0.9rem"} mb={2}>
+                  * Holder"s Name :
+                </Text>
+                <input
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  type="text"
+                  placeholder="Holder's Name"
+                  className={`main_input`}
+                  required
+                />
+              </Box>
+
+              <Box>
+                <Text fontSize={"0.9rem"} mb={2}>
+                  Your location :
+                </Text>
+                <input
+                  value={location}
+                  onChange={(e) => {
+                    setLocation(e.target.value);
+                  }}
+                  type="text"
+                  placeholder="Your Location"
+                  className={`main_input `}
+                  required
+                />
+              </Box>
+              <Box>
+                <Text fontSize={"0.9rem"} mb={2}>
+                  Your email :
+                </Text>
+                <input
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  type="email"
+                  placeholder="Your Email"
+                  className={`main_input `}
+                />
+              </Box>
+            </SimpleGrid>
+
             <Box>
               <Text fontSize={"0.9rem"} mb={2}>
-                * ID card number :
+                * Phone number (whatsapp/call)
               </Text>
-              <input
-                value={idnum}
-                onChange={(e) => {
-                  setIdnum(e.target.value);
-                }}
-                type="number"
-                placeholder="ID card Number"
-                className={`main_input `}
-                required
-              />
+
+              <HStack mb={5}>
+                <input
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
+                  type="tel"
+                  placeholder="code"
+                  name="phoneNumber"
+                  list="defaultTels"
+                  className="phonecode"
+                  required
+                />
+
+                <datalist id="defaultTels">
+                  <option value="+237">Cameroon</option>
+                  <option value="+234">Nigeria</option>
+                  <option value="+233">Ghana</option>
+                </datalist>
+
+                <input
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
+                  placeholder="Your phone number"
+                  className={`main_input`}
+                  name="phoneNumber"
+                  pattern="[0-9]"
+                  required
+                />
+              </HStack>
             </Box>
 
-            <Box>
-              <Text fontSize={"0.9rem"} mb={2}>
-                * Holder"s Name :
-              </Text>
-              <input
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                type="text"
-                placeholder="Holder's Name"
-                className={`main_input`}
-                required
-              />
-            </Box>
-
-            <Box>
-              <Text fontSize={"0.9rem"} mb={2}>
-                Your location :
-              </Text>
-              <input
-                value={location}
-                onChange={(e) => {
-                  setLocation(e.target.value);
-                }}
-                type="text"
-                placeholder="Your Location"
-                className={`main_input `}
-                required
-              />
-            </Box>
-            <Box>
-              <Text fontSize={"0.9rem"} mb={2}>
-                Your email :
-              </Text>
-              <input
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                type="email"
-                placeholder="Your Email"
-                className={`main_input `}
-              />
-            </Box>
-          </SimpleGrid>
-
-          <Box>
-            <Text fontSize={"0.9rem"} mb={2}>
-              * Phone number (whatsapp/call)
+            <Text textAlign={"center"} fontSize={"0.9rem"} mb={2}>
+              Upload an image of the ID card here:
             </Text>
 
-            <HStack mb={5}>
-              <input
-                onChange={(e) => {
-                  setPhoneNumber(e.target.value);
-                }}
-                type="tel"
-                placeholder="code"
-                name="phoneNumber"
-                list="defaultTels"
-                className="phonecode"
-                required
-              />
+            {/*  Drag and drop */}
 
-              <datalist id="defaultTels">
-                <option value="+237">Cameroon</option>
-                <option value="+234">Nigeria</option>
-                <option value="+233">Ghana</option>
-              </datalist>
+            <Flex
+              w={"fit-content"}
+              justifyContent={"space-between"}
+              flexDirection={"column"}
+              alignItems={"center"}
+              {...getRootProps()}
+              m={"auto"}
+              mb={10}
+            >
+              <input {...getInputProps()} />
 
-              <input
-                value={phoneNumber}
-                onChange={(e) => {
-                  setPhoneNumber(e.target.value);
-                }}
-                placeholder="Your phone number"
-                className={`main_input`}
-                name="phoneNumber"
-                pattern="[0-9]"
-                required
-              />
-            </HStack>
-          </Box>
-
-          <Text textAlign={"center"} fontSize={"0.9rem"} mb={2}>
-            Upload an image of the ID card here:
-          </Text>
-
-          {/*  Drag and drop */}
-
-          <Flex
-            w={"fit-content"}
-            justifyContent={"space-between"}
-            flexDirection={"column"}
-            alignItems={"center"}
-            {...getRootProps()}
-            m={"auto"}
-            mb={10}
-          >
-            <input {...getInputProps()} />
-
-            <Box w={"fit-content"}>
-              <Box>
-                {downloadUrl === "" ? (
-                  <Flex
-                    border="1px"
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    bg={"brand.101"}
-                    width={isLargerThan700 ? 400 : 300}
-                    height={isLargerThan700 ? 300 : 250}
-                    flexDirection={"column"}
-                  >
-                    <UploadIcon /> <Text m={0}>Drag and drop</Text>{" "}
+              <Box w={"fit-content"}>
+                <Box>
+                  {downloadUrl === "" ? (
+                    <Flex
+                      border="1px"
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                      bg={"brand.101"}
+                      width={isLargerThan700 ? 400 : 300}
+                      height={isLargerThan700 ? 300 : 250}
+                      flexDirection={"column"}
+                    >
+                      <UploadIcon /> <Text m={0}>Drag and drop</Text>{" "}
+                    </Flex>
+                  ) : (
+                    <></>
+                  )}
+                </Box>
+                {spin ? (
+                  <Flex justifyContent={"center"} alignItems={"center"}>
+                    <Spin />
                   </Flex>
                 ) : (
                   <></>
                 )}
+                {downloadUrl === "" ? (
+                  <></>
+                ) : (
+                  <Box mt={5} w={"100%"}>
+                    <iframe
+                      src={downloadUrl}
+                      allowFullScreen
+                      width={isLargerThan700 ? 500 : 300}
+                      height={isLargerThan700 ? 400 : 300}
+                    ></iframe>
+                  </Box>
+                )}
               </Box>
-              {spin ? (
-                <Flex justifyContent={"center"} alignItems={"center"}>
-                  <Spin />
-                </Flex>
-              ) : (
-                <></>
-              )}
-              {downloadUrl === "" ? (
-                <></>
-              ) : (
-                <Box mt={5} w={"100%"}>
-                  <iframe
-                    src={downloadUrl}
-                    allowFullScreen
-                    width={isLargerThan700 ? 500 : 300}
-                    height={isLargerThan700 ? 400 : 300}
-                  ></iframe>
-                </Box>
-              )}
-            </Box>
-          </Flex>
-        </Container>
-        <Controls dataHandler={handleEmtyIn} buttonText={btnText} />
-        <ToastContainer />
-        {/* Modal */}
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Check if everything is okay</ModalHeader>
-            <ModalCloseButton
-              color={"brand.400"}
-              _hover={{
-                bg: "brand.200",
-              }}
-            />
-            <ModalBody>
-              <VStack alignItems={"flex-start"}>
-                <HStack>
-                  <Text>ID Number:</Text>
-                  <Text fontWeight={600} color={"brand.400"}>
-                    {idnum}
-                  </Text>
-                </HStack>
-
-                <HStack>
-                  <Text>Holder's name:</Text>
-                  <Text fontWeight={600} color={"brand.400"}>
-                    {name}
-                  </Text>
-                </HStack>
-
-                <HStack>
-                  <Text>Your Location:</Text>
-                  <Text fontWeight={600} color={"brand.400"}>
-                    {location}
-                  </Text>
-                </HStack>
-
-                <HStack>
-                  <Text>Your email:</Text>
-                  <Text fontWeight={600} color={"brand.400"}>
-                    {email}
-                  </Text>
-                </HStack>
-
-                <HStack>
-                  <Text>Phone number:</Text>
-                  <Text fontWeight={600} color={"brand.400"}>
-                    {phoneNumber}
-                  </Text>
-                </HStack>
-              </VStack>
-            </ModalBody>
-
-            <ModalFooter>
-              <Button
+            </Flex>
+          </Container>
+          <Controls dataHandler={handleEmtyIn} buttonText={btnText} />
+          <ToastContainer />
+          {/* Modal */}
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Check if everything is okay</ModalHeader>
+              <ModalCloseButton
                 color={"brand.400"}
-                bg={"brand.200"}
-                _hover={{
-                  bg: "brand.100",
-                }}
-                mr={3}
-                onClick={onClose}
-              >
-                Close
-              </Button>
-              <Button
-                onClick={sendData}
                 _hover={{
                   bg: "brand.200",
                 }}
-                bg={"brand.100"}
-                color={"brand.400"}
-              >
-                Send
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </Container>
-    </>
+              />
+              <ModalBody>
+                <VStack alignItems={"flex-start"}>
+                  <HStack>
+                    <Text>ID Number:</Text>
+                    <Text fontWeight={600} color={"brand.400"}>
+                      {idnum}
+                    </Text>
+                  </HStack>
+
+                  <HStack>
+                    <Text>Holder's name:</Text>
+                    <Text fontWeight={600} color={"brand.400"}>
+                      {name}
+                    </Text>
+                  </HStack>
+
+                  <HStack>
+                    <Text>Your Location:</Text>
+                    <Text fontWeight={600} color={"brand.400"}>
+                      {location}
+                    </Text>
+                  </HStack>
+
+                  <HStack>
+                    <Text>Your email:</Text>
+                    <Text fontWeight={600} color={"brand.400"}>
+                      {email}
+                    </Text>
+                  </HStack>
+
+                  <HStack>
+                    <Text>Phone number:</Text>
+                    <Text fontWeight={600} color={"brand.400"}>
+                      {phoneNumber}
+                    </Text>
+                  </HStack>
+                </VStack>
+              </ModalBody>
+
+              <ModalFooter>
+                <Button
+                  color={"brand.400"}
+                  bg={"brand.200"}
+                  _hover={{
+                    bg: "brand.100",
+                  }}
+                  mr={3}
+                  onClick={onClose}
+                >
+                  Close
+                </Button>
+                <Button
+                  onClick={sendData}
+                  _hover={{
+                    bg: "brand.200",
+                  }}
+                  bg={"brand.100"}
+                  color={"brand.400"}
+                >
+                  Send
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        </Container>
+      </>
+    </ProtectedRoute>
   );
 };
 
