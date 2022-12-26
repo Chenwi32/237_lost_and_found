@@ -42,12 +42,12 @@ export default function Header() {
   
   useEffect(() => {
   
-  if (user !== null) {
+  if (user.email !== null) {
     const string = user.email.toString();
     const firstTwo = string.substring(0, 2);
     setUserCha(firstTwo);
   }
-}, [])
+}, [user])
 
 
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
