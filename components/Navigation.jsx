@@ -130,7 +130,7 @@ export default function Header() {
                 p={isLargerThan700 ? 2 : 1}
                 fontSize={isLargerThan700 ? "initial" : "0.8rem"}
               >
-                Contact Us
+                Contact
               </Button>
             </Link>
 
@@ -161,13 +161,14 @@ export default function Header() {
                     _hover={{
                       bg: "brand.400",
                     }}
+                  
                   >
                     {userCha}
                   </MenuButton>
 
-                  <MenuList p={0} minW={'unset'} w={100} >
+                  <MenuList p={0} minW={'unset'} w={'fit-content'} >
                     <MenuGroup>
-                      <MenuItem  onClick={onOpen}>Log Out</MenuItem>
+                      <MenuItem fontSize={'1.1rem'}  onClick={onOpen}>Log Out</MenuItem>
                       </MenuGroup>
                    </MenuList>
                 

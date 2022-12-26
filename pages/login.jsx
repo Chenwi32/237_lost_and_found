@@ -6,17 +6,20 @@ import {
   Heading,
   HStack,
   Icon,
+  Image,
   Text,
   useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useAuth } from "../components/authcontprov";
+import { auth } from "../firebase";
 
 const LogIn = () => {
 
@@ -47,6 +50,33 @@ const router = useRouter();
   };
 
 
+  const provider = new GoogleAuthProvider();
+
+  /* Google auth */
+
+  const signInWthGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log({ credential, token, user });
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log({ errorCode, errorMessage, email, credential });
+      });
+  };
+
+
 
   return (
     <Container
@@ -57,7 +87,6 @@ const router = useRouter();
       bg={"brand.400"}
       mb={10}
       borderBottomLeftRadius={isLargerThan700 ? "10rem" : "5rem"}
-
       p={5}
     >
       <Flex
@@ -74,8 +103,8 @@ const router = useRouter();
 
         <FormProvider {...methods}>
           <form action="" onSubmit={handleSubmit(onSubmit)}>
-            <VStack w={"100%"} alignItems={"center"}>
-              <VStack alignItems={"flex-start"}>
+            <Flex flexDirection={"column"} w={"100%"} alignItems={"center"}>
+              <Flex flexDirection={"column"} alignItems={"flex-start"} mb={5}>
                 <Text color="brand.600">Email:</Text>
                 <input
                   {...register("email", { required: "Email is required" })}
@@ -95,9 +124,9 @@ const router = useRouter();
                     <small>{errors.email.message}</small>{" "}
                   </Text>
                 )}
-              </VStack>
+              </Flex>
 
-              <VStack alignItems={"flex-start"}>
+              <Flex flexDirection={"column"} alignItems={"flex-start"} mb={10}>
                 <Text color="brand.600">Password:</Text>
 
                 <Flex gap={0} p={0} h="fit-content">
@@ -144,9 +173,7 @@ const router = useRouter();
                     <small>{errors.password.message}</small>{" "}
                   </Text>
                 )}
-              </VStack>
-
-              
+              </Flex>
 
               <Button
                 bg="brand.100"
@@ -161,13 +188,37 @@ const router = useRouter();
               >
                 Log In
               </Button>
-            </VStack>
+
+              <Heading color={"brand.600"}  fontSize={"1rem"}>
+                Or
+              </Heading>
+
+              <Flex
+                w={"100%"}
+                justifyContent={"center"}
+                cursor="pointer"
+                borderRadius="lg"
+                bg={"brand.600"}
+                onClick={signInWthGoogle}
+                mt={10}
+                gap={3}
+                alignItems={"center"}
+                p={"0.5rem"}
+              >
+                <Image w={7} h={7} alt="google" src="/images/google.png" />
+                <Text>Google</Text>
+              </Flex>
+            </Flex>
           </form>
         </FormProvider>
 
-        <Text mt={5}  color={'brand.600'}>
+        <Text mt={5} color={"brand.600"}>
           You don't yet have an account?
-          <Link href='/signup'><Text cursor={'pointer'} color={'brand.100'}>Create an account</Text></Link>
+          <Link href="/signup">
+            <Text cursor={"pointer"} color={"brand.100"}>
+              Create an account
+            </Text>
+          </Link>
         </Text>
       </Flex>
     </Container>
