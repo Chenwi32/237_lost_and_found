@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
 
@@ -45,6 +45,8 @@ export const AuthContextProvider = ({ children }) => {
       setUser({ email: null, uid: null });
       await signOut(auth);
     };
+
+
 
   return (
     <AuthContext.Provider value={{ user, signUp, logIn, logOut }}>

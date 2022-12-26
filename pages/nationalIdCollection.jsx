@@ -192,7 +192,7 @@ const NationalIdCollection = () => {
               mb={5}
               textAlign={"center"}
             >
-              Fill in the imformation required to help the person recover
+              Fill in the information required to help the person recover
               his/her ID card.
             </Heading>
 

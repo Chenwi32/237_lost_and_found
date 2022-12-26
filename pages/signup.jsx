@@ -6,17 +6,20 @@ import {
   Heading,
   HStack,
   Icon,
+  Image,
   Text,
   useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useAuth } from "../components/authcontprov";
+import { auth } from "../firebase";
 
 const Signup = () => {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
@@ -27,8 +30,6 @@ const Signup = () => {
   const [confirmMessage, setConfirmmessage] = useState("");
 
   const isMatched = confirmPassword === password;
-
-
 
   const methods = useForm({ mode: "onBlur" });
 
@@ -43,11 +44,37 @@ const Signup = () => {
 
   const onSubmit = async (data) => {
     try {
-      await signUp (data.email, data.password );
+      await signUp(data.email, data.password);
       router.push("/nationalIdCollection");
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  const provider = new GoogleAuthProvider();
+
+  /* Google auth */
+
+  const signInWthGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log({ credential, token, user });
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log({ errorCode, errorMessage, email, credential });
+      });
   };
 
   return (
@@ -59,7 +86,7 @@ const Signup = () => {
       bg={"brand.400"}
       mb={10}
       borderBottomLeftRadius={isLargerThan700 ? "10rem" : "5rem"}
-      borderTopRightRadius={isLargerThan700 ? "10rem" : 0}
+      p={5}
     >
       <Flex
         m="auto"
@@ -69,14 +96,24 @@ const Signup = () => {
         alignItems="center"
         textAlign={"left"}
       >
-        <Heading color={"brand.200"} fontSize={"1.5rem"} mb={5}>
+        <Heading
+          
+          textAlign={"left"}
+          color={"brand.200"}
+          fontSize={"1.5rem"}
+          mb={5}
+        >
           Sign Up
         </Heading>
 
         <FormProvider {...methods}>
-          <form action="" onSubmit={handleSubmit(onSubmit)}>
-            <VStack w={"100%"} alignItems={"center"}>
-              <VStack alignItems={"flex-start"}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Flex flexDirection={"column"}  alignItems={"center"}>
+              <Flex
+                
+                flexDirection={"column"}
+                alignItems={"flex-start"}
+              >
                 <Text color="brand.600">Email:</Text>
                 <input
                   {...register("email", { required: "Email is required" })}
@@ -96,12 +133,16 @@ const Signup = () => {
                     <small>{errors.email.message}</small>{" "}
                   </Text>
                 )}
-              </VStack>
+              </Flex>
 
-              <VStack alignItems={"flex-start"}>
+              <Flex
+                flexDirection={"column"}
+                
+                alignItems={"flex-start"}
+              >
                 <Text color="brand.600">Password:</Text>
 
-                <Flex gap={0} p={0} h="fit-content">
+                <Flex  gap={0} p={0} h="fit-content">
                   <input
                     {...register("password", {
                       required: "Password is required",
@@ -117,6 +158,7 @@ const Signup = () => {
                   />
 
                   <Flex
+                    
                     color="brand.400"
                     p={"0.2rem 0.5rem"}
                     alignItems={"center"}
@@ -145,9 +187,9 @@ const Signup = () => {
                     <small>{errors.password.message}</small>{" "}
                   </Text>
                 )}
-              </VStack>
+              </Flex>
 
-              <VStack alignItems={"flex-start"}>
+              <Flex flexDirection={"column"} mb={5} alignItems={"flex-start"}>
                 <Text color="brand.600"> Re-type Password:</Text>
 
                 <Flex gap={0} p={0} h="fit-content">
@@ -204,7 +246,7 @@ const Signup = () => {
                     <small>{confirmMessage}</small>{" "}
                   </Text>
                 )}
-              </VStack>
+              </Flex>
 
               <Button
                 bg="brand.100"
@@ -218,7 +260,26 @@ const Signup = () => {
               >
                 Create Account
               </Button>
-            </VStack>
+              <Heading color={"brand.600"} mt={10} fontSize={"1.5rem"}>
+                OR
+              </Heading>
+
+              <Flex
+                w={"100%"}
+                justifyContent={"center"}
+                cursor="pointer"
+                borderRadius="lg"
+                bg={"brand.600"}
+                onClick={signInWthGoogle}
+                mt={10}
+                gap={3}
+                alignItems={"center"}
+                p={"0.5rem"}
+              >
+                <Image w={7} h={7} alt="google" src="/images/google.png" />
+                <Text>Google</Text>
+              </Flex>
+            </Flex>
           </form>
         </FormProvider>
 

@@ -57,7 +57,8 @@ const router = useRouter();
       bg={"brand.400"}
       mb={10}
       borderBottomLeftRadius={isLargerThan700 ? "10rem" : "5rem"}
-      borderTopRightRadius={isLargerThan700 ? "10rem" : 0}
+
+      p={5}
     >
       <Flex
         m="auto"
