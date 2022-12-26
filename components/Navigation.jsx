@@ -19,9 +19,15 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuGroup,
+  MenuItem,
+  MenuDivider,
 } from "@chakra-ui/react";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "./authcontprov";
@@ -30,6 +36,19 @@ import { useRouter } from "next/router";
 export default function Header() {
   const { user, logOut } = useAuth();
   const router = useRouter();
+
+  const [userCha, setUserCha] = useState('')
+
+  
+  useEffect(() => {
+  
+  if (user !== null) {
+    const string = user.email.toString();
+    const firstTwo = string.substring(0, 2);
+    setUserCha(firstTwo);
+  }
+}, [])
+
 
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
@@ -40,6 +59,7 @@ export default function Header() {
     try {
       await logOut();
       router.push("/login");
+
     } catch (error) {
       console.log(error.message);
     }
@@ -130,21 +150,28 @@ export default function Header() {
               </Button>
             </Link>
             {user.uid ? (
-              <VStack>
-                <Text>{user.email}</Text>
-                <Button
-                  bg="brand.100"
-                  color="brand.400"
-                  _hover={{
-                    bg: "brand.200",
-                  }}
-                  p={2}
-                  fontSize={isLargerThan700 ? "initial" : "0.8rem"}
-                  onClick={onOpen}
-                >
-                  Log Out
-                </Button>
-              </VStack>
+              
+                <Menu  >
+                  <MenuButton
+                    as={Button}
+                    bg={"brand.400"}
+                    color="brand.600"
+                    p={"0.3rem 0.5rem"}
+                    borderRadius="lg"
+                    _hover={{
+                      bg: "brand.400",
+                    }}
+                  >
+                    {userCha}
+                  </MenuButton>
+
+                  <MenuList p={0} minW={'unset'} w={100} >
+                    <MenuGroup>
+                      <MenuItem  onClick={onOpen}>Log Out</MenuItem>
+                      </MenuGroup>
+                   </MenuList>
+                
+                </Menu>
             ) : (
               <Link href="/signup">
                 <Button
@@ -173,7 +200,7 @@ export default function Header() {
                   <Text>Are you sure you want to Log out?</Text>
                 </ModalBody>
 
-                <ModalFooter display={'flex'} justifyContent='space-between'>
+                <ModalFooter display={"flex"} justifyContent="space-between">
                   <Button
                     color={"brand.400"}
                     bg={"brand.200"}
@@ -187,9 +214,9 @@ export default function Header() {
                   </Button>
                   <Button
                     onClick={() => {
-                      onClose()
-                      handleLogout()
-                    } }
+                      onClose();
+                      handleLogout();
+                    }}
                     _hover={{
                       bg: "brand.200",
                     }}
