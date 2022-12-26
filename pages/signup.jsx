@@ -19,6 +19,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useAuth } from "../components/authcontprov";
+import Protectsignin from "../components/protectsignin";
 import { auth } from "../firebase";
 
 const Signup = () => {
@@ -78,7 +79,9 @@ const Signup = () => {
   };
 
   return (
-    <Container
+
+    <Protectsignin>
+      <Container
       maxW={"unset"}
       minH="80vh"
       h="fit-content"
@@ -97,7 +100,6 @@ const Signup = () => {
         textAlign={"left"}
       >
         <Heading
-          
           textAlign={"left"}
           color={"brand.200"}
           fontSize={"1.5rem"}
@@ -108,12 +110,8 @@ const Signup = () => {
 
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Flex flexDirection={"column"}  alignItems={"center"}>
-              <Flex
-                
-                flexDirection={"column"}
-                alignItems={"flex-start"}
-              >
+            <Flex flexDirection={"column"} alignItems={"center"}>
+              <Flex flexDirection={"column"} alignItems={"flex-start"} mb={5}>
                 <Text color="brand.600">Email:</Text>
                 <input
                   {...register("email", { required: "Email is required" })}
@@ -135,14 +133,10 @@ const Signup = () => {
                 )}
               </Flex>
 
-              <Flex
-                flexDirection={"column"}
-                
-                alignItems={"flex-start"}
-              >
+              <Flex mb={5} flexDirection={"column"} alignItems={"flex-start"}>
                 <Text color="brand.600">Password:</Text>
 
-                <Flex  gap={0} p={0} h="fit-content">
+                <Flex gap={0} p={0} h="fit-content">
                   <input
                     {...register("password", {
                       required: "Password is required",
@@ -158,7 +152,6 @@ const Signup = () => {
                   />
 
                   <Flex
-                    
                     color="brand.400"
                     p={"0.2rem 0.5rem"}
                     alignItems={"center"}
@@ -189,7 +182,7 @@ const Signup = () => {
                 )}
               </Flex>
 
-              <Flex flexDirection={"column"} mb={5} alignItems={"flex-start"}>
+              <Flex flexDirection={"column"} mb={10} alignItems={"flex-start"}>
                 <Text color="brand.600"> Re-type Password:</Text>
 
                 <Flex gap={0} p={0} h="fit-content">
@@ -260,8 +253,8 @@ const Signup = () => {
               >
                 Create Account
               </Button>
-              <Heading color={"brand.600"} mt={10} fontSize={"1.5rem"}>
-                OR
+              <Heading color={"brand.600"} mt={10} fontSize={"1rem"}>
+                Or
               </Heading>
 
               <Flex
@@ -293,6 +286,9 @@ const Signup = () => {
         </Text>
       </Flex>
     </Container>
+    </Protectsignin>
+
+    
   );
 };
 

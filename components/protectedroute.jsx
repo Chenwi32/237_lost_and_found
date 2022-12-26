@@ -10,6 +10,9 @@ const ProtectedRoute = ({ children }) => {
     if (!user.uid) {
       router.push("/login");
     }
+    if (user.uid) {
+      router.push('/')
+    }
   }, [router, user]);
   return <div>{user ? children : null}</div>;
 };

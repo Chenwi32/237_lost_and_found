@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styles from "./styles/Navigation.module.css";
 
 import {
   Image,
@@ -12,6 +11,14 @@ import {
   HStack,
   VStack,
   Text,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import React from "react";
@@ -20,15 +27,16 @@ import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "./authcontprov";
 import { useRouter } from "next/router";
 
-
 export default function Header() {
-
-   const { user, logOut } = useAuth();
-   const router = useRouter();
+  const { user, logOut } = useAuth();
+  const router = useRouter();
 
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
-  
-   const handleLogout = async () => {
+
+  /* Modal */
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleLogout = async () => {
     try {
       await logOut();
       router.push("/login");
@@ -121,38 +129,78 @@ export default function Header() {
                 </Icon>
               </Button>
             </Link>
-            {user.uid ?
+            {user.uid ? (
               <VStack>
-
-                <Text>{ user.email}</Text>
+                <Text>{user.email}</Text>
                 <Button
-              bg="brand.100"
-              color="brand.400"
-              _hover={{
-                bg: "brand.200",
-              }}
-              p={2}
-              fontSize={isLargerThan700 ? "initial" : "0.8rem"}
-              onClick={handleLogout}
-            >
-              Log Out
-            </Button> 
-              </VStack>:  <Link href="/signup">
-              <Button
-                bg="brand.100"
-                color="brand.400"
-                _hover={{
-                  bg: "brand.200",
-                }}
-                p={2}
-                fontSize={isLargerThan700 ? "initial" : "0.8rem"}
-              >
-                Sign Up
-              </Button>
-            </Link>
-            }
+                  bg="brand.100"
+                  color="brand.400"
+                  _hover={{
+                    bg: "brand.200",
+                  }}
+                  p={2}
+                  fontSize={isLargerThan700 ? "initial" : "0.8rem"}
+                  onClick={onOpen}
+                >
+                  Log Out
+                </Button>
+              </VStack>
+            ) : (
+              <Link href="/signup">
+                <Button
+                  bg="brand.100"
+                  color="brand.400"
+                  _hover={{
+                    bg: "brand.200",
+                  }}
+                  p={2}
+                  fontSize={isLargerThan700 ? "initial" : "0.8rem"}
+                >
+                  Sign Up
+                </Button>
+              </Link>
+            )}
+            <Modal isOpen={isOpen} onClose={onClose}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalCloseButton
+                  color={"brand.400"}
+                  _hover={{
+                    bg: "brand.200",
+                  }}
+                />
+                <ModalBody>
+                  <Text>Are you sure you want to Log out?</Text>
+                </ModalBody>
 
-           
+                <ModalFooter display={'flex'} justifyContent='space-between'>
+                  <Button
+                    color={"brand.400"}
+                    bg={"brand.200"}
+                    _hover={{
+                      bg: "brand.100",
+                    }}
+                    mr={3}
+                    onClick={onClose}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      onClose()
+                      handleLogout()
+                    } }
+                    _hover={{
+                      bg: "brand.200",
+                    }}
+                    bg={"brand.100"}
+                    color={"brand.400"}
+                  >
+                    Yes
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
           </Flex>
         </Flex>
       </chakra.header>
