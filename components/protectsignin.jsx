@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { toast, ToastContainer } from "react-toastify";
 import { useAuth } from "./authcontprov";
 
 const Protectsignin = ({ children }) => {
@@ -10,7 +9,7 @@ const Protectsignin = ({ children }) => {
   useEffect(() => {
     if (user.uid) {
       router.push("/");
-      alert("You are already logged in")
+      alert(`${user.email} is already logged in`)
     }
    
   }, [router, user]);

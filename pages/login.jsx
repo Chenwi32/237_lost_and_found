@@ -18,6 +18,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import Announcement from "../components/Announcement";
 import { useAuth } from "../components/authcontprov";
 import Protectsignin from "../components/protectsignin";
 import { auth } from "../firebase";
@@ -29,6 +30,7 @@ const LogIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassWord] = useState();
   const [isVisible, setVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const methods = useForm({ mode: "onBlur" });
 
@@ -46,7 +48,7 @@ const router = useRouter();
       await logIn(data.email, data.password);
       router.push("/nationalIdCollection");
     } catch (error) {
-      console.log(error.message);
+      setErrorMessage(error.message);
     }
   };
 
@@ -73,7 +75,7 @@ const router = useRouter();
         const email = error.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        console.log({ errorCode, errorMessage, email, credential });
+        alert(` ${errorCode}, ${errorMessage}, ${email}, ${credential} `);
       });
   };
 
@@ -82,6 +84,8 @@ const router = useRouter();
   return (
 
     <Protectsignin>
+
+
       <Container
       maxW={"unset"}
       minH="80vh"
@@ -104,6 +108,10 @@ const router = useRouter();
           Log In
         </Heading>
 
+      {errorMessage === '' ? <></> :
+        (
+          <Announcement message={errorMessage} type={'error'}/>
+    )}
         <FormProvider {...methods}>
           <form action="" onSubmit={handleSubmit(onSubmit)}>
             <Flex flexDirection={"column"} w={"100%"} alignItems={"center"}>

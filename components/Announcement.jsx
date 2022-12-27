@@ -17,7 +17,7 @@ const Announcement = ({ message, type }) => {
           <AlertIcon />
 
           <Box>
-            <AlertTitle>Attention!!</AlertTitle>
+           
           <AlertDescription>
             {message}
           </AlertDescription>
