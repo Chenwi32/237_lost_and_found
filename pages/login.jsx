@@ -19,6 +19,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useAuth } from "../components/authcontprov";
+import Protectsignin from "../components/protectsignin";
 import { auth } from "../firebase";
 
 const LogIn = () => {
@@ -79,7 +80,9 @@ const router = useRouter();
 
 
   return (
-    <Container
+
+    <Protectsignin>
+      <Container
       maxW={"unset"}
       minH="80vh"
       h="fit-content"
@@ -222,6 +225,8 @@ const router = useRouter();
         </Text>
       </Flex>
     </Container>
+    </Protectsignin>
+    
   );
 };
 
