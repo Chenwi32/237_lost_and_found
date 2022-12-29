@@ -1,4 +1,4 @@
-import { Button, Container, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, HStack, Text, useMediaQuery } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
 import Actionmenu from "../components/actionmenu";
@@ -7,6 +7,8 @@ import AvilableDocs from "../components/avilableDocs";
 import Cta from "../components/cta";
 
 const HomePage = () => {
+
+   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   return (
     <>
       {
@@ -62,6 +64,8 @@ const HomePage = () => {
             </Button>
           </Link>
         </HStack>
+
+        <Box w={'100%'} display={isLargerThan700? 'none' : 'block'} bg='brand.400' h={'1px'} mb={10}> </Box>
 
         <Cta/>
       </Container>
