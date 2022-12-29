@@ -7,11 +7,11 @@ const Cta = () => {
 
     const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
     return (
-      <Container mb={10} maxW={900}>
+      <Container mb={10} maxW={900} p={isLargerThan700? 'initial' : 0}>
         <Flex justifyContent={"space-between"} flexDirection={isLargerThan700? 'row' : 'column'}>
           <Image src="/images/cta.png" w={400} h={300} />
 
-                <Flex justifyContent={'center'} flexDirection={'column'} boxShadow={"2xl"} minW={400} ninH={300} borderRadius="xl" p={10}>
+                <Flex justifyContent={'center'} flexDirection={'column'} boxShadow={"2xl"} minW={400} ninH={300} borderRadius="xl" p={10} mt={isLargerThan700? 0 : 5}>
 
                     <Text>
                         Help someone recover his/her document
