@@ -4,6 +4,7 @@ import Link from "next/link";
 import Actionmenu from "../components/actionmenu";
 import Announcement from "../components/Announcement";
 import AvilableDocs from "../components/avilableDocs";
+import Cta from "../components/cta";
 
 const HomePage = () => {
   return (
@@ -61,6 +62,8 @@ const HomePage = () => {
             </Button>
           </Link>
         </HStack>
+
+        <Cta/>
       </Container>
     </>
   );
