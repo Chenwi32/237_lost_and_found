@@ -22,6 +22,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <AuthContextProvider>
+        <ChakraProvider theme={theme}>
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -33,7 +34,7 @@ function MyApp({ Component, pageProps }) {
           <title>237 Lost & found</title>
         </Head>
 
-        <ChakraProvider theme={theme}>
+        
           <Layout>
             <Component {...pageProps} />
           </Layout>

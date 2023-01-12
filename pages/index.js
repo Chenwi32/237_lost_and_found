@@ -15,6 +15,10 @@ const HomePage = () => {
         <Head>
           <title>237L&F home page</title>
           <meta name="description" content="237 Lost and Found home page" />
+          <meta
+            name="google-site-verification"
+            content="xs39n7Ir_oqjJtD6C39rsAdCqz9DUEPpFVdb8cJjufE"
+          />
           <link rel="icon" href="/favicon.ico" />
         </Head>
       }
@@ -65,9 +69,17 @@ const HomePage = () => {
           </Link>
         </HStack>
 
-        <Box w={'100%'} display={isLargerThan700? 'none' : 'block'} bg='brand.400' h={'1px'} mb={10}> </Box>
+        <Box
+          w={"100%"}
+          display={isLargerThan700 ? "none" : "block"}
+          bg="brand.400"
+          h={"1px"}
+          mb={10}
+        >
+          {" "}
+        </Box>
 
-        <Cta/>
+        <Cta />
       </Container>
     </>
   );
