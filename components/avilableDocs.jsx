@@ -63,26 +63,37 @@ const AvilableDocs = () => {
 
       <SimpleGrid columns={isLargerThan700 ? 2 : 1} gap={5} columnGap={5}>
         {loading ? (
-
           <>
-            
-          
-           <Box padding="6" boxShadow="lg" bg="white">
-            <SkeletonCircle size="10" />
-            <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
+            <Box padding="6" boxShadow="lg" bg="white">
+              <SkeletonCircle size="10" />
+              <SkeletonText
+                mt="4"
+                noOfLines={4}
+                spacing="4"
+                skeletonHeight="2"
+              />
             </Box>
-            
-           <Box padding="6" boxShadow="lg" bg="white">
-            <SkeletonCircle size="10" />
-            <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
+
+            <Box padding="6" boxShadow="lg" bg="white">
+              <SkeletonCircle size="10" />
+              <SkeletonText
+                mt="4"
+                noOfLines={4}
+                spacing="4"
+                skeletonHeight="2"
+              />
             </Box>
-            
-           <Box padding="6" boxShadow="lg" bg="white">
-            <SkeletonCircle size="10" />
-            <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
-          </Box>
+
+            <Box padding="6" boxShadow="lg" bg="white">
+              <SkeletonCircle size="10" />
+              <SkeletonText
+                mt="4"
+                noOfLines={4}
+                spacing="4"
+                skeletonHeight="2"
+              />
+            </Box>
           </>
-         
         ) : (
           foundIds.map((id) => {
             return (
@@ -92,52 +103,69 @@ const AvilableDocs = () => {
                 boxShadow={"lg"}
                 border={"1px solid"}
                 borderRadius="lg"
-                flexDirection={'column'}
-                alignItems={'center'}
+                flexDirection={"column"}
+                alignItems={"center"}
               >
-                <Image src={id.idimage}
-                  w={"100%"}
-                  h={250}
-                  mb={5}
-                />
+                <Box position={"relative"} w="100%">
+                  <Image
+                    src={id.idimage}
+                    w={"100%"}
+                    h={250}
+                    mb={5}
+                    backdropBlur="0px"
+                  />
+                  <Box
+                    h={"100%"}
+                    backdropFilter="auto"
+                    position="absolute"
+                    backdropBlur={"5px"}
+                    
+                    top={0}
+                    right={0}
+                    width="100%"
+                  ></Box>
+                </Box>
 
-                <VStack alignItems='flex-start' justifyContent={'flex-start'} w="100%">
-                  <HStack >
-                  <Text>ID Number:</Text>
-                  <Text fontWeight={600} color={"brand.400"}>
-                    {id.idnum}
-                  </Text>
-                </HStack>
-
-                <HStack mb={5}>
-                  <Text>Holder's Name:</Text>
-
-                  <Text fontWeight={600} color={"brand.400"}>
-                    {id.name}
-                  </Text>
-                </HStack>
-                <HStack mb={5}>
-                  <Text>It was found in:</Text>
-
-                  <Text fontWeight={600} color={"brand.400"}>
-                    {id.location}
-                  </Text>
-                </HStack>
-
-                <Button
-                  mb={5}
-                  bg={"brand.100"}
-                  color={"brand.400"}
-                  _hover={{
-                    bg: "brand.200",
-                    color: "brand.400",
-                  }}
-                  boxShadow={"lg"}
+                <VStack
+                  alignItems="flex-start"
+                  justifyContent={"flex-start"}
+                  w="100%"
                 >
-                  This is my ID card
-                </Button>
+                  <HStack>
+                    <Text>ID Number:</Text>
+                    <Text fontWeight={600} color={"brand.400"}>
+                      {id.idnum}
+                    </Text>
+                  </HStack>
+
+                  <HStack mb={5}>
+                    <Text>Holder's Name:</Text>
+
+                    <Text fontWeight={600} color={"brand.400"}>
+                      {id.name}
+                    </Text>
+                  </HStack>
+                  <HStack mb={5}>
+                    <Text>It was found in:</Text>
+
+                    <Text fontWeight={600} color={"brand.400"}>
+                      {id.location}
+                    </Text>
+                  </HStack>
+
+                  <Button
+                    mb={5}
+                    bg={"brand.100"}
+                    color={"brand.400"}
+                    _hover={{
+                      bg: "brand.200",
+                      color: "brand.400",
+                    }}
+                    boxShadow={"lg"}
+                  >
+                    This is my ID card
+                  </Button>
                 </VStack>
-                
               </Flex>
             );
           })
