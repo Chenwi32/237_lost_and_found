@@ -32,23 +32,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "./authcontprov";
 import { useRouter } from "next/router";
+import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 
 export default function Header() {
   const { user, logOut } = useAuth();
   const router = useRouter();
 
-  const [userCha, setUserCha] = useState('')
+  const [userCha, setUserCha] = useState("");
 
-  
   useEffect(() => {
-  
-  if (user.email !== null) {
-    const string = user.email.toString();
-    const firstTwo = string.substring(0, 2);
-    setUserCha(firstTwo);
-  }
-}, [user])
-
+    if (user.email !== null) {
+      const string = user.email.toString();
+      const firstTwo = string.substring(0, 2);
+      setUserCha(firstTwo);
+    }
+  }, [user]);
 
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
@@ -59,7 +57,6 @@ export default function Header() {
     try {
       await logOut();
       router.push("/login");
-
     } catch (error) {
       console.log(error.message);
     }
@@ -67,12 +64,15 @@ export default function Header() {
 
   return (
     <Container
-      bg={"brand.700"}
+      bg={"brand.600"}
       boxShadow={"md"}
       w={"100%"}
       maxW={"unset"}
       padding={isLargerThan700 ? 2 : 1}
       mb={10}
+      position={"sticky"}
+      top={0}
+      zIndex={1}
     >
       <chakra.header maxW={1200} m={"auto"} id="header">
         <Flex
@@ -83,15 +83,19 @@ export default function Header() {
           justify="space-between"
         >
           <Link href="/">
-            <a>
-              <Image alt="logo" src="/images/logo.png" h="50px" />
-            </a>
+            <Image
+              cursor={"pointer"}
+              alt="logo"
+              src="/images/logo.png"
+              h="50px"
+            />
           </Link>
 
           <Flex
             alignItems={"center"}
             gap={isLargerThan700 ? 2 : 1}
             fontSize={isLargerThan700 ? "initial" : "0.5rem"}
+            display={isLargerThan700 ? "inherit" : "none"}
           >
             <Link href="/feeds">
               <Button
@@ -150,29 +154,28 @@ export default function Header() {
               </Button>
             </Link>
             {user.uid ? (
-              
-                <Menu  >
-                  <MenuButton
-                    as={Button}
-                    bg={"brand.400"}
-                    color="brand.600"
-                    p={"0.3rem 0.5rem"}
-                    borderRadius="lg"
-                    _hover={{
-                      bg: "brand.400",
-                    }}
-                  
-                  >
-                    {userCha}
-                  </MenuButton>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  bg={"brand.400"}
+                  color="brand.600"
+                  p={"0.3rem 0.5rem"}
+                  borderRadius="lg"
+                  _hover={{
+                    bg: "brand.400",
+                  }}
+                >
+                  {userCha}
+                </MenuButton>
 
-                  <MenuList p={0} minW={'unset'} w={'fit-content'} >
-                    <MenuGroup>
-                      <MenuItem fontSize={'1.1rem'}  onClick={onOpen}>Log Out</MenuItem>
-                      </MenuGroup>
-                   </MenuList>
-                
-                </Menu>
+                <MenuList p={0} minW={"unset"} w={"fit-content"}>
+                  <MenuGroup>
+                    <MenuItem fontSize={"1.1rem"} onClick={onOpen}>
+                      Log Out
+                    </MenuItem>
+                  </MenuGroup>
+                </MenuList>
+              </Menu>
             ) : (
               <Link href="/signup">
                 <Button
@@ -230,6 +233,121 @@ export default function Header() {
               </ModalContent>
             </Modal>
           </Flex>
+
+          <Menu>
+            <MenuButton
+              display={isLargerThan700 ? "none" : "block"}
+              as={Button}
+              bg={"inherit"}
+              color="brand.500"
+              _hover={{
+                bg: "",
+              }}
+              _active={{
+                bg: "",
+              }}
+              fontSize="2xl"
+            >
+              <HamburgerIcon />
+            </MenuButton>
+
+            <MenuList p={5} minW={"95vw"} minH="80vh">
+              <MenuGroup title="Profile">
+                {user.uid ? (
+                  <Menu>
+                    <MenuButton
+                      bg={"inherit"}
+                      as={Button}
+                      _hover={{
+                        bg: "inherit",
+                      }}
+                      _active={{
+                        bg: "inherit",
+                      }}
+                      p={0}
+                      mb={5}
+                      ml={"1rem"}
+                    >
+                      <Flex>
+                        <Text
+                          bg={"brand.400"}
+                          color="brand.600"
+                          p={"0.3rem 0.5rem"}
+                          borderRadius="lg"
+                          _hover={{
+                            bg: "brand.400",
+                          }}
+                        >
+                          {userCha}
+                        </Text>
+
+                        <ChevronDownIcon />
+                      </Flex>
+                    </MenuButton>{" "}
+                    <MenuList p={0} minW={"unset"} w={"fit-content"}>
+                      <MenuGroup>
+                        <MenuItem onClick={onOpen}>Log Out</MenuItem>
+                      </MenuGroup>
+                    </MenuList>
+                  </Menu>
+                ) : (
+                  <Link href="/signup">
+                    <Button
+                      bg="brand.100"
+                      color="brand.400"
+                      _hover={{
+                        bg: "brand.200",
+                      }}
+                      p={2}
+                      fontSize={isLargerThan700 ? "initial" : "0.8rem"}
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
+                )}
+              </MenuGroup>
+              <MenuDivider />
+              <MenuGroup title="Menu">
+                <Link href="/feeds">
+                  <MenuItem
+                    _hover={{
+                      bg: "inherit",
+                    }}
+                  >
+                    Feeds
+                  </MenuItem>
+                </Link>
+                <Link href="/about">
+                  <MenuItem
+                    _hover={{
+                      bg: "inherit",
+                    }}
+                  >
+                    About
+                  </MenuItem>
+                </Link>
+                <Link href="/contact">
+                  <MenuItem
+                    _hover={{
+                      bg: "inherit",
+                    }}
+                  >
+                    Contact
+                  </MenuItem>
+                </Link>
+                <Link href="/help">
+                  <MenuItem
+                    _hover={{
+                      bg: "inherit",
+                    }}
+                  >
+                    FAQ
+                  </MenuItem>
+                </Link>
+                
+              </MenuGroup>
+            </MenuList>
+          </Menu>
         </Flex>
       </chakra.header>
     </Container>
