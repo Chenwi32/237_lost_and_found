@@ -251,7 +251,7 @@ export default function Header() {
               <HamburgerIcon />
             </MenuButton>
 
-            <MenuList p={5} minW={"95vw"} minH="80vh">
+            <MenuList p={5} minW={"97vw"} minH="80vh" boxShadow={'xl'}>
               <MenuGroup title="Profile">
                 {user.uid ? (
                   <Menu>

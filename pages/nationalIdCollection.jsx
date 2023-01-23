@@ -1,5 +1,5 @@
-import { addDoc, doc, getFirestore, setDoc } from "firebase/firestore";
-import { useEffect, useCallback, useState } from "react";
+import {  doc, setDoc } from "firebase/firestore";
+import {  useCallback, useState } from "react";
 import Controls from "../components/controls";
 import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,7 +25,6 @@ import {
   ModalHeader,
   ModalOverlay,
   SimpleGrid,
-  SkeletonCircle,
   Text,
   useDisclosure,
   useMediaQuery,
@@ -40,8 +39,12 @@ import { useDropzone } from "react-dropzone";
 import storage from "../firebase";
 import Announcement from "../components/Announcement";
 import ProtectedRoute from "../components/protectedroute";
+import { useAuth } from "../components/authcontprov";
 
 const NationalIdCollection = () => {
+
+  const { user} = useAuth();
+
   const {
     isOpen: isVisible,
     onClose: onClose2,
@@ -91,6 +94,7 @@ const NationalIdCollection = () => {
       phoneNumber,
       email,
       idimage,
+      user
     };
 
     setBtntext("Sending...");
@@ -445,6 +449,8 @@ const NationalIdCollection = () => {
 };
 
 export default NationalIdCollection;
+
+/* Spin to show that the image is uploading */
 export const Spin = () => (
   <Box mt={4}>
     <Button
