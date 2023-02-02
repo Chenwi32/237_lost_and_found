@@ -32,7 +32,7 @@ p={5}
               {result.name}
             </Heading>
 
-            <Image src={result.idimage} />
+            <Image src={result.idimage} alt='ID Card Image' />
 
             <HStack mt={10}>
               <Text> ID number:</Text>
