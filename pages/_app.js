@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { AuthContextProvider } from "../components/authcontprov";
 
+
 const theme = extendTheme({
   colors: {
     brand: {
