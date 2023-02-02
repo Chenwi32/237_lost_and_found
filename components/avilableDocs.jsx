@@ -20,6 +20,8 @@ import {
   useDisclosure,
   useMediaQuery,
   VStack,
+
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { collection, getDocs, query } from "firebase/firestore";
@@ -31,6 +33,8 @@ const AvilableDocs = () => {
     "ID cards that we have with us will be displayed here."
   );
 
+  const toast = useToast()
+
   /* Modal */
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -40,7 +44,7 @@ const AvilableDocs = () => {
 
   const [foundIds, setfoundIds] = useState([]);
 
-  const [phoneNumber, setPhoneNumber] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const getIds = async () => {
     // Query all Id cards
@@ -77,6 +81,17 @@ const AvilableDocs = () => {
     const response = await axios.post("/api/sendgrid", data);
 
     console.log(response);
+    if (response.status === 200) {
+      toast({
+        position: "top",
+        title: "Success",
+        description:
+          "Notification has been sent successfully!! You will be contacted within 48 hours",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
@@ -202,11 +217,17 @@ const AvilableDocs = () => {
                       }}
                     />
                     <ModalBody p={5}>
-                      <Text mb={5} mt={5}>Please Type your phone number here so that we can contact you</Text>
-                      <Input value={phoneNumber} type={'number'}
+                      <Text mb={5} mt={5}>
+                        Please Type your phone number here so that we can
+                        contact you
+                      </Text>
+                      <Input
+                        value={phoneNumber}
+                        type={"number"}
                         onChange={(e) => {
-                          setPhoneNumber(e.target.value)
-                        } } />
+                          setPhoneNumber(e.target.value);
+                        }}
+                      />
                     </ModalBody>
 
                     <ModalFooter
@@ -228,8 +249,8 @@ const AvilableDocs = () => {
                         onClick={(e) => {
                           const data = {
                             phoneNumber,
-                            id
-                          }
+                            id,
+                          };
                           onClose();
                           sendNotification(e, { data });
                         }}
@@ -239,7 +260,7 @@ const AvilableDocs = () => {
                         bg={"brand.100"}
                         color={"brand.400"}
                       >
-                        Yes
+                        Proceed
                       </Button>
                     </ModalFooter>
                   </ModalContent>
@@ -249,8 +270,6 @@ const AvilableDocs = () => {
           })
         )}
       </SimpleGrid>
-
-      
     </Container>
   );
 };
