@@ -9,18 +9,25 @@ const ProtectedRoute = ({ children }) => {
   const toast = useToast();
 
   useEffect(() => {
-    if (!user.uid) {
+     if (!user.uid) {
       toast({
+        position: "top",
+        title: "Warning",
         description:
           "Sorry you are not logged in. To be able to access this page, you need to be logged in",
         status: "warning",
         duration: 9000,
         isClosable: true,
+   
       });
       router.push("/login");
     }
-    
-  }, [router, user]);
+  
+  }, [user])
+  
+  
+   
+
   return <div>{user ? children : null}</div>;
 };
 
