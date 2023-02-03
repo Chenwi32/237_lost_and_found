@@ -153,6 +153,7 @@ const AvilableDocs = () => {
                       h={250}
                       mb={5}
                       backdropBlur="0px"
+                      alt="ID card image"
                     />
                     <Box
                       h={"100%"}

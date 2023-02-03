@@ -16,6 +16,7 @@ const Cta = () => {
             src="/images/cta.png"
             w={isLargerThan700 ? 400 : "100%"}
             h={300}
+            alt='lost documents'
           />
 
           <Flex
