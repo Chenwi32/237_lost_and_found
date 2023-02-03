@@ -20,7 +20,6 @@ import {
   useDisclosure,
   useMediaQuery,
   VStack,
-
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -33,7 +32,7 @@ const AvilableDocs = () => {
     "ID cards that we have with us will be displayed here."
   );
 
-  const toast = useToast()
+  const toast = useToast();
 
   /* Modal */
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -86,11 +85,13 @@ const AvilableDocs = () => {
         position: "top",
         title: "Success",
         description:
-          "Notification has been sent successfully!! You will be contacted within 48 hours",
+          "Notification has been sent successfully!! You will be contacted within 48 hours, Hang in there!!",
         status: "success",
         duration: 9000,
         isClosable: true,
       });
+
+      setPhoneNumber("");
     }
   };
 
@@ -252,8 +253,21 @@ const AvilableDocs = () => {
                             phoneNumber,
                             id,
                           };
-                          onClose();
-                          sendNotification(e, { data });
+
+                          if (phoneNumber === "" || phoneNumber === null) {
+                            toast({
+                              position: "top",
+                              title: "Warning",
+                              description:
+                                "Please, it looks like you have forgotten to type in your phone number. Please fill in your number",
+                              status: "error",
+                              duration: 9000,
+                              isClosable: true,
+                            });
+                          } else {
+                            onClose();
+                            sendNotification(e, { data });
+                          }
                         }}
                         _hover={{
                           bg: "brand.200",
