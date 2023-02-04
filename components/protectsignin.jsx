@@ -16,14 +16,14 @@ const Protectsignin = ({ children }) => {
       toast({
         position: "top",
         title: "Success",
-        description: "You have been successfully logged in",
+        description: "You have been successfully logged in, and you can't access the log In page again accept you log out!!",
         status: "success",
         duration: 9000,
         isClosable: true,
       });
     }
    
-  }, [router, user]);
+  }, [ user]);
   return (
     <div>
     
