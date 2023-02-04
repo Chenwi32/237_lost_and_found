@@ -251,7 +251,7 @@ export default function Header() {
               <HamburgerIcon />
             </MenuButton>
 
-            <MenuList p={5} minW={"97vw"} minH="80vh" boxShadow={'xl'}>
+            <MenuList p={5} minW={"97vw"} minH="80vh" boxShadow={"xl"}>
               <MenuGroup title="Profile">
                 {user.uid ? (
                   <Menu>
@@ -292,17 +292,23 @@ export default function Header() {
                   </Menu>
                 ) : (
                   <Link href="/signup">
-                    <Button
-                      bg="brand.100"
-                      color="brand.400"
+                    <MenuItem
                       _hover={{
-                        bg: "brand.200",
+                        bg: "inherit",
                       }}
-                      p={2}
-                      fontSize={isLargerThan700 ? "initial" : "0.8rem"}
                     >
-                      Sign Up
-                    </Button>
+                      <Button
+                        bg="brand.100"
+                        color="brand.400"
+                        _hover={{
+                          bg: "brand.200",
+                        }}
+                        p={2}
+                        fontSize={isLargerThan700 ? "initial" : "0.8rem"}
+                      >
+                        Sign Up
+                      </Button>
+                    </MenuItem>
                   </Link>
                 )}
               </MenuGroup>
@@ -344,7 +350,6 @@ export default function Header() {
                     FAQ
                   </MenuItem>
                 </Link>
-                
               </MenuGroup>
             </MenuList>
           </Menu>
