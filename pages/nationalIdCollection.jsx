@@ -1,5 +1,5 @@
-import {  doc, setDoc } from "firebase/firestore";
-import {  useCallback, useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
+import { useCallback, useState } from "react";
 import Controls from "../components/controls";
 import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
@@ -42,8 +42,7 @@ import ProtectedRoute from "../components/protectedroute";
 import { useAuth } from "../components/authcontprov";
 
 const NationalIdCollection = () => {
-
-  const { user} = useAuth();
+  const { user } = useAuth();
 
   const {
     isOpen: isVisible,
@@ -94,7 +93,7 @@ const NationalIdCollection = () => {
       phoneNumber,
       email,
       idimage,
-      user
+      user,
     };
 
     setBtntext("Sending...");
@@ -158,14 +157,15 @@ const NationalIdCollection = () => {
           <BreadCrumbs />
 
           {isVisible ? (
-            <Alert status="info" mb={10}>
+            <Alert status="success" mb={10}>
               <AlertIcon />
               <Box>
                 <AlertTitle>Attention!!</AlertTitle>
                 <AlertDescription>
-                  Everyone can now add data of id cards that they find here till
-                  December 31 2022, after that, only people who own an account
-                  on the platform will be able to add data to the platform.
+                  Congratulations!!! <br />
+                  You can now be able to input data of found documents to help
+                  the owners recover them. <br />
+                  Thank you for your trust.
                 </AlertDescription>
               </Box>
               <CloseButton
@@ -177,17 +177,7 @@ const NationalIdCollection = () => {
               />
             </Alert>
           ) : (
-            <Button
-              mb={10}
-              bg="brand.100"
-              color="brand.400"
-              _hover={{
-                bg: "brand.200",
-              }}
-              onClick={onOpen2}
-            >
-              Show Alert
-            </Button>
+            <></>
           )}
           <Container maxW={900}>
             <Heading
