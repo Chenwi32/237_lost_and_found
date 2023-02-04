@@ -125,7 +125,7 @@ const NationalIdCollection = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleEmtyIn = () => {
-    if (idnum === "" && phoneNumber === "" && name === "" && email === '') {
+    if (idnum === "" && email === "" && phoneNumber === "" && name === "") {
       return toast(
         "Some field are still empty. Please make sure you fill in all the nformation required. Thank you.",
         {
