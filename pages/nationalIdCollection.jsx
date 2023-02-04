@@ -125,7 +125,7 @@ const NationalIdCollection = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleEmtyIn = () => {
-    if (idnum === "" && phoneNumber === "" && name === "") {
+    if (idnum === "" && phoneNumber === "" && name === "" && email === '') {
       return toast(
         "Some field are still empty. Please make sure you fill in all the nformation required. Thank you.",
         {
@@ -246,7 +246,7 @@ const NationalIdCollection = () => {
               </Box>
               <Box>
                 <Text fontSize={"0.9rem"} mb={2}>
-                  Your email :
+                  * Your email :
                 </Text>
                 <input
                   value={email}
@@ -256,6 +256,7 @@ const NationalIdCollection = () => {
                   type="email"
                   placeholder="Your Email"
                   className={`main_input `}
+                  required
                 />
               </Box>
             </SimpleGrid>
