@@ -187,9 +187,9 @@ const NationalIdCollection = () => {
             <Alert status="success" mb={10}>
               <AlertIcon />
               <Box>
-                <AlertTitle>Attention!!</AlertTitle>
+                <AlertTitle>Congratulations!!!</AlertTitle>
                 <AlertDescription>
-                  Congratulations!!! <br />
+          
                   You can now be able to input data of found documents to help
                   the owners recover them. <br />
                   Thank you for your trust.
@@ -332,10 +332,15 @@ const NationalIdCollection = () => {
 
             {/* Image upload */}
 
-            <Flex width={'100%'} mt={10} mb={10} alignItems='center' justifyContent='space-between'>
+            <Flex
+              width={"100%"}
+              mt={10}
+              mb={10}
+              alignItems="center"
+              justifyContent="space-between"
+            >
               <input
                 type="file"
-              
                 accept="image/*"
                 onChange={(e) => {
                   if (!e.target.files || e.target.files.length === 0) {
@@ -367,7 +372,8 @@ const NationalIdCollection = () => {
                   src={preview}
                   width={isLargerThan700 ? 500 : 300}
                   height={isLargerThan700 ? 400 : 300}
-                  alt='Uploaded Id card image'
+                  alt="Uploaded Id card image"
+                  mb={10}
                 />
               )}
             </Box>

@@ -82,7 +82,7 @@ const AvilableDocs = () => {
         position: "top",
         title: "Success",
         description:
-          "Notification has been sent successfully!! You will be contacted within 48 hours, Hang in there!!",
+          "Notific ation has been sent successfully!! You will be contacted within 48 hours, Hang in there!!",
         status: "success",
         duration: 9000,
         isClosable: true,

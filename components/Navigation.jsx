@@ -165,7 +165,7 @@ export default function Header() {
                     bg: "brand.400",
                   }}
                 >
-                  {userCha}
+                  {userCha.toUpperCase()}
                 </MenuButton>
 
                 <MenuList p={0} minW={"unset"} w={"fit-content"}>
@@ -278,7 +278,7 @@ export default function Header() {
                             bg: "brand.400",
                           }}
                         >
-                          {userCha}
+                          {userCha.toUpperCase()}
                         </Text>
 
                         <ChevronDownIcon />
