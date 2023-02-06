@@ -75,11 +75,8 @@ const AvilableDocs = () => {
   const sendNotification = async (e, { data }) => {
     e.preventDefault();
 
-    console.log(data);
-
     const response = await axios.post("/api/sendgrid", data);
 
-    console.log(response);
     if (response.status === 200) {
       toast({
         position: "top",
@@ -92,6 +89,16 @@ const AvilableDocs = () => {
       });
 
       setPhoneNumber("");
+    }else if (response.status === 500) {
+      toast({
+        position: "top",
+        title: "Error",
+        description:
+          "Sorry Something went wrong",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
     }
   };
 
@@ -220,12 +227,13 @@ const AvilableDocs = () => {
                     />
                     <ModalBody p={5}>
                       <Text mb={5} mt={5}>
-                        Please Type your phone number here so that we can
-                        contact you
+                        Please type your phone number here so that we can
+                        contact you:
                       </Text>
                       <Input
                         value={phoneNumber}
-                        type={"number"}
+                        type={'tel'}
+                        placeholder='+237674******'
                         onChange={(e) => {
                           setPhoneNumber(e.target.value);
                         }}

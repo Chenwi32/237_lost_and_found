@@ -1,5 +1,5 @@
 import { doc, setDoc } from "firebase/firestore";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Controls from "../components/controls";
 import { db } from "../firebase";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,6 +17,8 @@ import {
   Flex,
   Heading,
   HStack,
+  Image,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -35,7 +37,7 @@ import Head from "next/head";
 
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
-import { useDropzone } from "react-dropzone";
+
 import storage from "../firebase";
 import Announcement from "../components/Announcement";
 import ProtectedRoute from "../components/protectedroute";
@@ -60,28 +62,49 @@ const NationalIdCollection = () => {
   const [email, setEmail] = useState("");
   const [idimage, setIdimage] = useState(null);
   const [btnText, setBtntext] = useState("Send");
+  const [uploadbtnText, setUploadBtntext] = useState("Upload");
 
   // Drag and drop functionality
-  const [spin, setSpin] = useState(false);
+
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
   const [downloadUrl, setDownloadUrl] = useState("");
 
-  const onDrop = useCallback((acceptedFiles) => {
-    setSpin(true);
-    const file = acceptedFiles[0];
-    const mountainsRef = ref(storage, "foundIds/" + file.name);
+  // create a preview as a side effect, whenever selected file is changed
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
 
-    uploadBytesResumable(mountainsRef, file).then((snapshot) => {
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+    
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const handleUpload = () => {
+    const mountainsRef = ref(storage, "foundIds/" + selectedFile.name);
+    uploadBytesResumable(mountainsRef, selectedFile).then((snapshot) => {
+      setUploadBtntext('Uploading...')
       getDownloadURL(snapshot.ref).then((downloadURL) => {
         setDownloadUrl(downloadURL);
         setIdimage(downloadURL);
-        setSpin(false);
+      setUploadBtntext('Uploaded')
       });
     });
-  }, []);
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  };
+ 
+
   ////////////////////////////////
 
   const sendData = async () => {
+
+  
+
     const timestamp = Date.now().toString();
 
     const addedFIds = doc(db, `idcards/${timestamp}`);
@@ -95,6 +118,8 @@ const NationalIdCollection = () => {
       idimage,
       user,
     };
+
+   
 
     setBtntext("Sending...");
     try {
@@ -119,6 +144,8 @@ const NationalIdCollection = () => {
     setPhoneNumber("");
     setEmail("");
     setIdimage("");
+    setSelectedFile(undefined)
+    onClose()
   };
 
   /* Modal */
@@ -303,58 +330,46 @@ const NationalIdCollection = () => {
               Upload an image of the ID card here:
             </Text>
 
-            {/*  Drag and drop */}
+            {/* Image upload */}
 
-            <Flex
-              w={"fit-content"}
-              justifyContent={"space-between"}
-              flexDirection={"column"}
-              alignItems={"center"}
-              {...getRootProps()}
-              m={"auto"}
-              mb={10}
-            >
-              <input {...getInputProps()} />
+            <Flex width={'100%'} mt={10} mb={10} alignItems='center' justifyContent='space-between'>
+              <input
+                type="file"
+              
+                accept="image/*"
+                onChange={(e) => {
+                  if (!e.target.files || e.target.files.length === 0) {
+                    setSelectedFile(undefined);
+                    return;
+                  }
+                  // Selects just one file
 
-              <Box w={"fit-content"}>
-                <Box>
-                  {downloadUrl === "" ? (
-                    <Flex
-                      border="1px"
-                      alignItems={"center"}
-                      justifyContent={"center"}
-                      bg={"brand.101"}
-                      width={isLargerThan700 ? 400 : 300}
-                      height={isLargerThan700 ? 300 : 250}
-                      flexDirection={"column"}
-                    >
-                      <UploadIcon /> <Text m={0}>Drag and drop</Text>{" "}
-                    </Flex>
-                  ) : (
-                    <></>
-                  )}
-                </Box>
-                {spin ? (
-                  <Flex justifyContent={"center"} alignItems={"center"}>
-                    <Spin />
-                  </Flex>
-                ) : (
-                  <></>
-                )}
-                {downloadUrl === "" ? (
-                  <></>
-                ) : (
-                  <Box mt={5} w={"100%"}>
-                    <iframe
-                      src={downloadUrl}
-                      allowFullScreen
-                      width={isLargerThan700 ? 500 : 300}
-                      height={isLargerThan700 ? 400 : 300}
-                    ></iframe>
-                  </Box>
-                )}
-              </Box>
+                  setSelectedFile(e.target.files[0]);
+                }}
+              />
+
+              <Button
+                color={"brand.400"}
+                bg={"brand.100"}
+                _hover={{
+                  bg: "brand.200",
+                }}
+                mr={3}
+                onClick={handleUpload}
+              >
+                {uploadbtnText}
+              </Button>
             </Flex>
+
+            <Box mt={5} w={"100%"}>
+              {selectedFile && (
+                <Image
+                  src={preview}
+                  width={isLargerThan700 ? 500 : 300}
+                  height={isLargerThan700 ? 400 : 300}
+                />
+              )}
+            </Box>
           </Container>
           <Controls dataHandler={handleEmtyIn} buttonText={btnText} />
           <ToastContainer />
@@ -428,7 +443,7 @@ const NationalIdCollection = () => {
                   bg={"brand.100"}
                   color={"brand.400"}
                 >
-                  Send
+                  {btnText}
                 </Button>
               </ModalFooter>
             </ModalContent>
@@ -441,32 +456,4 @@ const NationalIdCollection = () => {
 
 export default NationalIdCollection;
 
-/* Spin to show that the image is uploading */
-export const Spin = () => (
-  <Box mt={4}>
-    <Button
-      isLoading
-      loadingText="Loading"
-      colorScheme="teal"
-      variant="outline"
-      spinnerPlacement="start"
-    ></Button>
-  </Box>
-);
-export const UploadIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="h-4 w-4"
-  >
-    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-    <polyline points="13 2 13 9 20 9"></polyline>
-  </svg>
-);
+
