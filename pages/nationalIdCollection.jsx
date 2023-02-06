@@ -367,6 +367,7 @@ const NationalIdCollection = () => {
                   src={preview}
                   width={isLargerThan700 ? 500 : 300}
                   height={isLargerThan700 ? 400 : 300}
+                  alt='Uploaded Id card image'
                 />
               )}
             </Box>
