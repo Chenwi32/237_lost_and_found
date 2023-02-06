@@ -8,7 +8,9 @@ async function sendEmail(req, res) {
 
   try {
 
-    const email = req.body.id.email
+    const email = req.body.id.user.email
+
+    console.log(email)
 
     await sendgrid.send({
       to: email, // Your email where you'll receive emails
