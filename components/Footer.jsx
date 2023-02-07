@@ -1,11 +1,19 @@
 import {
+  Button,
   Container,
   Flex,
   Heading,
-  HStack,
+  
   Icon,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
   Text,
-  textDecoration,
+
+  useDisclosure,
   useMediaQuery,
 } from "@chakra-ui/react";
 import {
@@ -18,6 +26,8 @@ import Link from "next/link";
 
 const Footer = () => {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
+
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Container p={"1rem 0"} maxW={"100%"} bg={"brand.500"} color={"brand.600"}>
@@ -182,19 +192,60 @@ const Footer = () => {
                 textDecoration: "underline",
               }}
             >
-              <Link href={"/privacy"}>Terms and Conditions</Link>
+              <Link href={"/terms"}>Terms and Conditions</Link>
             </Text>
             <Text>|</Text>
-            <Text
-              color={"brand.100"}
-              _hover={{
-                textDecoration: "underline",
-              }}
-            >
-              <Link href={"/privacy"}>Cookie Policy</Link>
+            <Text color={"brand.100"} cursor="pointer" onClick={onOpen}>
+              Cookie Policy
             </Text>
           </Flex>
         </Flex>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalCloseButton
+              color={"brand.400"}
+              _hover={{
+                bg: "brand.200",
+              }}
+            />
+            <ModalBody>
+              <Heading fontFamily={"Andika"} fontSize='1rem'>This website uses cookies</Heading>
+              <Text>
+                We use cookies to personalise content to provide and to analyse our traffic. 
+                
+              </Text>
+            </ModalBody>
+
+            <ModalFooter display={"flex"} justifyContent="space-between">
+              <Button
+                color={"brand.400"}
+                bg={"brand.200"}
+                _hover={{
+                  bg: "brand.100",
+                }}
+                mr={3}
+                onClick={onClose}
+              >
+                Deny
+              </Button>
+              <Button
+                onClick={() => {
+                  onClose();
+                  
+                }}
+                _hover={{
+                  bg: "brand.200",
+                }}
+                bg={"brand.100"}
+                color={"brand.400"}
+              >
+                Accept
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Container>
     </Container>
   );
