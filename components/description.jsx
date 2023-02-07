@@ -12,8 +12,13 @@ import Link from "next/link";
 const Description = () => {
   return (
     <Container maxW={900} mb={10} p={0} color={"brand.500"}>
-
-      <Heading color={'brand.400'} fontSize={"1.5rem"} mt={10} mb={5}>
+      <Heading
+        color={"brand.400"}
+        fontSize={"1.5rem"}
+        mt={10}
+        mb={5}
+        fontFamily="Andika"
+      >
         How the platform works
       </Heading>
 
@@ -38,7 +43,7 @@ const Description = () => {
         gap={5}
         direction="column"
       >
-        <Text color={'brand.400'}>See available Documents.</Text>
+        <Text color={"brand.400"}>See available Documents.</Text>
 
         <Link href="/feeds">
           <Button
@@ -97,7 +102,7 @@ const Description = () => {
         gap={5}
         direction="column"
       >
-        <Text color={'brand.400'}>Have you found an ID Card?</Text>
+        <Text color={"brand.400"}>Have you found an ID Card?</Text>
 
         <Link href="/nationalIdCollection">
           <Button
@@ -113,15 +118,15 @@ const Description = () => {
         </Link>
       </Stack>
 
-      <Heading fontSize={"1.5rem"} mt={10} mb={5}>
+      <Heading fontSize={"1.5rem"} mt={10} mb={5} fontFamily="Andika">
         A disclaimer
       </Heading>
 
       <Text>
         This platform is developed to help people recover their lost document,
         not to track down theives who stole their belongings, someone who stole
-        your belonging would not cary your documents to come and give back to you
-        – only a fool will do that – so bare in mind that people who bring
+        your belonging would not cary your documents to come and give back to
+        you – only a fool will do that – so bare in mind that people who bring
         documents to this platform are kind hearted people who want to help.{" "}
         <br />
         <strong>NB:</strong> If you come here and find your document and then

@@ -29,7 +29,7 @@ const Cta = () => {
             p={10}
             mt={isLargerThan700 ? 0 : 5}
           >
-            <Text>Help someone recover his/her document</Text>
+            < Text fontFamily="Andika">Help someone recover his/her document</Text>
 
             <Link href={"/signup"}>
               <Flex

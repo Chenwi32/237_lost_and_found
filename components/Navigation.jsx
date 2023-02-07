@@ -73,6 +73,7 @@ export default function Header() {
       position={"sticky"}
       top={0}
       zIndex={1}
+      fontFamily='Roboto'
     >
       <chakra.header maxW={1200} m={"auto"} id="header">
         <Flex

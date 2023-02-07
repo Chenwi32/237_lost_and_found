@@ -189,7 +189,6 @@ const NationalIdCollection = () => {
               <Box>
                 <AlertTitle>Congratulations!!!</AlertTitle>
                 <AlertDescription>
-          
                   You can now be able to input data of found documents to help
                   the owners recover them. <br />
                   Thank you for your trust.
@@ -212,6 +211,7 @@ const NationalIdCollection = () => {
               fontSize={"1.5rem"}
               mb={5}
               textAlign={"center"}
+              fontFamily="Andika"
             >
               Fill in the information required to help the person recover
               his/her ID card.

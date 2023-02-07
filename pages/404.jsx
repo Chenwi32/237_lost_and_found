@@ -15,8 +15,10 @@ const ErrorRoute = () => {
         </Head>
       }
 
-      <Container minH={'75vh'}>
-        <Heading>Sorry the page doesn't exist &#x1F615;</Heading>
+      <Container minH={"75vh"}>
+        <Heading fontFamily="Andika">
+          Sorry the page doesn't exist &#x1F615;
+        </Heading>
       </Container>
     </>
   );

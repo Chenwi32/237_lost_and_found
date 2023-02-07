@@ -104,6 +104,7 @@ const Signup = () => {
             color={"brand.200"}
             fontSize={"1.5rem"}
             mb={5}
+            fontFamily="Andika"
           >
             Sign Up
           </Heading>
@@ -267,7 +268,12 @@ const Signup = () => {
                 >
                   Create Account
                 </Button>
-                <Heading color={"brand.600"} mt={10} fontSize={"1rem"}>
+                <Heading
+                  color={"brand.600"}
+                  mt={10}
+                  fontFamily="Andika"
+                  fontSize={"1rem"}
+                >
                   Or
                 </Heading>
 

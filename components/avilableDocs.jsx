@@ -104,7 +104,7 @@ const AvilableDocs = () => {
 
   return (
     <Container p={0} maxW={1200} mt={10} mb={10}>
-      <Heading fontSize={"1.5rem"} mt={10} mb={5}>
+      <Heading fontSize={"1.5rem"} mt={10} mb={5} fontFamily="Andika">
         Found Documents
       </Heading>
 
@@ -232,8 +232,8 @@ const AvilableDocs = () => {
                       </Text>
                       <Input
                         value={phoneNumber}
-                        type={'tel'}
-                        placeholder='+237674******'
+                        type={"tel"}
+                        placeholder="+237674******"
                         onChange={(e) => {
                           setPhoneNumber(e.target.value);
                         }}

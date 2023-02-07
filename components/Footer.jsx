@@ -21,8 +21,8 @@ const Footer = () => {
 
   return (
     <Container p={"1rem 0"} maxW={"100%"} bg={"brand.500"} color={"brand.600"}>
-     <Container maxW={1200}>
-         <Flex
+      <Container maxW={1200} fontFamily="Andika">
+        <Flex
           alignItems={isLargerThan700 ? "flex-start" : "center"}
           justifyContent={isLargerThan700 ? "space-between" : "initial"}
           flexDirection={isLargerThan700 ? "row" : "column"}
@@ -31,7 +31,7 @@ const Footer = () => {
           textAlign={isLargerThan700 ? "initial" : "center"}
         >
           <Flex flexDirection={"column"} mb={isLargerThan700 ? 0 : 5}>
-            <Heading fontSize={"1.1rem"} mb={3}>
+            <Heading fontSize={"1.1rem"} mb={3} fontFamily="Andika">
               Social
             </Heading>
 
@@ -82,7 +82,7 @@ const Footer = () => {
           </Flex>
 
           <Flex flexDirection={"column"} mb={isLargerThan700 ? 0 : 5}>
-            <Heading fontSize={"1.1rem"} mb={2}>
+            <Heading fontSize={"1.1rem"} mb={2} fontFamily="Andika">
               How it works
             </Heading>
             <Flex flexDirection={"column"} fontSize="0.9rem">
@@ -114,7 +114,7 @@ const Footer = () => {
           </Flex>
 
           <Flex flexDirection={"column"} mb={isLargerThan700 ? 0 : 5}>
-            <Heading fontSize={"1.1rem"} mb={2}>
+            <Heading fontSize={"1.1rem"} mb={2} fontFamily="Andika">
               Resources
             </Heading>
             <Flex flexDirection={"column"} fontSize="0.9rem">
@@ -138,7 +138,7 @@ const Footer = () => {
           </Flex>
 
           <Flex flexDirection={"column"} mb={isLargerThan700 ? 0 : 5}>
-            <Heading fontSize={"1.1rem"} mb={2}>
+            <Heading fontSize={"1.1rem"} mb={2} fontFamily="Andika">
               Company
             </Heading>
             <Flex flexDirection={"column"} fontSize="0.9rem">
@@ -164,7 +164,7 @@ const Footer = () => {
             &#x00A9; 237 Lost and Found 2023 | All right reserved
           </Text>
 
-           <Flex flexWrap="wrap" gap={3}>
+          <Flex flexWrap="wrap" gap={3}>
             <Text
               color={"brand.100"}
               _hover={{
@@ -193,8 +193,8 @@ const Footer = () => {
             >
               <Link href={"/privacy"}>Cookie Policy</Link>
             </Text>
-          </Flex> 
-        </Flex> 
+          </Flex>
+        </Flex>
       </Container>
     </Container>
   );

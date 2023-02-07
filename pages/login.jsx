@@ -82,159 +82,171 @@ const router = useRouter();
 
 
   return (
-
     <Protectsignin>
-
-
       <Container
-      maxW={"unset"}
-      minH="80vh"
-      h="fit-content"
-      w="100%"
-      bg={"brand.400"}
-      mb={10}
-      borderBottomLeftRadius={isLargerThan700 ? "10rem" : "5rem"}
-      p={5}
-    >
-      <Flex
-        m="auto"
-        flexDirection={"column"}
-        maxW={700}
+        maxW={"unset"}
+        minH="80vh"
+        h="fit-content"
+        w="100%"
+        bg={"brand.400"}
+        mb={10}
+        borderBottomLeftRadius={isLargerThan700 ? "10rem" : "5rem"}
         p={5}
-        alignItems="center"
-        textAlign={"left"}
       >
-        <Heading color={"brand.200"} fontSize={"1.5rem"} mb={5}>
-          Log In
-        </Heading>
+        <Flex
+          m="auto"
+          flexDirection={"column"}
+          maxW={700}
+          p={5}
+          alignItems="center"
+          textAlign={"left"}
+        >
+          <Heading
+            color={"brand.200"}
+            fontSize={"1.5rem"}
+            mb={5}
+            fontFamily="Andika"
+          >
+            Log In
+          </Heading>
 
-      {errorMessage === '' ? <></> :
-        (
-          <Announcement message={errorMessage} type={'error'}/>
-    )}
-        <FormProvider {...methods}>
-          <form action="" onSubmit={handleSubmit(onSubmit)}>
-            <Flex flexDirection={"column"} w={"100%"} alignItems={"center"}>
-              <Flex flexDirection={"column"} alignItems={"flex-start"} mb={5}>
-                <Text color="brand.600">Email:</Text>
-                <input
-                  {...register("email", { required: "Email is required" })}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  placeholder="Email"
-                  className={`main_input `}
-                  type="email"
-                  value={email}
-                  required
-                />
-
-                {errors.email && (
-                  <Text color={"brand.600"}>
-                    {" "}
-                    <small>{errors.email.message}</small>{" "}
-                  </Text>
-                )}
-              </Flex>
-
-              <Flex flexDirection={"column"} alignItems={"flex-start"} mb={10}>
-                <Text color="brand.600">Password:</Text>
-
-                <Flex gap={0} p={0} h="fit-content">
+          {errorMessage === "" ? (
+            <></>
+          ) : (
+            <Announcement message={errorMessage} type={"error"} />
+          )}
+          <FormProvider {...methods}>
+            <form action="" onSubmit={handleSubmit(onSubmit)}>
+              <Flex flexDirection={"column"} w={"100%"} alignItems={"center"}>
+                <Flex flexDirection={"column"} alignItems={"flex-start"} mb={5}>
+                  <Text color="brand.600">Email:</Text>
                   <input
-                    {...register("password", {
-                      required: "Password is required",
-                    })}
-                    type={isVisible ? "text" : "password"}
-                    value={password}
+                    {...register("email", { required: "Email is required" })}
                     onChange={(e) => {
-                      setPassWord(e.target.value);
+                      setEmail(e.target.value);
                     }}
-                    placeholder="Password"
+                    placeholder="Email"
                     className={`main_input `}
+                    type="email"
+                    value={email}
                     required
                   />
 
-                  <Flex
-                    color="brand.400"
-                    p={"0.2rem 0.5rem"}
-                    alignItems={"center"}
-                    ml={"-2rem"}
-                    borderTopRightRadius={5}
-                    borderBottomRightRadius={5}
-                  >
-                    <Icon
-                      fontSize={"1rem"}
-                      onClick={() => {
-                        if (isVisible) {
-                          setVisible(false);
-                        } else {
-                          setVisible(true);
-                        }
-                      }}
-                    >
-                      <FontAwesomeIcon icon={isVisible ? faEye : faEyeSlash} />
-                    </Icon>
-                  </Flex>
+                  {errors.email && (
+                    <Text color={"brand.600"}>
+                      {" "}
+                      <small>{errors.email.message}</small>{" "}
+                    </Text>
+                  )}
                 </Flex>
 
-                {errors.password && (
-                  <Text color={"brand.600"}>
-                    {" "}
-                    <small>{errors.password.message}</small>{" "}
-                  </Text>
-                )}
+                <Flex
+                  flexDirection={"column"}
+                  alignItems={"flex-start"}
+                  mb={10}
+                >
+                  <Text color="brand.600">Password:</Text>
+
+                  <Flex gap={0} p={0} h="fit-content">
+                    <input
+                      {...register("password", {
+                        required: "Password is required",
+                      })}
+                      type={isVisible ? "text" : "password"}
+                      value={password}
+                      onChange={(e) => {
+                        setPassWord(e.target.value);
+                      }}
+                      placeholder="Password"
+                      className={`main_input `}
+                      required
+                    />
+
+                    <Flex
+                      color="brand.400"
+                      p={"0.2rem 0.5rem"}
+                      alignItems={"center"}
+                      ml={"-2rem"}
+                      borderTopRightRadius={5}
+                      borderBottomRightRadius={5}
+                    >
+                      <Icon
+                        fontSize={"1rem"}
+                        onClick={() => {
+                          if (isVisible) {
+                            setVisible(false);
+                          } else {
+                            setVisible(true);
+                          }
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon={isVisible ? faEye : faEyeSlash}
+                        />
+                      </Icon>
+                    </Flex>
+                  </Flex>
+
+                  {errors.password && (
+                    <Text color={"brand.600"}>
+                      {" "}
+                      <small>{errors.password.message}</small>{" "}
+                    </Text>
+                  )}
+                </Flex>
+
+                <Button
+                  bg="brand.100"
+                  color="brand.400"
+                  _hover={{
+                    bg: "brand.200",
+                  }}
+                  p={5}
+                  mb={10}
+                  type="submit"
+                  w={"100%"}
+                >
+                  Log In
+                </Button>
+
+                <Heading
+                  color={"brand.600"}
+                  fontSize={"1rem"}
+                  fontFamily="Andika"
+                >
+                  Or
+                </Heading>
+
+                <Flex
+                  w={"100%"}
+                  justifyContent={"center"}
+                  cursor="pointer"
+                  borderRadius="lg"
+                  bg={"brand.600"}
+                  onClick={signInWthGoogle}
+                  mt={10}
+                  gap={3}
+                  alignItems={"center"}
+                  p={"0.5rem"}
+                >
+                  <Image w={7} h={7} alt="google" src="/images/google.png" />
+                  <Text>Google</Text>
+                </Flex>
               </Flex>
+            </form>
+          </FormProvider>
 
-              <Button
-                bg="brand.100"
-                color="brand.400"
-                _hover={{
-                  bg: "brand.200",
-                }}
-                p={5}
-                mb={10}
-                type="submit"
-                w={"100%"}
-              >
-                Log In
-              </Button>
-
-              <Heading color={"brand.600"}  fontSize={"1rem"}>
-                Or
-              </Heading>
-
-              <Flex
-                w={"100%"}
-                justifyContent={"center"}
-                cursor="pointer"
-                borderRadius="lg"
-                bg={"brand.600"}
-                onClick={signInWthGoogle}
-                mt={10}
-                gap={3}
-                alignItems={"center"}
-                p={"0.5rem"}
-              >
-                <Image w={7} h={7} alt="google" src="/images/google.png" />
-                <Text>Google</Text>
-              </Flex>
-            </Flex>
-          </form>
-        </FormProvider>
-
-        <Text mt={5} color={"brand.600"}>
-          You don't yet have an account?
-          <Link href="/signup">
-            <Text cursor={"pointer"} color={"brand.100"}>
-              Create an account
-            </Text>
-          </Link>
-        </Text>
-      </Flex>
-    </Container>
+          <Text mt={5} color={"brand.600"}>
+            You don't yet have an account?
+            <Link href="/signup">
+              <Text cursor={"pointer"} color={"brand.100"}>
+                Create an account
+              </Text>
+            </Link>
+          </Text>
+        </Flex>
+      </Container>
     </Protectsignin>
-    
   );
 };
 

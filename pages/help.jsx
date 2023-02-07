@@ -23,11 +23,10 @@ const Help = () => {
       }
 
       <Container maxW="1200px" minH={"80vh"}>
-
-        <BreadCrumbs/>
+        <BreadCrumbs />
 
         <Box>
-          <Heading>FAQ</Heading>
+          <Heading fontFamily="Andika">FAQ</Heading>
 
           <Accordion pt={6} allowToggle allowMultiple>
             <AccordionItem mb={4}>

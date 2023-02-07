@@ -1,4 +1,12 @@
-import { Box, Button, Container, Heading, HStack, Text, useMediaQuery } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  HStack,
+  Text,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
 import Actionmenu from "../components/actionmenu";
@@ -7,8 +15,7 @@ import AvilableDocs from "../components/avilableDocs";
 import Cta from "../components/cta";
 
 const HomePage = () => {
-
-   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   return (
     <>
       {
@@ -24,11 +31,16 @@ const HomePage = () => {
       }
 
       <Container maxW={1200}>
-       
-        <Heading textAlign={"center"} mt={10}>
+        <Heading textAlign={"center"} mt={10} fontFamily="Andika">
           Welcome to 237 Lost and Found
         </Heading>
-        <Heading textAlign={"center"} fontSize={"1.2rem"} mt={5} mb={10}>
+        <Heading
+          textAlign={"center"}
+          fontSize={"1.2rem"}
+          mt={5}
+          mb={10}
+          fontFamily="Andika"
+        >
           We are here to help you find your lost document.
         </Heading>
 
@@ -62,9 +74,7 @@ const HomePage = () => {
           bg="brand.400"
           h={"1px"}
           mb={10}
-        >
-          {" "}
-        </Box>
+        ></Box>
 
         <Cta />
       </Container>

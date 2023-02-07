@@ -11,25 +11,19 @@ import BreadCrumbs from "../components/BreadCrumbs";
 const Contact = () => {
   return (
     <>
-      
       {
         <Head>
           <title>237L&F ID contact page</title>
-          <meta
-            name="description"
-            content="237 Lost and Foud contact page"
-          />
+          <meta name="description" content="237 Lost and Foud contact page" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
       }
 
-
       <Container maxW={900} minH={"80vh"} align="center">
- <BreadCrumbs/>
-       
+        <BreadCrumbs />
 
         <div className={`${styles.contact}`}>
-          <Heading>
+          <Heading fontFamily="Andika">
             You can reach us through any of these platforms that is convenient
             for you.
           </Heading>

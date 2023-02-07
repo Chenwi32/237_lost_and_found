@@ -108,7 +108,7 @@ const NationalId = () => {
         <BreadCrumbs />
 
         <Tabs isFitted color={"brand.500"} variant="enclosed">
-          <TabList m={'auto'} maxW={500} color={"brand.400"} mb={10}>
+          <TabList m={"auto"} maxW={500} color={"brand.400"} mb={10}>
             <Tab _selected={{ color: "brand.400", bg: "brand.100" }}>
               Search by Name
             </Tab>
@@ -119,7 +119,12 @@ const NationalId = () => {
           <TabPanels>
             <TabPanel>
               <VStack mb={10}>
-                <Heading fontSize={"1.5rem"} color={"brand.400"} mb={5}>
+                <Heading
+                  fontFamily="Andika"
+                  fontSize={"1.5rem"}
+                  color={"brand.400"}
+                  mb={5}
+                >
                   Type your name and click on search.
                 </Heading>
 
@@ -142,6 +147,7 @@ const NationalId = () => {
                   fontSize={"1.5rem"}
                   textAlign="center"
                   mb={5}
+                  fontFamily="Andika"
                 >
                   Type your ID card number.
                 </Heading>
@@ -166,12 +172,16 @@ const NationalId = () => {
           maxW={900}
           boxShadow={"lg"}
           border={"1px solid #00ebc7"}
-          p={isLargerThan700? 5 : '1rem 0.5rem'}
+          p={isLargerThan700 ? 5 : "1rem 0.5rem"}
           align={"center"}
         >
           {found.length === 0 ? (
             <Box>
-              <Heading color={"brand.400"} fontSize={"1.5rem"}>
+              <Heading
+                color={"brand.400"}
+                fontSize={"1.5rem"}
+                fontFamily="Andika"
+              >
                 {message}
               </Heading>
             </Box>

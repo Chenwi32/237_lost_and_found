@@ -2,11 +2,9 @@ import { Container, Heading } from "@chakra-ui/react";
 
 const Privacy = () => {
     return (
-        <Container>
-            <Heading>
-                Privac
-            </Heading>
-        </Container>
+      <Container>
+        <Heading fontFamily="Andika">Privacy</Heading>
+      </Container>
     );
 }
 
