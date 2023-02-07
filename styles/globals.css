@@ -17,9 +17,9 @@ body {
 a {
   text-decoration: none;
   transition: 0.4s;
-  font-weight: 600;
+
   color: var(--primary);
-  font-size: 1rem;
+  
 }
 
 button {
