@@ -181,7 +181,7 @@ const NationalIdCollection = () => {
         }
 
         <Container maxW={900} mb={10} mt={10}>
-          <BreadCrumbs />
+        
 
           {isVisible ? (
             <Alert status="success" mb={10}>

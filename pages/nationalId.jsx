@@ -105,7 +105,7 @@ const NationalId = () => {
       }
 
       <Container maxW={900} minH={"80vh"} mb={10}>
-        <BreadCrumbs />
+        
 
         <Tabs isFitted color={"brand.500"} variant="enclosed">
           <TabList m={"auto"} maxW={500} color={"brand.400"} mb={10}>

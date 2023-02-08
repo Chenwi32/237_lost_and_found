@@ -20,7 +20,7 @@ const Contact = () => {
       }
 
       <Container maxW={900} minH={"80vh"} align="center">
-        <BreadCrumbs />
+    
 
         <div className={`${styles.contact}`}>
           <Heading fontFamily="Andika">

@@ -23,7 +23,7 @@ const Help = () => {
       }
 
       <Container maxW="1200px" minH={"80vh"}>
-        <BreadCrumbs />
+  
 
         <Box>
           <Heading fontFamily="Andika">FAQ</Heading>

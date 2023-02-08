@@ -6,7 +6,7 @@ import Description from "../components/description";
 const About = () => {
     return (
         <Container mb={10} maxW={1200}>
-            <BreadCrumbs/>
+          
             <Description/>
         </Container>
     );
