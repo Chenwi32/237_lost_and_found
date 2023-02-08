@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
       <Navigation />
 
       <main className="main_content">{children}</main>
-      <Footer />
+     <Footer />
     </>
   );
 };

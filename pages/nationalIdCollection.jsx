@@ -228,14 +228,16 @@ const NationalIdCollection = () => {
                 <Text fontSize={"0.9rem"} mb={2}>
                   * ID card number :
                 </Text>
-                <input
+                <Input
                   value={idnum}
                   onChange={(e) => {
                     setIdnum(e.target.value);
                   }}
                   type="number"
-                  placeholder="ID card Number"
-                  className={`main_input `}
+                  placeholder="1123*****"
+                  _focusVisible={{
+                    border: "2px solid #00ebc7",
+                  }}
                   required
                 />
               </Box>
@@ -244,14 +246,16 @@ const NationalIdCollection = () => {
                 <Text fontSize={"0.9rem"} mb={2}>
                   * Holder"s Name :
                 </Text>
-                <input
+                <Input
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
                   type="text"
-                  placeholder="Holder's Name"
-                  className={`main_input`}
+                  placeholder="John Doe"
+                  _focusVisible={{
+                    border: "2px solid #00ebc7",
+                  }}
                   required
                 />
               </Box>
@@ -260,14 +264,16 @@ const NationalIdCollection = () => {
                 <Text fontSize={"0.9rem"} mb={2}>
                   Your location :
                 </Text>
-                <input
+                <Input
                   value={location}
                   onChange={(e) => {
                     setLocation(e.target.value);
                   }}
                   type="text"
-                  placeholder="Your Location"
-                  className={`main_input `}
+                  placeholder="City Chemist Bamenda - NW"
+                  _focusVisible={{
+                    border: "2px solid #00ebc7",
+                  }}
                   required
                 />
               </Box>
@@ -275,14 +281,16 @@ const NationalIdCollection = () => {
                 <Text fontSize={"0.9rem"} mb={2}>
                   * Your email :
                 </Text>
-                <input
+                <Input
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
                   type="email"
-                  placeholder="Your Email"
-                  className={`main_input `}
+                  placeholder="example@gmail.com"
+                  _focusVisible={{
+                    border: "2px solid #00ebc7",
+                  }}
                   required
                 />
               </Box>
@@ -294,16 +302,19 @@ const NationalIdCollection = () => {
               </Text>
 
               <HStack mb={5}>
-                <input
+                <Input
                   onChange={(e) => {
                     setPhoneNumber(e.target.value);
                   }}
                   type="tel"
                   placeholder="code"
+                  _focusVisible={{
+                    border: "2px solid #00ebc7",
+                  }}
                   name="phoneNumber"
                   list="defaultTels"
-                  className="phonecode"
                   required
+                  width={"30%"}
                 />
 
                 <datalist id="defaultTels">
@@ -312,13 +323,15 @@ const NationalIdCollection = () => {
                   <option value="+233">Ghana</option>
                 </datalist>
 
-                <input
+                <Input
                   value={phoneNumber}
                   onChange={(e) => {
                     setPhoneNumber(e.target.value);
                   }}
-                  placeholder="Your phone number"
-                  className={`main_input`}
+                  placeholder="+237*********"
+                  _focusVisible={{
+                    border: "2px solid #00ebc7",
+                  }}
                   name="phoneNumber"
                   pattern="[0-9]"
                   required

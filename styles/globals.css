@@ -60,28 +60,6 @@ hr {
   width: fit-content;
 }
 
-
-
-.main_input {
-  font-family: "Roboto", sans-serif;
-  padding: 0.5em;
-  width: 100%;
-  outline: none;
-  border: 1px solid var(--links);
-  border-radius: 5px;
-
-
-}
-
-.main_input:focus {
-  border: 2px solid var(--primary);
-}
-
-.flex_col {
-  display: flex;
-  flex-direction: column;
-}
-
 .results_display,
 .announcement {
   box-shadow: 0 0 10px  #00ebc825;
@@ -105,29 +83,8 @@ hr {
   align-items: center;
 }
 
-.phonecode {
-  border: 1px solid;
-  width: 5rem;
-  padding: .5rem;
-  border-radius: 5px;
-}
 
 
-
-@media (max-width: 350px) {
-  .btn2 {
-  min-width: unset;
-  width: fit-content;
-}
-
-.btn {
-  min-width: unset;
-}
-
-.fileinput{
-  width: 100%;
-}
-}
 
 /*----- Animations -----*/
 

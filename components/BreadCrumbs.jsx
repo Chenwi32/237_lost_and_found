@@ -12,8 +12,8 @@ const BreadCrumbs = () => {
 
     
       
-    <Container maxW={1200} p={0}  width={'100%'} color={"brand.100"} fontWeight={600}>
-      <Breadcrumb spacing='8px' separator={'|'} mb={10} >
+    <Container maxW={1200} p={'1rem 0'} bg='brand.600' zIndex={1}  mb={10} width={'100%'} color={"brand.100"} fontWeight={600} position='sticky' top={"3.7rem"}>
+      <Breadcrumb spacing='1rem' separator={'|'} >
         <BreadcrumbItem isCurrentPage>
           <Link href="/nationalIdCollection">
             <button className={styles.breadcrumbs}>Found an ID card</button>

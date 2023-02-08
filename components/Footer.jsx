@@ -11,6 +11,7 @@ import {
   ModalContent,
   ModalFooter,
   ModalOverlay,
+  SimpleGrid,
   Text,
 
   useDisclosure,
@@ -32,13 +33,11 @@ const Footer = () => {
   return (
     <Container p={"1rem 0"} maxW={"100%"} bg={"brand.500"} color={"brand.600"}>
       <Container maxW={1200} fontFamily="Andika">
-        <Flex
-          alignItems={isLargerThan700 ? "flex-start" : "center"}
+        <SimpleGrid
           justifyContent={isLargerThan700 ? "space-between" : "initial"}
-          flexDirection={isLargerThan700 ? "row" : "column"}
+          columns={isLargerThan700 ? 5 : 2}
           w="100%"
           mb={10}
-          textAlign={isLargerThan700 ? "initial" : "center"}
         >
           <Flex flexDirection={"column"} mb={isLargerThan700 ? 0 : 5}>
             <Heading fontSize={"1.1rem"} mb={3} fontFamily="Andika">
@@ -95,7 +94,7 @@ const Footer = () => {
             <Heading fontSize={"1.1rem"} mb={2} fontFamily="Andika">
               How it works
             </Heading>
-            <Flex flexDirection={"column"} fontSize="0.9rem">
+            <Flex flexDirection={"column"} fontSize="0.9rem" gap={2}>
               <Text
                 _hover={{
                   cursor: "pointer",
@@ -127,7 +126,7 @@ const Footer = () => {
             <Heading fontSize={"1.1rem"} mb={2} fontFamily="Andika">
               Resources
             </Heading>
-            <Flex flexDirection={"column"} fontSize="0.9rem">
+            <Flex flexDirection={"column"} fontSize="0.9rem" gap={2}>
               <Text
                 _hover={{
                   cursor: "pointer",
@@ -151,7 +150,7 @@ const Footer = () => {
             <Heading fontSize={"1.1rem"} mb={2} fontFamily="Andika">
               Company
             </Heading>
-            <Flex flexDirection={"column"} fontSize="0.9rem">
+            <Flex flexDirection={"column"} fontSize="0.9rem" gap={2}>
               <Text
                 _hover={{
                   cursor: "pointer",
@@ -162,7 +161,7 @@ const Footer = () => {
               </Text>
             </Flex>
           </Flex>
-        </Flex>
+        </SimpleGrid>
 
         <Flex
           justifyContent="center"
@@ -211,10 +210,12 @@ const Footer = () => {
               }}
             />
             <ModalBody>
-              <Heading fontFamily={"Andika"} fontSize='1rem'>This website uses cookies</Heading>
+              <Heading fontFamily={"Andika"} fontSize="1rem">
+                This website uses cookies
+              </Heading>
               <Text>
-                We use cookies to personalise content to provide and to analyse our traffic. 
-                
+                We use cookies to personalise content to provide and to analyse
+                our traffic.
               </Text>
             </ModalBody>
 
@@ -233,7 +234,6 @@ const Footer = () => {
               <Button
                 onClick={() => {
                   onClose();
-                  
                 }}
                 _hover={{
                   bg: "brand.200",
