@@ -45,6 +45,8 @@ const AvilableDocs = () => {
 
   const [phoneNumber, setPhoneNumber] = useState("");
 
+  const [currentId, setCurrentId] = useState()
+
   const getIds = async () => {
     // Query all Id cards
     const idQuery = query(idcollection);
@@ -72,7 +74,7 @@ const AvilableDocs = () => {
 
   const loading = foundIds.length === 0;
 
-  const sendNotification = async (e, { data }) => {
+  const sendNotification = async (e, data) => {
     e.preventDefault();
 
     const response = await axios.post("/api/sendgrid", data);
@@ -210,7 +212,10 @@ const AvilableDocs = () => {
                         color: "brand.400",
                       }}
                       boxShadow={"lg"}
-                      onClick={onOpen}
+                      onClick={() => {
+                        setCurrentId(id)
+                        onOpen()
+                      } }
                     >
                       This is my ID card
                     </Button>
@@ -259,8 +264,10 @@ const AvilableDocs = () => {
                         onClick={(e) => {
                           const data = {
                             phoneNumber,
-                            id,
+                            id: currentId,
                           };
+
+                          console.log(data)
 
                           if (phoneNumber === "" || phoneNumber === null) {
                             toast({
@@ -274,8 +281,9 @@ const AvilableDocs = () => {
                             });
                           } else {
                             onClose();
-                            sendNotification(e, { data });
-                          }
+                            console.log(data)
+                            sendNotification(e, data);
+                          } 
                         }}
                         _hover={{
                           bg: "brand.200",
