@@ -3,7 +3,7 @@ import { Container, Heading, Text } from "@chakra-ui/react";
 
 const Term = () => {
     return (
-        <Container minH={'70vh'}>
+        <Container minH={'70vh'} mt={20}>
         
             <Heading fontFamily={'Andika'} mb={5}>
                 Terms and Condition of use

@@ -90,6 +90,7 @@ const Signup = () => {
         mb={10}
         borderBottomLeftRadius={isLargerThan700 ? "10rem" : "5rem"}
         p={5}
+        mt={20}
       >
         <Flex
           m="auto"

@@ -104,7 +104,7 @@ const NationalId = () => {
         </Head>
       }
 
-      <Container maxW={900} minH={"80vh"} mb={10}>
+      <Container maxW={900} mt={20} minH={"80vh"} mb={10}>
         
 
         <Tabs isFitted color={"brand.500"} variant="enclosed">

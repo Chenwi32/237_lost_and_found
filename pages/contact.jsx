@@ -19,7 +19,7 @@ const Contact = () => {
         </Head>
       }
 
-      <Container maxW={900} minH={"80vh"} align="center">
+      <Container mt={20} maxW={900} minH={"80vh"} align="center">
     
 
         <div className={`${styles.contact}`}>

@@ -90,6 +90,7 @@ const router = useRouter();
         w="100%"
         bg={"brand.400"}
         mb={10}
+        mt={20}
         borderBottomLeftRadius={isLargerThan700 ? "10rem" : "5rem"}
         p={5}
       >

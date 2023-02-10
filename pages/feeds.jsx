@@ -4,7 +4,7 @@ import BreadCrumbs from "../components/BreadCrumbs";
 
 const Feeds = () => {
   return (
-    <Container maxW={1200} minHeight={"90vh"}>
+    <Container mt={20} maxW={1200} minHeight={"90vh"}>
       
 
       <AvilableDocs />

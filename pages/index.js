@@ -30,8 +30,8 @@ const HomePage = () => {
         </Head>
       }
 
-      <Container maxW={1200}>
-        <Heading textAlign={"center"} mt={10} fontFamily="Andika">
+      <Container mt={20} maxW={1200}>
+        <Heading textAlign={"center"} fontFamily="Andika">
           Welcome to 237 Lost and Found
         </Heading>
         <Heading

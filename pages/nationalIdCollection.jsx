@@ -180,7 +180,7 @@ const NationalIdCollection = () => {
           </Head>
         }
 
-        <Container maxW={900} mb={10} mt={10}>
+        <Container maxW={900} mb={10} mt={20}>
         
 
           {isVisible ? (
