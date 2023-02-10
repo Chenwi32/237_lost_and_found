@@ -17,7 +17,7 @@ const BreadCrumbs = () => {
       width={"100%"}
       color={"brand.100"}
       fontWeight={600}
-      position="sticky"
+      position="fixed"
       top={"3.7rem" }
     >
       <Breadcrumb maxW={1200} m='auto' spacing="1rem" separator={"|"} w='100%'>

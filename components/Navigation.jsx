@@ -73,7 +73,7 @@ export default function Header() {
       position={"sticky"}
       top={0}
       zIndex={1}
-      fontFamily='Roboto'
+      fontFamily="Roboto"
     >
       <chakra.header maxW={1200} m={"auto"} id="header">
         <Flex
@@ -252,7 +252,13 @@ export default function Header() {
               <HamburgerIcon />
             </MenuButton>
 
-            <MenuList p={5} minW={"97vw"} minH="80vh" boxShadow={"xl"}>
+            <MenuList
+              p={5}
+              minW={"97vw"}
+              minH="80vh"
+              boxShadow={"xl"}
+              mt={10}
+            >
               <MenuGroup title="Profile">
                 {user.uid ? (
                   <Menu>
