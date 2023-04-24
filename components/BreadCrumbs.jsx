@@ -9,18 +9,20 @@ const BreadCrumbs = () => {
 
   return (
     <Container
-      maxW={'unset'}
+      /* maxW={'unset'} */
       p={"1rem"}
       bg="brand.600"
       zIndex={2}
+      ml={8}
       mb={10}
       width={"100%"}
       color={"brand.100"}
       fontWeight={600}
       position="fixed"
-      top={"3.7rem" }
+      top={isLargerThan700? '4.5rem' : "3.7rem"}
+      maxW={isLargerThan700? 'fit-content' : 'unset'}
     >
-      <Breadcrumb maxW={1200} m='auto' spacing="1rem" separator={"|"} w='100%'>
+      <Breadcrumb spacing="1rem" separator={"|"} w='100%'>
         <BreadcrumbItem isCurrentPage>
           <Link href="/nationalIdCollection">
             <button className={styles.breadcrumbs}>Found ID card</button>

@@ -157,24 +157,20 @@ export default function Header() {
             {user.uid ? (
               <Menu>
                 <MenuButton
-                  as={Button}
+                  _hover={{
+                    bg: "",
+                  }}
+                  _active={{
+                    bg: "",
+                  }}
                   bg={"brand.400"}
                   color="brand.600"
-                  p={"0.3rem 0.5rem"}
-                  borderRadius="lg"
-                  _hover={{
-                    bg: "brand.400",
-                  }}
+                  as={Button}
                 >
                   {userCha.toUpperCase()}
                 </MenuButton>
-
-                <MenuList p={0} minW={"unset"} w={"fit-content"}>
-                  <MenuGroup>
-                    <MenuItem fontSize={"1.1rem"} onClick={onOpen}>
-                      Log Out
-                    </MenuItem>
-                  </MenuGroup>
+                <MenuList zIndex={2}>
+                  <MenuItem onClick={onOpen}>Log Out</MenuItem>
                 </MenuList>
               </Menu>
             ) : (
@@ -252,13 +248,7 @@ export default function Header() {
               <HamburgerIcon />
             </MenuButton>
 
-            <MenuList
-              p={5}
-              minW={"97vw"}
-              minH="80vh"
-              boxShadow={"xl"}
-              mt={10}
-            >
+            <MenuList p={5} minW={"97vw"} minH="80vh" boxShadow={"xl"} mt={10}>
               <MenuGroup title="Profile">
                 {user.uid ? (
                   <Menu>
@@ -290,7 +280,7 @@ export default function Header() {
 
                         <ChevronDownIcon />
                       </Flex>
-                    </MenuButton>{" "}
+                    </MenuButton>
                     <MenuList p={0} minW={"unset"} w={"fit-content"}>
                       <MenuGroup>
                         <MenuItem onClick={onOpen}>Log Out</MenuItem>
