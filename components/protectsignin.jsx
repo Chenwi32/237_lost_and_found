@@ -11,7 +11,7 @@ const Protectsignin = ({ children }) => {
 
   useEffect(() => {
     if (user.uid) {
-      router.push("/");
+      router.push("/nationalIdCollection");
   
       toast({
         position: "top",
