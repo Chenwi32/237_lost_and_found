@@ -1,15 +1,14 @@
 import {
-  Box,
+
   Button,
   Container,
   Flex,
   Heading,
-  HStack,
+
   Icon,
   Image,
   Text,
   useMediaQuery,
-  VStack,
 } from "@chakra-ui/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,18 +23,16 @@ import Protectsignin from "../components/protectsignin";
 import { auth } from "../firebase";
 
 const LogIn = () => {
-
-
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   const [email, setEmail] = useState();
   const [password, setPassWord] = useState();
   const [isVisible, setVisible] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const methods = useForm({ mode: "onBlur" });
 
-const { logIn } = useAuth();
-const router = useRouter();
+  const { logIn } = useAuth();
+  const router = useRouter();
 
   const {
     register,
@@ -52,7 +49,6 @@ const router = useRouter();
     }
   };
 
-
   const provider = new GoogleAuthProvider();
 
   /* Google auth */
@@ -65,7 +61,6 @@ const router = useRouter();
         const token = credential?.accessToken;
         // The signed-in user info.
         const user = result.user;
-        console.log({ credential, token, user });
       })
       .catch((error) => {
         // Handle Errors here.
@@ -78,8 +73,6 @@ const router = useRouter();
         alert(` ${errorCode}, ${errorMessage}, ${email}, ${credential} `);
       });
   };
-
-
 
   return (
     <Protectsignin>
