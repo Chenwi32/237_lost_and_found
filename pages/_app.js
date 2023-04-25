@@ -17,6 +17,7 @@ const theme = extendTheme({
       600: "#fffffe",
     },
   },
+ 
 });
 
 function MyApp({ Component, pageProps }) {

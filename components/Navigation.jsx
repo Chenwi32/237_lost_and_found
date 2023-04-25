@@ -8,13 +8,10 @@ import {
   Container,
   useMediaQuery,
   Icon,
-  HStack,
-  VStack,
   Text,
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalCloseButton,
   ModalBody,
   ModalFooter,
@@ -72,7 +69,7 @@ export default function Header() {
       mb={10}
       position={"sticky"}
       top={0}
-      zIndex={1}
+      zIndex={2}
       fontFamily="Roboto"
     >
       <chakra.header maxW={1200} m={"auto"} id="header">
@@ -155,7 +152,7 @@ export default function Header() {
               </Button>
             </Link>
             {user.uid ? (
-              <Menu>
+              <Menu >
                 <MenuButton
                   _hover={{
                     bg: "",
@@ -166,11 +163,12 @@ export default function Header() {
                   bg={"brand.400"}
                   color="brand.600"
                   as={Button}
+                  
                 >
                   {userCha.toUpperCase()}
                 </MenuButton>
                 <MenuList zIndex={2}>
-                  <MenuItem onClick={onOpen}>Log Out</MenuItem>
+                  <MenuItem zIndex={10} onClick={onOpen}>Log Out</MenuItem>
                 </MenuList>
               </Menu>
             ) : (

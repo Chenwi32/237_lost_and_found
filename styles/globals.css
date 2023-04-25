@@ -63,6 +63,7 @@ hr {
 .results_display,
 .announcement {
   box-shadow: 0 0 10px  #00ebc825;
+  box-shadow: 0 0 10px  rgba(128, 128, 128, 0.555);
   padding: 1rem;
   border-radius: 5px;
   border: 1px solid var(--secondary);
