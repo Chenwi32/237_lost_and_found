@@ -1,5 +1,7 @@
 import { EmailIcon, Icon, PhoneIcon } from "@chakra-ui/icons";
 import {
+  Box,
+  Button,
   Container,
   Flex,
   HStack,
@@ -9,15 +11,16 @@ import {
   Input,
   Text,
   Textarea,
+  useMediaQuery,
 } from "@chakra-ui/react";
-import styles from "../styles/contact.module.css";
 
 import { faFacebookF, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
-import BreadCrumbs from "../components/BreadCrumbs";
 
 const Contact = () => {
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
+
   return (
     <>
       {
@@ -28,17 +31,27 @@ const Contact = () => {
         </Head>
       }
 
-      <Container mt={20} maxW={1000} minH={"80vh"} align="center">
-        <Flex>
-          <Image src="/images/lost.jpg" w={500} h={400} alt="lost documents" />
+      <Container
+        p={isLargerThan700 ? "initial" : "0"}
+        mt={20}
+        maxW={1000}
+        minH={"80vh"}
+        align="center"
+      >
+        <Flex flexDirection={isLargerThan700 ? "row" : "column"}>
+          <Image
+            src="/images/lost.jpg"
+            w={500}
+            alt="woman who lost something"
+          />
 
           <Flex
             w={"100%"}
             flexDirection={"column"}
             justifyContent={"space-between"}
             bg={"#F3F9FE"}
-            p={5}
-            pr={10}
+            p={isLargerThan700? 5 : 3}
+            pr={isLargerThan700? 10 : 3}
           >
             <Heading
               fontSize={"1.5rem"}
@@ -49,9 +62,16 @@ const Contact = () => {
               Get in touch with us.
             </Heading>
 
-            <Flex flexDirection={"column"}>
+            <Flex
+              fontSize={isLargerThan700 ? "initial" : "0.8rem"}
+              flexDirection={"column"}
+              alignItems={"flex-start"}
+            >
               <HStack mb={5}>
-                <Text textAlign={"left"} w={130}>
+                <Text
+                  textAlign={"left"}
+                  w={isLargerThan700 ? 130 : "fit-content"}
+                >
                   Email:
                 </Text>
                 <Input
@@ -67,7 +87,10 @@ const Contact = () => {
               </HStack>
 
               <HStack mb={5}>
-                <Text textAlign={"left"} w={130}>
+                <Text
+                  textAlign={"left"}
+                  w={isLargerThan700 ? 130 : "fit-content"}
+                >
                   Name:
                 </Text>
                 <Input
@@ -82,8 +105,11 @@ const Contact = () => {
                 />
               </HStack>
 
-              <HStack mt={5}>
-                <Text textAlign={"left"} w={130}>
+              <HStack mt={5} mb={5}>
+                <Text
+                  textAlign={"left"}
+                  w={isLargerThan700 ? 130 : "fit-content"}
+                >
                   Message:
                 </Text>
                 <Textarea
@@ -94,9 +120,24 @@ const Contact = () => {
                   }}
                 />
               </HStack>
+
+              <Box w={isLargerThan700? 'inherit' : '100%'}>
+                <Button
+                  w={isLargerThan700? 'inherit' : '100%'}
+                  mb={5}
+                  bg={"brand.100"}
+                  color={"brand.400"}
+                  _hover={{
+                    bg: "brand.200",
+                    color: "brand.400",
+                  }}
+                >
+                  Send
+                </Button>
+              </Box>
             </Flex>
 
-            <Flex fontSize={"2.4rem"} gap={2} justifyContent={'flex-end'}>
+            <Flex fontSize={isLargerThan700? "2.4rem" : '2rem'} gap={2} justifyContent={"flex-end"}>
               <a href="https://wa.me/+237651395832" target="blank">
                 <Icon
                   _hover={{
