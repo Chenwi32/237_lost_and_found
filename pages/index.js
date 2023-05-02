@@ -118,7 +118,7 @@ const HomePage = (props) => {
           ) : empty ? (
             foundIds.map((message) => {
               return (
-                <Box>
+                <Box key={message}>
                   <Heading>{message}</Heading>
                 </Box>
               );

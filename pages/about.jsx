@@ -33,10 +33,10 @@ const About = () => {
         To register a found document, you have to navigate to the found document page by clicking on one of the buttons indicated below.
         </Text>
         
-        <Image src="/images/pic-17.png" w={300} m={'auto'} mt={10} mb={10} />
+        <Image src="/images/pic-17.png" w={300} m={'auto'} mt={10} mb={10} alt=""/>
 
         <Text>If you are not logged in, you will not be able to access this page and you will be redirected to the Log in page, then from there you can log in</Text>
-<Image src="/images/pic-15.png" w={300} m={'auto'} mt={10} mb={10} />
+<Image src="/images/pic-15.png" w={300} m={'auto'} mt={10} mb={10} alt="" />
         
       </Box>
       
