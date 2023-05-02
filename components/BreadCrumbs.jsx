@@ -24,9 +24,9 @@ const BreadCrumbs = () => {
       fontWeight={600}
       position="fixed"
       top={isLargerThan700 ? "4.2rem" : "3.7rem"}
-      maxW={"unset"}
+      maxW={'unset'}
     >
-      <Breadcrumb spacing="1rem" separator={"|"} w="100%">
+      <Breadcrumb m={'auto'} maxW={1200} spacing="1rem" separator={"|"} w="100%">
         <BreadcrumbItem isCurrentPage>
           <Link href="/nationalIdCollection">
             <button className={styles.breadcrumbs}>Found ID card</button>

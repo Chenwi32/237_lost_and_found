@@ -7,7 +7,7 @@ import Link from "next/link";
 const Actionmenu = () => {
 
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
-  const [isLargerThan400] = useMediaQuery("(min-width: 400px)");
+
   return (
     <Container maxW={1200} p={0} mt={10}>
       <Flex
@@ -31,6 +31,7 @@ const Actionmenu = () => {
             bg={"brand.700"}
             color="brand.200"
             border={"1px"}
+            
           >
             <Text>found ID card?</Text>
 

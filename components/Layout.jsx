@@ -6,10 +6,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <Navigation />
-      <BreadCrumbs/>
+      <BreadCrumbs />
 
       <main className="main_content">{children}</main>
-     <Footer />
+      <Footer />
     </>
   );
 };

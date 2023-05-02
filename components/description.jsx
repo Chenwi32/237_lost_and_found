@@ -1,13 +1,11 @@
 import {
-  Box,
   Button,
   Container,
   Heading,
-  HStack,
+  Link,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import Link from "next/link";
 
 const Description = () => {
   return (
@@ -23,12 +21,15 @@ const Description = () => {
       </Heading>
 
       <Text>
-        On 237L&F there are just two things; either you found a lost ID card or
-        you are searching for a lost ID card, that's it. <br />
-        If you found a lost ID card, you should go to the{" "}
-        <Link href={`/nationalIdCollection`}>Found an ID card</Link> section and
-        fill out the form to submit the details required to help the owner of
-        the ID card recover it.
+        On 237L&F there are just two things; either you found a lost document
+        (which for now our main focus is ID cards) or you are searching for a
+        lost document, that's it. <br />
+        If you found a lost document, you should go to the{" "}
+        <Link color="brand.100" href={`/nationalIdCollection`}>
+          Found an ID card
+        </Link>{" "}
+        section and fill out the form to submit the details required to help the
+        owner of the ID card recover it.
       </Text>
 
       <Stack
@@ -61,7 +62,10 @@ const Description = () => {
 
       <Text>
         If you lost an ID card, then you should go to the{" "}
-        <Link href={`/nationalId`}>Lost an ID card</Link> section. <br />
+        <Link color="brand.100" href={`/nationalId`}>
+          Lost an ID card
+        </Link>{" "}
+        section. <br />
         Since this platform is still very new, we haven't gotten too many lost
         ID card with us yet, so chances are that you might not be able to find
         your document here; nevertheless, just come back from time to time to
