@@ -34,16 +34,16 @@ async function sendEmail(req, res) {
         <div class="img-container" style="display: flex;justify-content: center;align-items: center;border-radius: 5px;overflow: hidden; font-family: 'helvetica', 'ui-sans';">              
               </div>
               <div class="container" style="margin-left: 20px;margin-right: 20px;">
-              <h3>You've got a new mail from 237 Lost and Found, their email is: ✉️${req.body.id.email} </h3>
+              <h3>You've got a new mail from 237 Lost and Found, their email is: ✉️ chenwieugene.j@gmail.com </h3>
               <div style="font-size: 16px;">
               <p>Message:</p>
               <p>An Id card you registered on 237 Lost and Found with name: ${req.body.id.name} has been claimed.
               </p>
               <br>
-              <p>You can reach the person who claimed it through this line: ${req.body.phoneNumber}. Please try as much to reach the person and remeber to cautious</p>
+              <p>You can reach the person who claimed it through this line: ${req.body.phoneNumber}. Please try as much to reach the person as soon as posible and remeber to be cautious</p>
               <br>
               </div>
-              <a href="https://237-lost-and-found.vercel.app/"><img src="https://z-p3-scontent.fnsi2-1.fna.fbcdn.net/v/t39.30808-6/293400038_102526035868350_6781918881315674677_n.png?_nc_cat=105&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeEGQMOkMRLdGsTjJSC49BOM4Kfn0C8rnV7gp-fQLyudXkgYIhGsTK7ECoYzYzEtW5ekacG6wUqd-mW4GVMfQSUk&_nc_ohc=tru05rHKQkEAX-jbOB_&_nc_zt=23&_nc_ht=z-p3-scontent.fnsi2-1.fna&oh=00_AfCodh_jfs4CFCsnjfspsQ8OjyFgKHDQNHMn3si7pQ6dEQ&oe=63DFF21E" class="logo-image" style="height: 80px;width: 100px;border-radius: 5px;overflow: hidden; background-color: #fff"></a>
+              <a href="https://237-lost-and-found.vercel.app/"><img src="https://firebasestorage.googleapis.com/v0/b/lost-and-found-8ef8a.appspot.com/o/oie_EApAKUnXRVw9.png?alt=media&token=f0322300-c6ac-4279-960e-02b9d095888a" class="logo-image" style="height: 80px;width: 100px;border-radius: 5px;overflow: hidden; background-color: #fff"/></a>
               
               <p class="footer" style="font-size: 16px;padding-bottom: 20px;border-bottom: 1px solid #D1D5DB;">Best regards<br>Chenwi Eugene<br>Software Developer</p>
               <div class="footer-links" style="display: flex;justify-content: center;align-items: center;">

@@ -14,7 +14,7 @@ const BreadCrumbs = () => {
   return (
     <Container
       p={".5rem"}
-      pl={isLargerThan700 ? "3rem" : "initial"}
+      pl={isLargerThan700 ? "3rem" : "1rem"}
       bg="brand.600"
       zIndex={"1"}
       m={"auto"}

@@ -161,27 +161,33 @@ const HomePage = (props) => {
                       justifyContent={"flex-start"}
                       w="100%"
                     >
-                      <HStack>
-                        <Text>ID Number:</Text>
+                      <Flex flexDirection={"column"}>
+                        <Text fontSize={"0.9rem"} color={"brand.300"}>
+                          ID Number:
+                        </Text>
                         <Text fontWeight={600} color={"brand.400"}>
                           {id.idnum}
                         </Text>
-                      </HStack>
+                      </Flex>
 
-                      <HStack mb={5}>
-                        <Text>Holder's Name:</Text>
+                      <Flex flexDirection={"column"} mb={5}>
+                        <Text fontSize={"0.9rem"} color={"brand.300"}>
+                          Holder's Name:
+                        </Text>
 
                         <Text fontWeight={600} color={"brand.400"}>
                           {id.name}
                         </Text>
-                      </HStack>
-                      <HStack mb={5}>
-                        <Text>It was found in:</Text>
+                      </Flex>
+                      <Flex flexDirection={"column"} mb={5}>
+                        <Text fontSize={"0.9rem"} color={"brand.300"}>
+                          It was found in:
+                        </Text>
 
                         <Text fontWeight={600} color={"brand.400"}>
                           {id.location}
                         </Text>
-                      </HStack>
+                      </Flex>
 
                       <Button
                         mb={5}

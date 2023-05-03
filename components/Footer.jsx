@@ -95,14 +95,15 @@ const Footer = () => {
               How it works
             </Heading>
             <Flex flexDirection={"column"} fontSize="0.9rem" gap={2}>
-              <Text
+              <Link
                 _hover={{
                   cursor: "pointer",
                   textDecoration: "underline",
                 }}
+                href="/about/#register"
               >
                 Register Document
-              </Text>
+              </Link>
               <Text
                 _hover={{
                   cursor: "pointer",

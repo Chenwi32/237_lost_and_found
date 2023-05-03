@@ -4,22 +4,24 @@ import React, { useEffect, useState } from "react";
 import Controls from "../components/controls";
 
 import { db } from "../firebase";
+import { collection, query, getDocs } from "@firebase/firestore";
 import {
-  collection,
-  QueryDocumentSnapshot,
-  DocumentData,
-  query,
-  where,
-  limit,
-  getDocs,
-} from "@firebase/firestore";
-import { Box, Container, Heading, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useMediaQuery, VStack } from "@chakra-ui/react";
+  Box,
+  Container,
+  Heading,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  useMediaQuery,
+  VStack,
+} from "@chakra-ui/react";
 
-import BreadCrumbs from "../components/BreadCrumbs";
 import Head from "next/head";
 
 const NationalId = () => {
-
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
   const [nameInput, setnameInput] = useState("");
@@ -62,11 +64,7 @@ const NationalId = () => {
     if (nameInput === "" || nameInput === null) return;
 
     if (successfulsearch) {
-
-      
-      
       setfound(successfulsearch);
-
 
       setDataInput("");
     } else {
@@ -74,7 +72,6 @@ const NationalId = () => {
       setDataInput("");
     }
   };
-
 
   /* ID search by by ID num */
   const idSearchIdnum = () => {
@@ -105,8 +102,6 @@ const NationalId = () => {
       }
 
       <Container maxW={900} mt={20} minH={"80vh"} mb={10}>
-        
-
         <Tabs isFitted color={"brand.500"} variant="enclosed">
           <TabList m={"auto"} maxW={500} color={"brand.400"} mb={10}>
             <Tab _selected={{ color: "brand.400", bg: "brand.100" }}>

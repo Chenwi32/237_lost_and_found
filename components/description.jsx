@@ -16,6 +16,7 @@ const Description = () => {
         mt={10}
         mb={5}
         fontFamily="Andika"
+        id="howitworks"
       >
         How the platform works
       </Heading>
@@ -64,7 +65,7 @@ const Description = () => {
         If you lost an ID card, then you should go to the{" "}
         <Link color="brand.100" href={`/nationalId`}>
           Lost an ID card
-        </Link>{" "}
+        </Link>{' '}
         section. <br />
         Since this platform is still very new, we haven't gotten too many lost
         ID card with us yet, so chances are that you might not be able to find
@@ -74,9 +75,9 @@ const Description = () => {
         that someone who finds your ID card might bring it here. <br />
         To direct someone to the platform, just copy and share this link:
         <Text as={"span"} color={"brand.100"}>
-          {" "}
+          
           " https://lost-and-found-8ef8a.web.app/ "
-        </Text>{" "}
+        </Text>
         with them for now, we are still working to make the sharing process
         easy. Thank you very much!!
       </Text>
@@ -122,7 +123,13 @@ const Description = () => {
         </Link>
       </Stack>
 
-      <Heading fontSize={"1.5rem"} mt={10} mb={5} fontFamily="Andika">
+      <Heading
+        id="disclaimer"
+        fontSize={"1.5rem"}
+        mt={10}
+        mb={5}
+        fontFamily="Andika"
+      >
         A disclaimer
       </Heading>
 
