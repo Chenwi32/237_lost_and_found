@@ -48,6 +48,9 @@ const About = () => {
 
         <UnorderedList mt={5} color={"brand.100"}>
           <ListItem>
+            <a href="#mission">Mission</a>{" "}
+          </ListItem>
+          <ListItem>
             <a href="#howitworks">How it works</a>{" "}
           </ListItem>
           <ListItem>
@@ -136,7 +139,11 @@ const About = () => {
           then click on send respectively as indicated below.
         </Text>
 
-        <Flex flexDirection={isLargerThan700 ? 'row' : "column"} alignItems={"center"} gap={2}>
+        <Flex
+          flexDirection={isLargerThan700 ? "row" : "column"}
+          alignItems={"center"}
+          gap={2}
+        >
           <Image
             src="/images/pic-12.png"
             h={300}
@@ -146,7 +153,9 @@ const About = () => {
             alt=""
           />
           <Text fontSize={"2rem"}>
-            <FontAwesomeIcon icon={ isLargerThan700 ? faArrowRight : faArrowDown} />
+            <FontAwesomeIcon
+              icon={isLargerThan700 ? faArrowRight : faArrowDown}
+            />
           </Text>
 
           <Image
@@ -181,6 +190,11 @@ const About = () => {
         >
           How to claim a found document.
         </Heading>
+
+        <Text>
+          To claim a document, you can go to the feeds section and srcoll
+          through the available documents or you to the lost
+        </Text>
       </Box>
     </Container>
   );

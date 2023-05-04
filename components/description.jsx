@@ -16,6 +16,20 @@ const Description = () => {
         mt={10}
         mb={5}
         fontFamily="Andika"
+        id="mission"
+      >
+        Our mission.
+      </Heading>
+      <Text>
+        Our mission is not only to help people recover their lost documents, but to make the process as fast and easy as picking up your phone to make a calll. We want to take away that frustration, that high level of anxiety that comes when you lose a document. <br />
+       <b>Our main focus now</b>  is helping people recover their lost <b>ID cards</b> and we will gradually include other documents such as; Passports, Driving Licences,  
+      </Text>
+      <Heading
+        color={"brand.400"}
+        fontSize={"1.5rem"}
+        mt={10}
+        mb={5}
+        fontFamily="Andika"
         id="howitworks"
       >
         How the platform works
@@ -65,17 +79,16 @@ const Description = () => {
         If you lost an ID card, then you should go to the{" "}
         <Link color="brand.100" href={`/nationalId`}>
           Lost an ID card
-        </Link>{' '}
+        </Link>{" "}
         section. <br />
         Since this platform is still very new, we haven't gotten too many lost
-        ID card with us yet, so chances are that you might not be able to find
+        ID cards with us yet, so chances are that you might not be able to find
         your document here; nevertheless, just come back from time to time to
         check, and then spread the word to get more people to know about the
         platform, because the more people know about it, the higher the chance
         that someone who finds your ID card might bring it here. <br />
         To direct someone to the platform, just copy and share this link:
         <Text as={"span"} color={"brand.100"}>
-          
           " https://lost-and-found-8ef8a.web.app/ "
         </Text>
         with them for now, we are still working to make the sharing process
