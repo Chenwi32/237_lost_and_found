@@ -5,7 +5,7 @@ const Contactform = () => {
      const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
     return (
-      <Container>
+      <Container maxW={'unset'}>
         <Flex
           fontSize={isLargerThan700 ? "initial" : "0.8rem"}
           flexDirection={"column"}

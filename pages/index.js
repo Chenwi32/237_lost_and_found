@@ -14,7 +14,6 @@ import {
   ModalFooter,
   ModalOverlay,
   SimpleGrid,
-  SkeletonCircle,
   SkeletonText,
   Text,
   useDisclosure,
@@ -30,7 +29,7 @@ import Cta from "../components/cta";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase";
 import { useEffect, useState } from "react";
-import Contactform from "../components/contactform";
+import Notifyoflost from "../components/notifyoflost";
 
 const HomePage = (props) => {
   const { results } = props;
@@ -129,19 +128,11 @@ const HomePage = (props) => {
           ) : empty ? (
             foundIds.map((message) => {
               return (
-                <Box key={message} m={"auto"} maxW={800}>
+                <Box key={message} m={"auto"} mb={10} maxW={800}>
                   <Text color={"brand.300"} mt={10} mb={5} fontFamily="Andika">
                     {message}
                   </Text>
-                  <Heading
-                    fontSize={"1rem"}
-                    color={"brand.500"}
-                    fontFamily={"Andika"}
-                    mb={5}
-                  >
-                    Notify us about a lost document.
-                  </Heading>
-                  <Contactform />
+                  <Notifyoflost />
                 </Box>
               );
             })
@@ -229,6 +220,21 @@ const HomePage = (props) => {
                       </Button>
                     </VStack>
                   </Flex>
+
+                  <HStack p={3} w={"100%"} justifyContent={"flex-end"} mb={10}>
+                    <Link href="/feeds">
+                      <Button
+                        bg={"brand.100"}
+                        color={"brand.400"}
+                        _hover={{
+                          bg: "brand.200",
+                          color: "brand.400",
+                        }}
+                      >
+                        View more
+                      </Button>
+                    </Link>
+                  </HStack>
                   <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
@@ -310,21 +316,6 @@ const HomePage = (props) => {
           )}
         </SimpleGrid>
 
-        <HStack p={3} w={"100%"} justifyContent={"flex-end"} mb={10}>
-          <Link href="/feeds">
-            <Button
-              bg={"brand.100"}
-              color={"brand.400"}
-              _hover={{
-                bg: "brand.200",
-                color: "brand.400",
-              }}
-            >
-              View more
-            </Button>
-          </Link>
-        </HStack>
-
         <Box
           w={"100%"}
           display={isLargerThan700 ? "none" : "block"}
@@ -332,6 +323,7 @@ const HomePage = (props) => {
           h={"1px"}
           mb={10}
         ></Box>
+        {empty ? <></> : <Notifyoflost />}
 
         <Cta />
       </Container>
