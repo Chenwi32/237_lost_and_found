@@ -30,6 +30,7 @@ import Cta from "../components/cta";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase";
 import { useEffect, useState } from "react";
+import Contactform from "../components/contactform";
 
 const HomePage = (props) => {
   const { results } = props;
@@ -38,9 +39,9 @@ const HomePage = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
 
-    const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
-    const [currentId, setCurrentId] = useState();
+  const [currentId, setCurrentId] = useState();
 
   const [foundIds, setfoundIds] = useState([]);
 
@@ -95,6 +96,16 @@ const HomePage = (props) => {
 
         <Actionmenu />
 
+        <Heading
+          color={"brand.400"}
+          fontSize={"1.5rem"}
+          mt={10}
+          mb={5}
+          fontFamily="Andika"
+        >
+          Found Documents
+        </Heading>
+
         <SimpleGrid columns={isLargerThan700 ? 2 : 1} gap={5} columnGap={5}>
           {loading ? (
             <>
@@ -118,8 +129,19 @@ const HomePage = (props) => {
           ) : empty ? (
             foundIds.map((message) => {
               return (
-                <Box key={message}>
-                  <Heading>{message}</Heading>
+                <Box key={message} m={"auto"} maxW={800}>
+                  <Text color={"brand.300"} mt={10} mb={5} fontFamily="Andika">
+                    {message}
+                  </Text>
+                  <Heading
+                    fontSize={"1rem"}
+                    color={"brand.500"}
+                    fontFamily={"Andika"}
+                    mb={5}
+                  >
+                    Notify us about a lost document.
+                  </Heading>
+                  <Contactform />
                 </Box>
               );
             })
@@ -336,7 +358,6 @@ export const getStaticProps = async () => {
     props: {
       results: JSON.parse(JSON.stringify(results)),
     },
-
   };
 };
 

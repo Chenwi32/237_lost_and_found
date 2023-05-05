@@ -6,7 +6,6 @@ import {
   Flex,
   HStack,
   Heading,
-  IconButton,
   Image,
   Input,
   Text,
@@ -17,6 +16,7 @@ import {
 import { faFacebookF, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
+import Contactform from "../components/contactform";
 
 const Contact = () => {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
@@ -50,8 +50,8 @@ const Contact = () => {
             flexDirection={"column"}
             justifyContent={"space-between"}
             bg={"#F3F9FE"}
-            p={isLargerThan700? 5 : 3}
-            pr={isLargerThan700? 10 : 3}
+            p={isLargerThan700 ? 5 : 3}
+            pr={isLargerThan700 ? 10 : 3}
           >
             <Heading
               fontSize={"1.5rem"}
@@ -62,82 +62,13 @@ const Contact = () => {
               Get in touch with us.
             </Heading>
 
+            <Contactform />
+
             <Flex
-              fontSize={isLargerThan700 ? "initial" : "0.8rem"}
-              flexDirection={"column"}
-              alignItems={"flex-start"}
+              fontSize={isLargerThan700 ? "2.4rem" : "2rem"}
+              gap={2}
+              justifyContent={"flex-end"}
             >
-              <HStack mb={5}>
-                <Text
-                  textAlign={"left"}
-                  w={isLargerThan700 ? 130 : "fit-content"}
-                >
-                  Email:
-                </Text>
-                <Input
-                  _focusVisible={{
-                    border: "none",
-                    borderBottom: "2px solid #00ebc8",
-                  }}
-                  borderRadius={"0"}
-                  border={"none"}
-                  borderBottom={"1px solid #B9BCBF"}
-                  height={"unset"}
-                />
-              </HStack>
-
-              <HStack mb={5}>
-                <Text
-                  textAlign={"left"}
-                  w={isLargerThan700 ? 130 : "fit-content"}
-                >
-                  Name:
-                </Text>
-                <Input
-                  _focusVisible={{
-                    border: "none",
-                    borderBottom: "2px solid #00ebc8",
-                  }}
-                  borderRadius={"0"}
-                  border={"none"}
-                  borderBottom={"1px solid #B9BCBF"}
-                  height={"unset"}
-                />
-              </HStack>
-
-              <HStack mt={5} mb={5}>
-                <Text
-                  textAlign={"left"}
-                  w={isLargerThan700 ? 130 : "fit-content"}
-                >
-                  Message:
-                </Text>
-                <Textarea
-                  borderColor={"#B9BCBF"}
-                  border={"1px"}
-                  _focusVisible={{
-                    border: "2px solid #00ebc8",
-                  }}
-                />
-              </HStack>
-
-              <Box w={isLargerThan700? 'inherit' : '100%'}>
-                <Button
-                  w={isLargerThan700? 'inherit' : '100%'}
-                  mb={5}
-                  bg={"brand.100"}
-                  color={"brand.400"}
-                  _hover={{
-                    bg: "brand.200",
-                    color: "brand.400",
-                  }}
-                >
-                  Send
-                </Button>
-              </Box>
-            </Flex>
-
-            <Flex fontSize={isLargerThan700? "2.4rem" : '2rem'} gap={2} justifyContent={"flex-end"}>
               <a href="https://wa.me/+237651395832" target="blank">
                 <Icon
                   _hover={{
