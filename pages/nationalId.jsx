@@ -9,57 +9,35 @@ import {
   Box,
   Container,
   Heading,
+  Input,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
-  Text,
   useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
 
 import Head from "next/head";
 
-const NationalId = () => {
+const NationalId = (props) => {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
+
+  const {results} = props
 
   const [nameInput, setnameInput] = useState("");
   const [dataInput, setDataInput] = useState("");
   const [found, setfound] = useState([]);
   const [message, setmessage] = useState("Your results will be displayed here");
 
-  const idcollection = collection(db, "idcards");
-
-  const [foundIds, setfoundIds] = useState([]);
-
-  const getIds = async () => {
-    // Query all Id cards
-    const idQuery = query(idcollection);
-
-    // get id cards
-    const querySnapshot = await getDocs(idQuery);
-
-    // Map through the ids and add them to a new array
-    const results = [];
-
-    querySnapshot.forEach((snapshot) => {
-      results.push(snapshot.data());
-    });
-
-    // assign the new array to the foundIds
-    setfoundIds(results);
-  };
-
-  useEffect(() => {
-    // We now call the function to within the useEffect hook since it causes side effects
-    getIds();
-  }, [nameInput]);
+  
 
   /* ID search by ID name */
 
   const idSearchName = () => {
-    const successfulsearch = foundIds.filter((id) => id.name == nameInput);
+
+    const successfulsearch = results.filter((id) => id.name === nameInput);
 
     if (nameInput === "" || nameInput === null) return;
 
@@ -75,7 +53,7 @@ const NationalId = () => {
 
   /* ID search by by ID num */
   const idSearchIdnum = () => {
-    const successfulsearch = foundIds.find((id) => id.idnum === dataInput);
+    const successfulsearch = results.find((id) => id.idnum === dataInput);
 
     if (dataInput === "" || dataInput === null) return;
 
@@ -123,9 +101,9 @@ const NationalId = () => {
                   Type your name and click on search.
                 </Heading>
 
-                <input
+                <Input
                   type="text"
-                  className="main_input"
+                  
                   value={nameInput}
                   onChange={(e) => {
                     setnameInput(e.target.value);
@@ -146,7 +124,7 @@ const NationalId = () => {
                 >
                   Type your ID card number.
                 </Heading>
-                <input
+                <Input
                   type="number"
                   className="main_input"
                   value={dataInput}
@@ -189,6 +167,28 @@ const NationalId = () => {
       </Container>
     </>
   );
+};
+
+export const getStaticProps = async () => {
+  const idcollection = collection(db, "idcards");
+  // Query all Id cards
+  const idQuery = query(idcollection);
+
+  // get id cards
+  const querySnapshot = await getDocs(idQuery);
+
+  // Map through the ids and add them to a new array
+  const results = [];
+
+  querySnapshot.forEach((snapshot) => {
+    results.push(snapshot.data());
+  });
+
+  return {
+    props: {
+      results: JSON.parse(JSON.stringify(results)),
+    },
+  };
 };
 
 export default NationalId;

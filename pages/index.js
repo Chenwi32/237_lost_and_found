@@ -105,7 +105,13 @@ const HomePage = (props) => {
           Found Documents
         </Heading>
 
-        <SimpleGrid columns={isLargerThan700 ? 2 : 1} gap={5} columnGap={5}>
+        <SimpleGrid
+          position={"relative"}
+          columns={isLargerThan700 ? 2 : 1}
+          gap={5}
+          columnGap={5}
+         
+        >
           {loading ? (
             <>
               <Box padding="6" boxShadow="lg" bg="white">
@@ -221,7 +227,7 @@ const HomePage = (props) => {
                     </VStack>
                   </Flex>
 
-                  <HStack p={3} w={"100%"} justifyContent={"flex-end"} mb={10}>
+                  <HStack position={'absolute'} top={'100%'} p={3} w={"100%"} justifyContent={"flex-end"} mb={10}>
                     <Link href="/feeds">
                       <Button
                         bg={"brand.100"}
@@ -323,8 +329,16 @@ const HomePage = (props) => {
           h={"1px"}
           mb={10}
         ></Box>
+
         {empty ? <></> : <Notifyoflost />}
 
+        <Box
+          w={"100%"}
+          display={isLargerThan700 ? "none" : "block"}
+          bg="brand.400"
+          h={"1px"}
+          mb={10}
+        ></Box>
         <Cta />
       </Container>
     </>
